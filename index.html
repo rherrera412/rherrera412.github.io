@@ -10,6 +10,34 @@
             transition: background-color .5s;
             background-color:#ed702d;
         }
+        .sidenav {
+            display: inline;
+            height: 2px;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 58px;
+            left: 0;
+            background-color: #0a4e73;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 0px;
+        }
+        .sidenav a {
+            padding: 0px 0px 0px 30px;
+            font-size: 17px;
+            color: #ed2d4a;
+            transition: 0.3s;
+            display: inline;
+        }
+
+        .sidenav a:hover, .offcanvas a:focus{
+            color: #f1f1f1;
+            display: inline;
+            font-style: italic;
+        }
+    
+        }
 </style>
 
 <body>
@@ -17,20 +45,35 @@
       <h2 id="myName">
         <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776; RICKY HERRERA</span>
       </h2>
-      <p> technically, its ricardo, but its whutever.
-          website under construction. :( </p>
+    </div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="#">About</a>
+        <a href="#">Projects</a> 
+        <a href="#">Films</a> 
+        <a href="#">Music</a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    </div>
+
+    <div id="bodyText">
+      technically, its ricardo, but its whutever. website under construction.
     </div>
 
 </body>
+
+
 <script>
 var nav = false;
 
 function openNav() {
+    document.getElementById("mySidenav").style.height = "24px";
     document.body.style.backgroundColor = "rgb(45,170,237)";
     document.body.style.color = "rgb(237,208,45)";
     nav = true;
 }
 function closeNav() {
+    document.getElementById("mySidenav").style.height = "2px";
+
     document.body.style.backgroundColor = "rgb(237,112,45)";
     document.body.style.color = "rgb(0,0,0)";
     nav = false;
