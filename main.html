@@ -13,8 +13,8 @@
 
     .sidenav {
         display: inline;
-        height: 0;
-        width: 10;
+        height: 0px;
+        width: 0px;
         position: fixed;
         z-index: 1;
         top: 0;
@@ -53,7 +53,7 @@
         padding: 19px;
     }
 
-    @media screen and (max-height: 42px) {
+    @media screen and (max-height: 40px) {
       .sidenav {padding-top: 0px;}
       .sidenav a {font-size: 16px;}
     }
@@ -82,9 +82,8 @@
 <script>
 function openNav() {
     document.getElementById("mySidenav").style.width = "800px";
-    document.getElementById("mySidenav").style.height = "42px";
+    document.getElementById("mySidenav").style.height = "40px";
 
-    //document.getElementById("main").style.marginTop = "50px";
 
     document.body.style.backgroundColor = "rgb(45,170,237)";
     document.body.style.color = "rgb(237,208,45)";
