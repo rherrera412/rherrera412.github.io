@@ -15,7 +15,7 @@
 <body>
     <div id="main">
       <h2 id="myName">
-        <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; RICKY HERRERA</span>
+        <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776; RICKY HERRERA</span>
       </h2>
       <p> technically, its ricardo, but its whutever.
           website under construction. :( </p>
@@ -23,9 +23,21 @@
 
 </body>
 <script>
+var nav = false;
+
 function openNav() {
     document.body.style.backgroundColor = "rgb(45,170,237)";
     document.body.style.color = "rgb(237,208,45)";
+    nav = true;
+}
+function closeNav() {
+    document.body.style.backgroundColor = "rgb(237,112,45)";
+    document.body.style.color = "rgb(0,0,0)";
+    nav = false;
+}
+
+function toggleNav() {
+    nav ? closeNav() : openNav();
 }
 </script>
 
