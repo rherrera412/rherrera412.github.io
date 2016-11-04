@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
       <head>
@@ -6,13 +7,14 @@
       </head>
 <style>
         body {
-            font-family: 'Avenir';
+            font-family: 'Avenir', Arial, Helvetica, sans-serif;
+            color:#f1f1f1;
             transition: background-color .5s;
             background-color:#ed702d;
         }
         .sidenav {
             display: inline;
-            height: 2px;
+            height: 4px;
             width: 100%;
             position: fixed;
             z-index: 1;
@@ -27,7 +29,7 @@
             padding: 0px 0px 0px 30px;
             font-size: 17px;
             color: #ed2d4a;
-            transition: 0.3s;
+            transition: 0.5s;
             display: inline;
         }
 
@@ -36,8 +38,11 @@
             display: inline;
             font-style: italic;
         }
-    
+        .theBodyText {
+            font-family: 'Avenir', Arial, Helvetica, sans-serif;
+            /* color:black; */
         }
+    
 </style>
 
 <body>
@@ -52,11 +57,10 @@
         <a href="#">Projects</a> 
         <a href="#">Films</a> 
         <a href="#">Music</a>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
     </div>
 
-    <div id="bodyText">
-      technically, its ricardo, but its whutever. website under construction.
+    <div id="bodyText" class="theBodyText">
+      technically, its ricardo, but its <i>whutever</i>. website under construction.
     </div>
 
 </body>
@@ -72,10 +76,10 @@ function openNav() {
     nav = true;
 }
 function closeNav() {
-    document.getElementById("mySidenav").style.height = "2px";
+    document.getElementById("mySidenav").style.height = "4px";
 
     document.body.style.backgroundColor = "rgb(237,112,45)";
-    document.body.style.color = "rgb(0,0,0)";
+    document.body.style.color = "rgb(250,250,250)";
     nav = false;
 }
 
