@@ -25,6 +25,66 @@
             transition: 0.5s;
             padding-top: 0px;
         }
+        .presidenav {
+            height: 24px;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 58px;
+            left: 0px;
+            background-color: #0a4e73;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 0px;
+        }
+        .sidenav1 {
+            height: 24px;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 58px;
+            left: 190px;
+            background-color: #7e141c;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 0px;
+        }
+        .sidenav2 {
+            height: 24px;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 58px;
+            left: 380px;
+            background-color: #73640a;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 0px;
+        }
+        .sidenav3 {
+            height: 24px;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 58px;
+            left: 560px;
+            background-color: #640a73;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 0px;
+        }
+        .sidenav4 {
+            height: 24px;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 58px;
+            left: 740px;
+            background-color: #1c1c1c;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 0px;
+        }
         .sidenav a {
             padding: 0px 0px 0px 30px;
             font-size: 17px;
@@ -42,6 +102,14 @@
             font-family: 'Avenir', Arial, Helvetica, sans-serif;
             /* color:black; */
         }
+        .theBinch {
+            position: center;
+            min-width: 768px;
+            min-height: 512px;
+            height: 100%;
+            background-color: #1c1c1c;
+
+        }
     
 </style>
 
@@ -58,9 +126,18 @@
         <a href="#">Films</a> 
         <a href="#">Music</a>
     </div>
+    <div id="pre" class="presidenav"></div>
+    <div id="newSidenav" class="sidenav1"></div>
+    <div id="newSidenav1" class="sidenav2"></div>
+    <div id="newSidenav2" class="sidenav3"></div>
+    <div id="newSidenav3" class="sidenav4"></div>
 
     <div id="bodyText" class="theBodyText">
       technically, its ricardo, but its <i>whutever</i>. website under construction.
+    </div>
+
+    <div id="mainBinch" class="theBinch">
+        
     </div>
 
 </body>
@@ -71,6 +148,12 @@ var nav = false;
 
 function openNav() {
     document.getElementById("mySidenav").style.height = "24px";
+    document.getElementById("pre").style.height = "0px";
+    document.getElementById("newSidenav").style.height = "0px";
+    document.getElementById("newSidenav1").style.height = "0px";
+    document.getElementById("newSidenav2").style.height = "0px";
+    document.getElementById("newSidenav3").style.height = "0px";
+
     document.body.style.backgroundColor = "rgb(45,170,237)";
     document.body.style.color = "rgb(237,208,45)";
     nav = true;
