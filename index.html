@@ -11,7 +11,7 @@
             font-family: 'Avenir', Arial, Helvetica, sans-serif;
             color:#f1f1f1;
             transition: background-color .5s;
-            background-color:#ed702d;
+            background-color:#1c1c1c;
         }
         .sidenav {
             display: inline;
@@ -101,6 +101,9 @@
         }
         .theBodyText {
             font-family: 'Avenir', Arial, Helvetica, sans-serif;
+            padding-left: 200px;
+
+
             /* color:black; */
         }
         .theBinch {
@@ -127,15 +130,17 @@
 <body>
     <div id="main">
       <h2 id="myName">
-        <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776; RICKY HERRERA</span>
+          <center>
+        <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776; <i>RICKY HERRERA</i></span>
       </h2>
     </div>
 
     <div id="mySidenav" class="sidenav">
+        <center>
         <a href="#">About</a>
         <a href="https://github.com/rickyherrera">Github</a> 
-        <a href="#">Films</a> 
-        <a href="#">Music</a>
+        <a href="#" onClick="filmPage()">Films</a> 
+        <a href="#" onClick="musicPage()">Music</a>
     </div>
     <div id="pre" class="presidenav"></div>
     <div id="newSidenav" class="sidenav1"></div>
@@ -181,6 +186,14 @@ function closeNav() {
     document.body.style.backgroundColor = "rgb(237,112,45)";
     document.body.style.color = "rgb(250,250,250)";
     nav = false;
+}
+function musicPage() {
+    document.body.style.backgroundColor = "rgb(250,250,250)";
+    document.body.style.color = "rgb(0,0,0)"; 
+}
+function filmPage() {
+    document.body.style.backgroundColor = "rgb(25,10,2)";
+    document.body.style.color = "rgb(50,250,250)"; 
 }
 
 function toggleNav() {
