@@ -13,25 +13,30 @@
             transition: background-color .5s;
             background-color:#1c1c1c;
         }
+        .myname {
+            position: fixed;
+        }
         .sidenav {
+            text-decoration: none;
             display: inline;
-            height: 4px;
+            height: 24px;
             width: 100%;
             position: fixed;
             z-index: 1;
             top: 60px;
             left: 0;
-            background-color: #0a4e73;
+            background-color: #1c1c1c;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 0px;
+            text-decoration:none;
         }
         .presidenav {
-            height: 18px;
+            height: 15px;
             width: 50%;
             position: fixed;
             z-index: 1;
-            top: 60px;
+            top: 0px;
             left: 0px;
             background-color: #0a4e73;
             overflow-x: hidden;
@@ -39,11 +44,11 @@
             padding-top: 0px;
         }
         .sidenav1 {
-            height: 18px;
+            height: 15px;
             width: 50%;
             position: fixed;
             z-index: 1;
-            top: 60px;
+            top: 0px;
             left: 190px;
             background-color: #7e141c;
             overflow-x: hidden;
@@ -51,11 +56,11 @@
             padding-top: 0px;
         }
         .sidenav2 {
-            height: 18px;
+            height: 15px;
             width: 50%;
             position: fixed;
             z-index: 1;
-            top: 60px;
+            top: 0px;
             left: 380px;
             background-color: #73640a;
             overflow-x: hidden;
@@ -63,11 +68,11 @@
             padding-top: 0px;
         }
         .sidenav3 {
-            height: 18px;
+            height: 15px;
             width: 50%;
             position: fixed;
             z-index: 1;
-            top: 60px;
+            top: 0px;
             left: 560px;
             background-color: #640a73;
             overflow-x: hidden;
@@ -75,11 +80,11 @@
             padding-top: 0px;
         }
         .sidenav4 {
-            height: 18px;
+            height: 15px;
             width: 50%;
             position: fixed;
             z-index: 1;
-            top: 60px;
+            top: 0px;
             left: 740px;
             background-color: #1c1c1c;
             overflow-x: hidden;
@@ -87,7 +92,7 @@
             padding-top: 0px;
         }
         .sidenav a {
-            padding: 0px 0px 0px 30px;
+            padding: 0px 0px 0px 20px;
             font-size: 17px;
             color: #ed2d4a;
             transition: 0.5s;
@@ -101,7 +106,10 @@
         }
         .theBodyText {
             font-family: 'Avenir', Arial, Helvetica, sans-serif;
-            padding-left: 200px;
+            position: relative;
+
+            left:25%;
+            padding-top: 10px;
 
 
             /* color:black; */
@@ -131,16 +139,17 @@
     <div id="main">
       <h2 id="myName">
           <center>
-        <span style="font-size:30px;cursor:pointer" onclick="toggleNav()">&#9776; <i>RICKY HERRERA</i></span>
+        <span style="font-size:30px;cursor:pointer" onclick="toggleNav()"> <i>RICKY HERRERA</i></span>
       </h2>
     </div>
 
-    <div id="mySidenav" class="sidenav">
+    <div id="mySidenav" class="sidenav" style="text-decoration: none">
         <center>
-        <a href="#">About</a>
-        <a href="https://github.com/rickyherrera">Github</a> 
-        <a href="#" onClick="filmPage()">Films</a> 
-        <a href="#" onClick="musicPage()">Music</a>
+            
+        <a href="#" style="text-decoration: none">About</a>
+        <a href="https://github.com/rickyherrera" style="text-decoration: none">Github</a> 
+        <a href="#" onClick="filmPage()" style="text-decoration: none">Films</a> 
+        <a href="#" onClick="musicPage()" style="text-decoration: none">Music</a>
     </div>
     <div id="pre" class="presidenav"></div>
     <div id="newSidenav" class="sidenav1"></div>
@@ -177,7 +186,6 @@ function openNav() {
     nav = true;
 }
 function closeNav() {
-    document.getElementById("mySidenav").style.height = "4px";
     document.getElementById("pre").style.height = "18px";
     document.getElementById("newSidenav").style.height = "18px";
     document.getElementById("newSidenav1").style.height = "18px";
