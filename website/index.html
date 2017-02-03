@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding:32px;
+    width: 750px;
+    margin: auto;
+    text-align: left;
+    font-weight: 350;
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: #1c1c1c;
+    
+  }
+  h1 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  h2, h4 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+  }
+  h3 {
+      font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      text-align: left;
+      
+  }
+</style>
+<title>CS184 - Rasterizer</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+<h1 align="middle">cs184: computer graphics and imaging, spr 17 |<i> ricardo herrera</i> | <i>cs184-abx</i></h1>
+<!--
+<h2 align="middle"><i> ricardo herrera</i> | <i>cs184-abx</i></h2>
+-->
+<!-- <h1 align="middle">Project 1: Rasterizer</h1> -->
+<img src="images/header.png" align="middle" width="750px"/>
+
+
+<br><br>
+
+<div>
+
+<h2 align="left">Overview</h2>
+<p>
+  This is a rasterizer - given a set of coordinates will render an image to a flat screen. These coordinates can exist in a 3D space. 
+  </p>
+
+<h2 align="middle">Section I: <i>Rasterization</i></h2>
+
+<h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
+
+<p>
+  Primitive shapes are the cornerstone of computer graphics, especially in 3D modeling. The most valuable primative is definitely the triangle. What makes the triangle so great? Well it is the most basic polygon with a well defined interior. It's three vertices guarantee its planarity, making self-intersection impossible. Triangle rasterization is a core function in the graphics pipeline to convert input triangles into framebuffer pixel values. 
+  <p>
+    Given three (x,y) coordinate points, we determine the bounding box we need to check. 
+ <p>
+  In Part 1, triangle rasterization was implemented using Barycentric coordinate. 
+  
+  
+  Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.
+  </p>
+  <div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/sc0.png" align="middle" width="375px"/>
+        <figcaption align="middle">Caption goes here.</figcaption>
+      </td>
+      <td>
+        <img src="images/sc1.png" align="middle" width="375px"/>
+        <figcaption align="middle">Caption goes here.</figcaption>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+<p> Fantastic! We have the basics down. However, you may have noticed that these shapes seem rather <i>jagged</i>. These artifacts are due to a low-sampling rate, and are referred to as jaggies. How fix?
+<!--
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/image1.png" align="middle" width="400px"/>
+        <figcaption align="middle">Caption goes here.</figcaption>
+      </td>
+      <td>
+        <img src="images/image2.png" align="middle" width="400px"/>
+        <figcaption align="middle">Caption goes here.</figcaption>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <img src="images/image3.png" align="middle" width="400px"/>
+        <figcaption align="middle">Caption goes here.</figcaption>
+      </td>
+      <td>
+        <img src="images/image4.png" align="middle" width="400px"/>
+        <figcaption align="middle">Caption goes here.</figcaption>
+      </td>
+    </tr>
+  </table>
+</div>
+-->
+
+
+<h3 align="middle">Part 2: Antialiasing triangles</h3>
+
+
+
+<h3 align="middle">Part 3: Transforms</h3>
+
+
+
+<h2 align="middle">Section II: <i>Sampling</i></h2>
+
+<h3 align="middle">Part 4: Barycentric coordinates</h3>
+
+
+<h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
+
+
+<h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
+
+
+
+<h2 align="middle">Section III: <i>Art Competition</i></h2>
+<p>If you are not participating in the optional art competition, don't worry about this section!</p>
+
+<h3 align="middle">Part 7: Draw something interesting!</h3>
+
+<img src="images/standby.png" align="middle" width="750px"/>
+</body>
+</html>

@@ -1,0 +1,27 @@
+background {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    color: #f1f1f1;
+    background-color:#121212;
+}
+
+body {
+
+    background-color:#1c1c1c;
+    width: 75%;
+    height: 75%;
+    border: 3px solid #e8b21f;
+    padding: 25px;
+    margin: 0 auto;
+    text-align: center;
+}
+mainHead {
+    width: 75%;
+    height: 75%;
+    margin: 0 auto;
+    border: 1px solid blue;
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-style: italic;
+    color: #e8b21f;
+    
+}
