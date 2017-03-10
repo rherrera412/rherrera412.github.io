@@ -2,10 +2,12 @@ background {
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
     color: #f1f1f1;
     background-color:#121212;
+    font-weight: 100;
 }
 
 body {
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-weight: 100;
     background-color:#1b1915;
     background-image: url('tess.png');    
     width: 75%;
@@ -25,6 +27,7 @@ body {
             height: 486px;
             width: 670px;
             font-size: 17px;
+            font-weight: 100;
             min-width: 864;
             min-height: 486px; 
             height: 100%;
@@ -39,10 +42,10 @@ body {
 		width: 30px;
 		}
 		#left { 
-            border-right: 2px solid #e8b21f;
+            /*border-right: 2px solid #e8b21f;*/
             left: 0; }
 		#right { 
-            border-left: 2px solid #e8b21f;
+            /*border-left: 2px solid #e8b21f;*/
             right: 0; }
 		
 	#top, #bottom {
