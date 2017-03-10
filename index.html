@@ -1,195 +1,30 @@
-
 <!DOCTYPE html>
 <html>
-      <head>
-          <meta charset="utf-8">
-          <title>ricky herrera</title>
-      </head>
+    <head>
+        <meta charset="utf-8">
+        <title>ricky herrera</title>
+    </head>
 
-<style>
-        body {
-            font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
-            color: #f1f1f1;
-            transition: background-color .5s;
-            background-color:#1c1c1c;
-        }
+    <link href="v2.css" rel="stylesheet">
+    <div id="left"></div>
+<div id="right"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+    <body> 
+        <mainHead>
+            <b>RICKY HERRERA</b>
+        </mainHead>
 
-        .myname {
-            position: fixed;
-        }
-        .sidenav {
-            text-decoration: none;
-            display: inline;
-            height: 24px;
-            width: 100%;
-            position: absolute ;
-            z-index: 1;
-            top: 57px;
-            left: 0;
-            background-color: #1c1c1c;
-            /* 1c1c1c */
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 3px;
-            text-decoration:none;
-        }
-        .presidenav {
-            height: 12px;
-            width: 50%;
-            position: fixed;
-            z-index: 1;
-            top: 0px;
-            left: 0px;
-            background-color: #0a4e73;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 0px;
-        }
-        .sidenav1 {
-            height: 12px;
-            width: 50%;
-            position: fixed;
-            z-index: 1;
-            top: 0px;
-            left: 190px;
-            background-color: #7e141c;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 0px;
-        }
-        .sidenav2 {
-            height: 12px;
-            width: 50%;
-            position: fixed;
-            z-index: 1;
-            top: 0px;
-            left: 380px;
-            background-color: #73640a;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 0px;
-        }
-        .sidenav3 {
-            height: 12px;
-            width: 50%;
-            position: fixed;
-            z-index: 1;
-            top: 0px;
-            left: 570px;
-            background-color: #640a73;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 0px;
-        }
-        .sidenav4 {
-            height: 12px;
-            width: 50%;
-            position: fixed;
-            z-index: 1;
-            top: 0px;
-            left: 760px;
-            background-color: #1c1c1c;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 0px;
-        }
-        .sidenav5 {
-            height: 12px;
-            width: 50%;
-            position: fixed;
-            z-index: 1;
-            top: 0px;
-            left: 950px;
-            background-color: #f07077;
-            overflow-x: hidden;
-            transition: 0.3s;
-            padding-top: 0px;
-        }
-
-        .sidenav a {
-            padding: 0px 0px 0px 20px;
-            font-size: 16px;
-            color: #ed2d4a;
-            transition: 0.5s;
-            display: inline;
-        }
-
-        .sidenav a:hover, .offcanvas a:focus{
-            color: #f1f1f1;
-            display: inline;
-            font-style: italic;
-        }
-        .theBodyText {
-            font-family: 'Avenir', Arial, Helvetica, sans-serif;
-            position: relative;
-            left:25%;
-            padding-top: 10px;
-            /* color:black; */
-        }
-        
-        .theBinch {
-            padding-top:12px;
-            margin:0px auto;
-            position: center;
-            height: 486px;
-            width: 670px;
-            font-size: 18px;
-            min-width: 864;
-            min-height: 486px; 
-            height: 100%;
-            /*background-color: #1c1c1c;*/
-
-        }
-        em {  /* or .call em, but you should aim for consistency in your styling */
-            font-family: 'Avenir', Arial, Helvetica, sans-serif;
-            font-size: 25px;
-        }
-        sm {  /* or .call em, but you should aim for consistency in your styling */
-            font-family: 'Avenir', Arial, Helvetica, sans-serif;
-            font-size: 18px;
-        }
-        #main {
-            transition: margin-left .5s;
-            padding-left: 24px ;
-        }
-
-    
-</style>
-
-<body>
-    <div id="main">
-      <h2 id="myName">
-          <center>
-        <span style="font-size:30px;cursor:pointer" onclick="toggleNav()"> <i>RICKY HERRERA</i></span>
-      </h2>
-    </div>
-
-    <div id="mySidenav" class="sidenav" style="text-decoration: none">
-        <center>
-            
-        <a href="#" style="text-decoration: none">about</a>
-        <a href="https://github.com/rickyherrera" style="text-decoration: none">github</a> 
-        <a href="website/index.html"  style="text-decoration: none">projects</a>
-
-        <a href="#" onClick="filmPage()" style="text-decoration: none">films</a> 
-        <a href="#" onClick="musicPage()" style="text-decoration: none">music</a>
-    </div>
-    <div id="pre" class="presidenav"></div>
-    <div id="newSidenav" class="sidenav1"></div>
-    <div id="newSidenav1" class="sidenav2"></div>
-    <div id="newSidenav2" class="sidenav3"></div>
-    <div id="newSidenav3" class="sidenav4"></div>
-    <div id="newSidenav4" class="sidenav5"></div>
-
-
-
-    <div id="mainBinch" class="theBinch">
-Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley studying Computer Science and Film Studies. I have a passion for computer graphics, film, science, and art. I love to learn. Originally from Costa Mesa, CA. This website is still under construction.
+        <div id="navbar">
+            about - github - film - music
+        </div>
+<div id="mainBody">
+        Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley studying Computer Science and Film Studies. I have a passion for computer graphics, film, science, and art. I love to learn. Originally from Costa Mesa, CA. This website is still under construction.
 
         <p>
             <b><i>
-               <em> 
-    Sweet Victory</i> (2016)</b></em>
+ 
+    <em>Sweet Victory</i> (2016)</b></em>
 	<iframe width="670" height="428" src="https://www.youtube.com/embed/KFBjPTmTnWQ" frameborder="0" allowfullscreen></iframe>
 	My first 3D animated short! My notable contribution to this masterpiece is Marshmallow (or as like my mom refers to it, "El Bombon"), which I modeled and animated.
     
@@ -203,51 +38,8 @@ Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley
     This project is for my Advanced Digital Animation course. In essence, its a short about the pangs of alcoholism, but that is all I can say for now. 
      </p>
 
-    </div>
+</div>
+    
 
-</body>
-
-
-<script>
-var nav = false;
-
-function openNav() {
-    document.getElementById("mySidenav").style.height = "24px";
-    document.getElementById("pre").style.height = "0px";
-    document.getElementById("newSidenav").style.height = "0px";
-    document.getElementById("newSidenav1").style.height = "0px";
-    document.getElementById("newSidenav2").style.height = "0px";
-    document.getElementById("newSidenav3").style.height = "0px";
-    document.getElementById("newSidenav4").style.height = "0px";
-
-    document.body.style.backgroundColor = "rgb(45,170,237)";
-    document.body.style.color = "rgb(237,208,45)";
-    nav = true;
-}
-function closeNav() {
-    document.getElementById("pre").style.height = "12px";
-    document.getElementById("newSidenav").style.height = "12px";
-    document.getElementById("newSidenav1").style.height = "12px";
-    document.getElementById("newSidenav2").style.height = "12px";
-    document.getElementById("newSidenav3").style.height = "12px";
-    document.getElementById("newSidenav4").style.height = "12px";
-
-    document.body.style.backgroundColor = "rgb(237,112,45)";
-    document.body.style.color = "rgb(250,250,250)";
-    nav = false;
-}
-function musicPage() {
-    document.body.style.backgroundColor = "rgb(254,247,244)";
-    document.body.style.color = "rgb(0,0,0)"; 
-}
-function filmPage() {
-    document.body.style.backgroundColor = "rgb(25,10,2)";
-    document.body.style.color = "rgb(50,250,250)"; 
-}
-
-function toggleNav() {
-    nav ? closeNav() : openNav();
-}
-</script>
-
+    </body>
 </html>

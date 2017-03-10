@@ -5,23 +5,75 @@ background {
 }
 
 body {
-
-    background-color:#1c1c1c;
+    background-color:#1b1915;
+    background-image: url('tess.png');    
     width: 75%;
     height: 75%;
-    border: 3px solid #e8b21f;
     padding: 25px;
+    padding-top: 46px;
     margin: 0 auto;
     text-align: center;
 }
+#mainBody {
+    color: #f1f1f1;
+            padding-top:12px;
+            margin:0px auto;
+            text-align: left;
+            /*position: center;*/
+            height: 486px;
+            width: 670px;
+            font-size: 17px;
+            min-width: 864;
+            min-height: 486px; 
+            height: 100%;
+}
+#top, #bottom, #left, #right {
+	background: #000000;
+	position: fixed;
+	}
+	#left, #right {
+        
+		top: 0; bottom: 0;
+		width: 30px;
+		}
+		#left { 
+            border-right: 2px solid #e8b21f;
+            left: 0; }
+		#right { 
+            border-left: 2px solid #e8b21f;
+            right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 30px;
+		}
+		#top { 
+            /*border-bottom: 2px solid #e8b21f;*/
+            top: 0; }
+		#bottom { 
+            /*border-top: 2px solid #e8b21f;*/
+            bottom: 0; }
+
 mainHead {
     width: 75%;
     height: 75%;
     margin: 0 auto;
-    border: 1px solid blue;
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-style: italic;
     color: #e8b21f;
     
+}
+
+#navbar {
+    width: 75%;
+    height: 75%;
+    margin: 0 auto;
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    color: #e81f55;
+}
+em {
+    font-size: 24px;
 }
