@@ -1,10 +1,11 @@
 background {
-    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
     color: #f1f1f1;
     background-color:#121212;
 }
 
 body {
+    font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
     background-color:#1b1915;
     background-image: url('tess.png');    
     width: 75%;
@@ -15,7 +16,8 @@ body {
     text-align: center;
 }
 #mainBody {
-    color: #f1f1f1;
+            font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
+            color: #f1f1f1;
             padding-top:12px;
             margin:0px auto;
             text-align: left;
