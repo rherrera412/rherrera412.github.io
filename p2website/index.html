@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding:32px;
+    width: 750px;
+    margin: auto;
+    text-align: left;
+    font-weight: 200;
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: #1c1c1c;
+    
+  }
+  h1 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  h2, h4 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+  }
+  h3 {
+      font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      text-align: left;
+      
+  }
+</style>
+<title>CS 184 Mesh Editor</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+<h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
+<h1 align="middle">Project 2: Mesh Editor</h1>
+<h2 align="middle">Ricardo Herrera, CS184-abx</h2>
+
+<br><br>
+
+<div>
+
+<h2 align="middle">Overview</h2>
+<p>I'd like to refer to this project as Maya Lite. It has the basics of a 3D modeling application. Through the power of the halfedge data structure, a 3D model can be represented with vertices, edges, and faces. This project takes advantages of neat algorithms that can create smooth Bezier curves. The build up to the final project was such a ride, and I had an even bigger appreciation for these types of applications after implementing my own lite version of one. It was just as complicated as a expected it to be. </p>
+
+<h2 align="middle">Section I: Bezier Curves and Surfaces</h2>
+
+<h3 align="middle">Part 1: Bezier curves with 1D de Casteljau subdivision</h3>
+de Casteljau algorithm works as follows: given n control points, and a interpolation value t, find n-1 new control points to make up the next level. continue this process until there is only one level point to calculate. Use this point, while following the trajectory of the previous points calculated to create the Bezier Curve.<br>
+<div align="middle">
+  <table style="width=100%">
+    
+      <tr>
+        <img src="images/a0.png" align="middle" width="500px"/>
+        <figcaption align="middle">Final Curve</figcaption>
+      </tr>
+<br>
+      <tr>
+        <td>
+          <img src="images/a1.png" align="middle" width="350px"/>
+          <figcaption align="middle">6 control points.</figcaption>
+        </td>
+        <td>
+          <img src="images/a2.png" align="middle" width="350px"/>
+          <figcaption align="middle">first iteration</figcaption>
+        </td>
+      </tr>
+      <br>
+    <tr>
+      <td>
+        <img src="images/a3.png" align="middle" width="350px"/>
+        <figcaption align="middle">second iteration</figcaption>
+      </td>
+      <td>
+        <img src="images/a4.png" align="middle" width="350px"/>
+        <figcaption align="middle">third</figcaption>
+      </td>
+    </tr>
+      <br>
+    <tr>
+      <td>
+        <img src="images/a5.png" align="middle" width="350px"/>
+        <figcaption align="middle">fourth</figcaption>
+      </td>      
+      <td>
+        <img src="images/a6.png" align="middle" width="350px"/>
+        <figcaption align="middle">fifth</figcaption>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <img src="images/a7.png" align="middle" width="350px"/>
+        <figcaption align="middle">Final Curve</figcaption>
+      </td>
+      <td>
+                <img src="images/a8.png" align="middle" width="350px"/>
+        <figcaption align="middle">Alternate</figcaption>
+        </td>
+
+        
+    </tr>
+
+    
+  </table>
+</div>
+
+
+
+<h3 align="middle">Part 2: Bezier surfaces with separable 1D de Casteljau subdivision</h3>
+Bezier curves are implemented by making bezier curves in higher dimensions. The same principle as before is applied. However for a particular surface, 16 points are given, where there are four groups of points, each with four points. For each group, find the particular bezier curve value. Now with these new curve values, run de Casteljau's algorithm again and the surface is final. 
+<div align="middle">
+  <table style="width=100%">
+    
+      <tr>
+        <img src="images/b0.png" align="middle" width="500px"/>
+        <figcaption align="middle">The tea is ready to be served.</figcaption>
+      </tr>
+
+  </table>
+</div>
+
+<h2 align="middle">Section II: Sampling</h2>
+
+<h3 align="middle">Part 3: Average normals for half-edge meshes</h3>
+Great, now that we have low poly meshes accomplished, what else could we possibly ask for. Well, a lot, actually. Logically, we may want to add more detail to our mesh. Here, the "normal"" function returns the area-weighted average normal vector at a vertex, which can then be used for more realistic local shading compared to the default flat shading technique. The area-weighted average of the vertex normals is taken in order to achieve smoother gradient shading on the surface of the mesh. The more surface normals there are, the more lighting results in smoother shaders.
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/p0.png" align="middle" width="350px"/>
+        <figcaption align="middle">the tea, indeed</figcaption>
+      </td>
+      <td>
+        <img src="images/p1.png" align="middle" width="350px"/>
+        <figcaption align="middle">the tea</figcaption>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <img src="images/p2.png" align="middle" width="350px"/>
+        <figcaption align="middle">you must have a cup</figcaption>
+      </td>
+      <td>
+        <img src="images/p3.png" align="middle" width="350px"/>
+        <figcaption align="middle">of tea</figcaption>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<h3 align="middle">Part 4: Half-edge flip</h3>
+<p>
+For any given edge, if it is to be flipped, there are four vertices that are needed to be associated with it; the two at both ends of the edge, and the vertices that are <i>perpendicular </i>to the edge. What follows are a series of reassignments, (fortunately no need for new elements, thats for part 5). For a while, my reassignments were not being done properlly, leading to an endless loop in the code. It was suddenly fixed when I <strike> (didnt rush my assignments)</strike> and assigned vertices after faces, instead of the other way around, (still not sure how that fixed anything though). But I also had something reassigned improperly, and it messed up my implementation of part 6. On paper, it is a very straighforward process, in practice however ...
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/q0.png" align="middle" width="350px"/>
+        <figcaption align="middle">suspense...</figcaption>
+      </td>
+      <td>
+        <img src="images/q1.png" align="middle" width="350px"/>
+        <figcaption align="middle">flips!</figcaption>
+      </td>
+    </tr>
+  </table>
+    </div>
+
+<h3 align="middle">Part 5: Half-edge split</h3>
+<p>
+Half-edge split was a more tedious process. Two triangles, one vertex, three edges, and six half-edges needed to be created to perform the split. There was a good amount of reassignment of pointers so that the halfedges could maintain the shape. After drawing the split diagram several times, the split was accomplished. To keep it clean, the new elements I added were kept inside the four bordering edges. It would make it easier to maintain correct pointers for the rest of the mesh that wasnt flipped. I dont want to spoil anything, but a <i>very</i> small error in this part also made part 6 a little bit of a nightmare.
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/r0.png" align="middle" width="350px"/>
+        <figcaption align="middle">:)</figcaption>
+      </td>
+      <td>
+        <img src="images/r1.png" align="middle" width="350px"/>
+        <figcaption align="middle">(:</figcaption>
+      </td>
+    </tr>
+        <tr>
+      <td>
+        <img src="images/s0.png" align="middle" width="350px"/>
+        <figcaption align="middle">:^)</figcaption>
+      </td>
+      <td>
+        <img src="images/s1.png" align="middle" width="350px"/>
+        <figcaption align="middle">(v:</figcaption>
+      </td>
+    </tr>
+  </table>
+  </div>
+
+<h3 align="middle">Part 6: Loop subdivision for mesh upsampling</h3>
+I wasnt kidding when I called this Maya Lite. The most primitive shapes can become something more, well they can become more dense. By denser, I mean new elements such as vertices, faces and edges could be added to the mesh to give it more detail. For example this cube, although only needing a few elements, could use the lift (if it wanted). Could you imagine trying to use this as an asset in a video game, say goodbye to your framerates!<p>
+In essence, he process is as follows. The element has a previous state and a upscaled state. First calculation is done of the previous state in order to prepare for the actual upscaled state. This involved calculating points on current edges where new vertices will reside. Additionally, this means there will be new edges, which are calculated with the potential vertex positions. Every triangle is ~split~ into four in the end.
+<p>
+<div align="middle">
+  <table style="width=100%">
+
+    <tr>
+      
+        <img src="images/t0.png" align="middle" width="500px"/>
+        <figcaption align="middle">They said I could become anything.</figcaption>
+      
+    </tr><br>
+
+    <tr>
+      <td>
+        <img src="images/t1.png" align="middle" width="350px"/>
+        <figcaption align="middle">So </figcaption>
+      </td>
+      <td>
+        <img src="images/t2.png" align="middle" width="350px"/>
+        <figcaption align="middle">I</figcaption>
+      </td>
+    </tr>
+    <br>
+        <tr>
+      <td>
+        <img src="images/t3.png" align="middle" width="350px"/>
+        <figcaption align="middle">became</figcaption>
+      </td>
+      <td>
+        <img src="images/t4.png" align="middle" width="350px"/>
+        <figcaption align="middle">...</figcaption>
+      </td>
+    </tr>
+
+        <br>
+        <tr>
+      <td>
+        <img src="images/t5.png" align="middle" width="350px"/>
+        <figcaption align="middle">HIGH</figcaption>
+      </td>
+      <td>
+        <img src="images/t6.png" align="middle" width="350px"/>
+        <figcaption align="middle">POLY</figcaption>
+      </td>
+    </tr>
+
+  </table>
+</div>
+
+
+
+<h2 align="middle">Section III: Shaders</h2>
+
+<h3 align="middle">Part 7: Fun with shaders</h3>
+<p>Blinn-Phong reflection is what I attempted to implement. This shader (which I first learned of in Maya) has some interesting properties I was excited to learn about. In order to achieve this light illusion, what needs to be found is the ambient, diffused, and specular values. Then with some mathematical magic, the illusion of Phong shading appears. 
+  <br>
+  <div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/y0.png" align="middle" width="350px"/>
+        <figcaption align="middle">can u guess my fav color?</figcaption>
+      </td>
+      <td>
+        <img src="images/y1.png" align="middle" width="350px"/>
+        <figcaption align="middle">its orange, thanks</figcaption>
+      </td>
+    </tr>
+  </table>
+    </div>
+
+
+
+<h2 align="middle">Section IV: Mesh Competition</h2>
+
+
+<h3 align="middle">Part 8: Design your own mesh!</h3>
+<p>I call this series "When School Work is Over"</p>
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/z0.png" align="middle" width="350px"/>
+        <figcaption align="middle">primitive mesh</figcaption>
+      </td>
+      <td>
+        <img src="images/z1.png" align="middle" width="350px"/>
+        <figcaption align="middle">2 subdivisions</figcaption>
+      </td>
+    </tr>
+  </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding:32px;
+    width: 750px;
+    margin: auto;
+    text-align: left;
+    font-weight: 200;
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: #1c1c1c;
+    
+  }
+  h1 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  h2, h4 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+  }
+  h3 {
+      font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      text-align: left;
+      
+  } 
+  </style> 
+<title>Pathtracer</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+</head>
+<body>
+<br />
+<h1 align="middle">Assignment 3: PathTracer</h1>
+    <h2 align="middle">Ricky Herrera | cs184-abx</h2>
+
+    <div class="padded">
+        <p>
+            This is my attempt at a ray tracer. How do 3D models simulate the illusion of realness and light? One technique is to ray trace them. This technique used to create physically based renders of 3D models that interact with lights as they would in ~real life~. Like any techinique, there were several optimizations that were implemented to avoid redundant calculations, and take advantage of the structures. Bounding volume hierarchies contain bounding boxes; these structures are taken advantage of in order to optimize. Cornel boxes are just as plentiful in a computer graphics class as I expected. Pathtracer is much more realistic than rasterizing. As tough as this project was, I realy enjoyed learning the material, so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced. I fried my computer trying to render something at 1024 samples, so I rendered most of the images on the school computers. 
+        </p>
+
+    <h2 align="middle">PART 1: Ray Generation and Intersection</h2>
+        <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space. To begin, generate_ray() - given a 2D (X,Y) coordinate, will generate a ray from camera space to world space. It is important to make sure our mapping is normalized; that is, the coordinates bottomLeft = (-tan(radians(hFov)*.5), -tan(radians(vFov)*.5),-1) = (0,0) and topRight  = ( tan(radians(hFov)*.5),  tan(radians(vFov)*.5),-1) = (1,1). 
+        </p> In order to accomplish triangle intersection, the Moller Trumbore ray triangle intersection algorithm is sought. This calculates the intersection of a ray + triangle. 
+        
+                <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td align="middle">
+                    <img src="images/slide_060.jpg" width="400px" />
+                    <figcaption align="middle">Moller Trumbore in diagram form.</figcaption>
+                </tr>
+            </table>
+        </div>
+        <p>
+        M.T. takes advantage of the fact that triangles belong to a single plane. With barycentric coordinates, if a ray intersects with a triangle, it will do so at one or between two points of the triangle, and in turn it can find a point P on the triangle. </p>
+                        <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td>
+                        <img src="images/p2_1.png" width="350px" />
+                        <figcaption align="middle"></figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/p2_2.png" width="350px" />
+                        <figcaption align="middle"></figcaption>
+                    </td>
+                </tr>
+                                <tr>
+                    
+                        <img src="images/p1_1.png" width="450px" />
+                        <figcaption align="middle"></figcaption>
+                                
+                </tr>
+            </table>
+        </div>
+      
+    <h2 align="middle">PART 2: Bounding Volume Hierarchy</h2>
+        <p>Using uniform grids in order to seperate primitive and to determine where a ray will intersect can be quite inefficeint. Fortunately BVH (bounding volume hierarchies) can prevent the Teapot in a Stadium problem that arises from using uniform grids. These non-uniform spatial partitions are a much smarter way to store information about the location of these primitives. It is necessary to go through all of the primitives and determine if the current batch fit the max_leaf_size. Otherwise we would want to recurse, in order to properly split the primitives. So a threshold must be generated. From the bbox's extent, which every axis has the highest value will be the axis we choose. Then the axis value of the centroid box's serves as a threshold. Depending on how the axis values of the other primitives related to the threshold (less than or greater than), they will either be put on the left or right list. This is essentialy how the recursion works. 
+            </p>
+            <p>With the newly constructed BVH tree, more efficient intersections are possible. First, it determines if a ray has intersected the bounding box of the current node. In the case that it doesnt, it follows that the ray will not intersect with any of the primitives of the BVH. Early termination is possible! Otherwise, each of its primitives needs to be checked in order to retrieve the closest intersection and return true if we have hit anything at all. If the node that was being checked is not a leaf, recurse through its left and right children and determine if there is a hit. </p>
+                                    <div align="center">
+            <table style="width=100%">
+
+                                <tr>
+                    <td>
+                        <img src="images/p2_3.png" width="350px" />
+                        <figcaption align="middle">lucy at a dutch angle</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/p2_4.png" width="350px" />
+                        <figcaption align="middle">max pondering</figcaption>
+                    </td>
+                </tr>
+                                </tr>
+                                <tr>
+                    <td>
+                        <img src="images/p2_6.png" width="350px" />
+                        <figcaption align="middle">the bench beyonce uses in partition</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/pt2_7.png" width="350px" />
+                        <figcaption align="middle">dragon</figcaption>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    <h2 align="middle">PART 3: Direct Illumination</h2>
+        <p>In this section, estimate_direct_lighting emulates the effect of a direct light source on a mesh. This function calculates an estimate of the direct lighting on a point hit by a ray. The function sums over all of the light sources, taking samples from the surface of each light, computing the incoming radiance from those sampled directions. It then converts those to outgoing radiance using the BSDF at the surface. If a light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call to sample_L finds the point of contact, returning the radiance, the wi direction, distToLight point of contact (hit_p), and pdf (probability density function) that was calculated with wi. Now for every light sample, the wi direction returned by the sample is in world space, but in order for it to be passed into the BSDF it needs to be in object space (i.e. w20*wi). Now that the coordinate is in object space, it needs to be ensured that it is not negative, which in that case it means the point lies behind the surface. A shadow is casted to determine if it intersect with BVH. If it does not intersect the irradiance of the light is calculated along with the BSDF and then divided by the PDF to reduce bias. 
+            </p>
+
+
+                                    <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td>
+                        <img src="images/p3_bench_832_45.png" width="350px" />
+                        <figcaption align="middle">bench</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/p3_blob_832_45.png" width="350px" />
+                        <figcaption align="middle">blob</figcaption>
+                    </td>
+                </tr>
+                <tr>
+                    
+                        <img src="images/p3_max_832_45.png" width="350px" />
+                        <figcaption align="middle">max</figcaption>
+             
+                </tr>
+            </table>
+        </div>
+                                    <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td>
+                        <img src="images/wow1.png" width="350px" />
+                        <figcaption align="middle">1 light ray</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/wow4.png" width="350px" />
+                        <figcaption align="middle">4 light rays</figcaption>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/wow16.png" width="350px" />
+                        <figcaption align="middle">16 light rays</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/wow64.png" width="350px" />
+                        <figcaption align="middle">64 light rays</figcaption>
+                    </td>             
+                </tr>
+            </table>
+        </div>
+
+
+    <h2 align="middle">PART 4: Indirect Illumination</h2>
+        <p>The start of estimate_indirect_lighting is similar to that of ‘direct’. ‘Russian roulette’ is used to determine the BSDF on the surface, and to determine which samples are to be discarded. The probability is multiplied by 11 and then added 0.049 to make sure the rays weren't cut off too short / cut off prematurely. The probability should have a value between 0 and 1. For more randomness, a coin flip function takes in the ray probability and determines if it should cast a shadow. Now, the origin of the shadow ray is offset by EPS_D to make sure that the same region of light is not sampled more than it should. trace_ray is used to recursively trace this ray, forming an approximation for its incoming radiance. The includeLe parameter is set to isect.bsdf->is_delta() since emission is not included in the direct lighting calculation for delta BSDFs. This incoming radiance is converted into an outgoing radiance estimator; it is scaled by the BSDF and a cosine factor, then divided by the BSDF pdf and one minus the Russian roulette termination probability. It was a little upsetting trying to get the indirect lighting to show up when I forgot to set the depth of a ray to the max_ray_depth (that prevented the actual indirect light from showing up).
+            </p>
+
+        <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td>
+                        <img src="images/spheres4.png" width="350px" />
+                        <figcaption align="middle">max ray depth 0</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/spheres3.png" width="350px" />
+                        <figcaption align="middle">max ray depth 1</figcaption>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="images/spheres2.png" width="350px" />
+                        <figcaption align="middle">max ray depth 2</figcaption>
+                    </td>
+                    <td>
+                        <img src="images/spheres1.png" width="350px" />
+                        <figcaption align="middle">max ray depth 3</figcaption>
+                    </td>             
+                </tr>
+                    
+                    <tr>
+                        <img src="images/spheres.png" width="350px" />
+                        <figcaption align="middle">max ray depth 100</figcaption>
+                    </tr>
+                     
+                    
+            </table>
+        </div>
+        <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td>
+                        <img src="images/part4del/p4spheres1.png" width="350px" />
+                        <figcaption align="middle">1 sample per pixel</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/part4del/p4spheres2.png" width="350px" />
+                        <figcaption align="middle">2 samples per pixel</figcaption>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/part4del/p4spheres4.png" width="350px" />
+                        <figcaption align="middle">4 samples per pixel</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/part4del/p4spheres8.png" width="350px" />
+                        <figcaption align="middle">8 samples per pixel</figcaption>
+                    </td>             
+                </tr>
+                                <tr>
+                    <td>
+                        <img src="images/part4del/p4spheres16.png" width="350px" />
+                        <figcaption align="middle">16 samples per pixel</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/part4del/p4spheres64.png" width="350px" />
+                        <figcaption align="middle">64 samples per pixel</figcaption>
+                    </td> 
+                            
+                </tr>
+                    <tr>
+                        <img src="images/part4del/1024spheres.png" width="350px" />
+                        <figcaption align="middle">1024 samples per pixel</figcaption>
+                    </tr> 
+            </table>
+        </div>
+                <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td>
+                        <img src="images/p4_u.png" width="350px" />
+                        <figcaption align="middle">only indirect light</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/p4_only_direct.png" width="350px" />
+                        <figcaption align="middle">only direct light</figcaption>
+                    </td>
+                </tr>                             
+                    
+            </table>
+        </div>
+    <h2 align="middle">PART 5: Adaptive Sampling</h2>
+        <p> An increase in the number of samples results in less noise (the wonders of higher frequency rates :] ). It follows that this improved rate will increase the render time. But of course there are solutions; adaptive sampling allows a reduction in noise, while still being more effecient than just an unoptimized increase in samples. The key is to focus on samples in select parts of the scene, those that end up being more difficult. This implementation determines if the illuminance of a pixel converges. Namely, the mean and the variance are calculated for calculation (light illuminance and light illuminance squared). If a pixel has reached a point where its average illuminance is bounded by some tolerance of its expected illuminance, then it does not need to trace more rays. One frustrating part, while rendering on my (weak) computer, the rate would only come out as a solid color. This was due to rendering at a low rate. This low rate prevented a higher concentration of sampled in the ~difficult areas of the scene. But luckily, using the strong lab computers and setting up a high sample render ensured the implementation was working. 
+            </p>
+                                                <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td>
+                        <img src="images/pt5_bunny.png" width="350px" />
+                        <figcaption align="middle">1028 samples per pixel</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/pt5_bunny_rate.png" width="350px" />
+                        <figcaption align="middle">corresponding rate</figcaption>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="images/p5_ultra.png" width="350px" />
+                        <figcaption align="middle">2048 samples per pixel</figcaption>
+                    </td>
+                                        <td>
+                        <img src="images/p5_ultra_rate.png" width="350px" />
+                        <figcaption align="middle">corresponding rate</figcaption>
+                    </td>             
+                </tr>
+            </table>
+        </div>
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
+
+
+
+

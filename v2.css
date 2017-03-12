@@ -8,7 +8,7 @@ background {
 body {
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
     font-weight: 100;
-    background-color:#1b1915;
+    background-color:#ffffff;
     background-image: url('tess.png');    
     width: 75%;
     height: 75%;
@@ -19,14 +19,16 @@ body {
 }
 #mainBody {
             font-family: 'Avenir', Arial, Helvetica, sans-serif;
-            color: #f1f1f1;
-            padding-top:12px;
+            background-color: #ffffff;
+
+            padding-top:1px;
+            padding-left: 12px;
             margin:0px auto;
             text-align: left;
             /*position: center;*/
             height: 486px;
             width: 670px;
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 100;
             min-width: 864;
             min-height: 486px; 
@@ -39,7 +41,7 @@ body {
 	#left, #right {
         
 		top: 0; bottom: 0;
-		width: 30px;
+		width: 40px;
 		}
 		#left { 
             /*border-right: 2px solid #e8b21f;*/
@@ -50,7 +52,7 @@ body {
 		
 	#top, #bottom {
 		left: 0; right: 0;
-		height: 30px;
+		height: 50px;
 		}
 		#top { 
             /*border-bottom: 2px solid #e8b21f;*/
@@ -66,22 +68,25 @@ mainHead {
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-style: italic;
-    color: #e8b21f;
+    color: #00000f;/*e8b21f*/
+    background-color: #ffffff;
     
 }
 
 .navbar a {
+    background-color: #ffffff;
     width: 75%;
     height: 75%;
     margin: 0 auto;
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     /*font-style: italic;*/
-    color: #e81f55;
+    color: #00000f;/*e81f55*/;
     text-decoration: none;
+    /*border-bottom: 2px solid #e81f55;*/
 }
 .navbar a:hover, .offcanvas a:focus{
-            color: #f1f1f1;
+            color: #e81f55;
             display: inline;
             font-style: italic;
         }
