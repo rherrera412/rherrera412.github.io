@@ -3,6 +3,36 @@
     <head>
         <meta charset="utf-8">
         <title>ricky herrera</title>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_objects_with_WebGL -->
+
+    <link rel="stylesheet" href="webgl.css" type="text/css">
+    <script src="sylvester.js" type="text/javascript"></script>
+    <script src="glUtils.js" type="text/javascript"></script>
+    <script src="webgl-demo.js" type="text/javascript"></script>
+
+    <!-- Fragment shader program -->
+
+    <script id="shader-fs" type="x-shader/x-fragment">
+      varying lowp vec4 vColor;
+      void main(void) {
+        gl_FragColor = vColor;
+      }
+    </script>
+
+    <!-- Vertex shader program -->
+
+    <script id="shader-vs" type="x-shader/x-vertex">
+      attribute vec3 aVertexPosition;
+      attribute vec4 aVertexColor;
+      uniform mat4 uMVMatrix;
+      uniform mat4 uPMatrix;
+      varying lowp vec4 vColor;
+      void main(void) {
+        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
+        vColor = aVertexColor;
+      }
+    </script>
+
     </head>
 
     <link href="v2.css" rel="stylesheet">
@@ -11,7 +41,7 @@
     <div id="top"></div>
     <div id="bottom"></div>
 
-    <body> 
+    <body onload="start()"> 
         <mainHead>
             <b>RICKY HERRERA</b>
         </mainHead>
@@ -32,9 +62,11 @@
 <div id="mainBody">
     
         Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley studying Computer Science and Film Studies. I have a passion for computer graphics, film, science, and art. I love to learn. Originally from Costa Mesa, CA. This website is still under construction.
-
-        
-
+        <br>
+        <center> :^)<br>
+    <canvas id="glcanvas" width="600" height="338">
+      Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
+    </canvas>
 </div>
     
 
