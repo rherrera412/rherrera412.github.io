@@ -31,7 +31,7 @@ function start() {
   // Only continue if WebGL is available and working
 
   if (gl) {
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);  // Clear to black, fully opaque
+    gl.clearColor(0.05, 0.08, 0.06, 1.0);  // Clear to black, fully opaque
     gl.clearDepth(1.0);                 // Clear everything
     gl.enable(gl.DEPTH_TEST);           // Enable depth testing
     gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
@@ -180,7 +180,7 @@ function drawScene() {
   if (lastSquareUpdateTime) {
     var delta = currentTime - lastSquareUpdateTime;
 
-    squareRotation += (30 * delta) / 1000.0;
+    squareRotation += (20 * delta) / 1000.0;
     squareXOffset += xIncValue * ((3 * delta) / 1000.0);
     squareYOffset += yIncValue * ((3 * delta) / 1000.0);
     squareZOffset += zIncValue * ((1 * delta) / 1000.0);
