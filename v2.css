@@ -22,14 +22,15 @@ body {
             background-color: #ffffff;
 
             padding-top:1px;
-            padding-left: 12px;
+            padding-left: 17px;
+            padding-bottom: 10px;
             margin:0px auto;
             text-align: left;
             /*position: center;*/
             height: 486px;
             width: 670px;
             font-size: 15px;
-            font-weight: 100;
+            font-weight: 300;
             min-width: 864;
             min-height: 486px; 
             height: 100%;
@@ -66,7 +67,7 @@ mainHead {
     height: 75%;
     margin: 0 auto;
     font-family: 'Avenir', Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 28px;
     font-style: italic;
     color: #00000f;/*e8b21f*/
     background-color: #ffffff;

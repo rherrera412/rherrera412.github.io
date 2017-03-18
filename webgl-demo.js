@@ -9,8 +9,8 @@ var squareYOffset = 0.0;
 var squareZOffset = 0.0;
 var lastSquareUpdateTime = 0;
 var xIncValue = 0.2;
-var yIncValue = -0.4;
-var zIncValue = 0.3;
+var yIncValue = -0.1;
+var zIncValue = 0.8;
 
 var mvMatrix;
 var shaderProgram;
@@ -99,6 +99,7 @@ function initBuffers() {
     -1.0, 1.0,  0.0,
     1.0,  -1.0, 0.0,
     -1.0, -1.0, 0.0
+
   ];
 
   // Now pass the list of vertices into WebGL to build the shape. We
@@ -114,6 +115,8 @@ function initBuffers() {
     0.929,  0.439,  0.176,  1.0,    // red
     0.929,  0.251,  0.176,  1.0,    // green
     0.929,  0.176,  0.29,  1.0     // blue
+
+    
   ];
 
   squareVerticesColorBuffer = gl.createBuffer();
@@ -146,7 +149,7 @@ function drawScene() {
   // Now move the drawing position a bit to where we want to start
   // drawing the square.
 
-  mvTranslate([-0.0, 0.0, -6.0]);
+  mvTranslate([-0.0, 0.0, -8.0]);
 
   // Save the current matrix, then rotate before we draw.
 
@@ -180,7 +183,7 @@ function drawScene() {
   if (lastSquareUpdateTime) {
     var delta = currentTime - lastSquareUpdateTime;
 
-    squareRotation += (20 * delta) / 1000.0;
+    squareRotation += (30 * delta) / 800.0;
     squareXOffset += xIncValue * ((3 * delta) / 1000.0);
     squareYOffset += yIncValue * ((3 * delta) / 1000.0);
     squareZOffset += zIncValue * ((1 * delta) / 1000.0);
