@@ -184,9 +184,9 @@ function drawScene() {
     var delta = currentTime - lastSquareUpdateTime;
 
     squareRotation += (30 * delta) / 800.0;
-    squareXOffset += xIncValue * ((3 * delta) / 1000.0);
+    squareXOffset += xIncValue * ((3 * delta) / 2000.0);
     squareYOffset += yIncValue * ((3 * delta) / 1000.0);
-    squareZOffset += zIncValue * ((1 * delta) / 1000.0);
+    squareZOffset += zIncValue * ((1 * delta) / 2000.0);
 
     if (Math.abs(squareYOffset) > 2.5) {
       xIncValue = -xIncValue;
