@@ -3,19 +3,32 @@
 <head>
 <style>
   body {
-    padding: 100px;
-    width: 1000px;
+    padding:32px;
+    width: 750px;
     margin: auto;
     text-align: left;
-    font-weight: 300;
-    font-family: 'Open Sans', sans-serif;
-    color: #121212;
+    font-weight: 200;
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: #1c1c1c;
+    
   }
-  h1, h2, h3, h4 {
-    font-family: 'Source Sans Pro', sans-serif;
+  h1 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+  h2, h4 {
+    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+  }
+  h3 {
+      font-family: 'Avenir', Futura, Arial, Helvetica, sans-serif;
+      font-size: 25px;
+      text-align: left;
+      
   }
 </style>
-<title>CS 184 Rasterizer</title>
+<title>CS184 - Rasterizer</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
 </head>
@@ -23,73 +36,184 @@
 
 <body>
 
-<h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
-<h1 align="middle">Project 1: Rasterizer</h1>
-<h2 align="middle">YOUR NAME, CS184-??</h2>
+<h1 align="middle">cs184: computer graphics and imaging, spr 17 |<i> ricardo herrera</i> | <i>cs184-abx</i></h1>
+<!--
+<h2 align="middle"><i> ricardo herrera</i> | <i>cs184-abx</i></h2>
+-->
+<!-- <h1 align="middle">Project 1: Rasterizer</h1> -->
+<img src="images/header.png" align="middle" width="750px"/>
+
 
 <br><br>
 
 <div>
 
-<h2 align="middle">Overview</h2>
+<h2 align="left">Overview</h2>
 <p>
-  This is a rasterizer - given a set of coordinates will output an image to a 2D plane. These coordinates can exist in a 3D space. 
-</p>
+  This is a rasterizer - given a set of coordinates will render an image to a flat screen. These coordinates can exist in a 3D space. 
+  </p>
 
-<h2 align="middle">Section I: Rasterization</h2>
+<h2 align="middle">Section I: <i>Rasterization</i></h2>
 
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
 
-<p>Here is an example 2x2 gridlike structure using an HTML table. Each <b>tr</b> is a row and each <b>td</b> is a column in that row. You might find this useful for framing and showing your result images in an organized fashion.</p>
+<p>
+  Primitive shapes are the cornerstone of computer graphics, especially in 3D modeling. The most valuable primative is definitely the triangle. What makes the triangle so great? Well it is the most basic polygon with a well defined interior. Its three vertices guarantee it will be planar, making self-intersection impossible. Triangle rasterization is a core function in the graphics pipeline to convert input triangles into framebuffer pixel values. 
+  <p>
+      In Part 1, triangle rasterization was implemented using Barycentric coordinates. Given three (x,y) coordinate points, we determine the bounding box we need to check, which is accomplished by finding the max and min values for the x and y values. Using Barycentric coordinates (which wasnt necessary for this section) helped for the later sections. These coordinates could be thought of as weights, and can determine if a point was inside a triangle. So for any coordinate (x,y), if the alpha, beta, and gamma values were greater than 0 and less than one, then we have a winner. 
+ <p>
+  
+  
+  </p>
+  <div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/sc0.png" align="middle" width="375px"/>
+        <figcaption align="middle">basic test4.svg</figcaption>
+      </td>
+      <td>
+        <img src="images/sc1.png" align="middle" width="375px"/>
+        <figcaption align="middle">basic test5.svg</figcaption>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+<p> Fantastic! We have the basics down. However, you may have noticed that these shapes seem rather <i>jagged</i>. These artifacts are due to a low-sampling rate, and are referred to as jaggies. How fix?
 
+
+
+<h3 align="middle">Part 2: Antialiasing triangles</h3>
+<p>
+Aliasing is a common problem in digital conversion that can be resolved through supersampling. In audio, a low sample rate that processing audio can return the wrong sounds, and the fix is to just increase frequency and sample at a higher rate. The same concept applies in graphics. 
+<p> 
+In this project, the sample_rate perameter was adjustable to increase the frequency. Consider a pixel, and for the sake of convenience it is a square. This square pixel can contain subpixels, each of which may contain a different color value (whether it be a slight or big difference). The idea of supersampling is to take these subpixels and average out a color to give the entire pixel. If they all cant be represented on screen, this serves as a sort of compromise that balances out jaggies. The only real modification made was that for any pixel I was examining, I made sure to examine its subpixels and create an average color based on those values. 
+  <div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/ss1.png" align="middle" width="750px"/>
+        <figcaption align="middle">sample rate 1</figcaption>
+      </td>
+      </tr><br>
+      <tr>
+      <td>
+        <img src="images/ss2.png" align="middle" width="750px"/>
+        <figcaption align="middle">sample rate 4</figcaption>
+      </td>
+      </tr><br>
+      <tr>
+      <td>
+        <img src="images/ss4.png" align="middle" width="750px"/>
+        <figcaption align="middle">sample rate 16</figcaption>
+      </td>
+    </tr>
+    
+  </table>
+</div>
+
+<h3 align="middle">Part 3: Transforms</h3>
+<p>
+      The artist tried making cubeman a little more colurful, and scale down the leg proportions. Additionally, cubemans right art has been rotated to make a waving gesture as well as its head.
+  <div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/basicro.png" align="middle" width="375px"/>
+        <figcaption align="middle">'robot.svg' artist: unknown</figcaption>
+      </td>
+      <td>
+        <img src="images/robo.png" align="middle" width="375px"/>
+        <figcaption align="middle">'identity crisis no. 4' (2017)</figcaption>
+      </td>
+      </tr>
+     
+  </table>
+</div>
+
+
+<h2 align="middle">Section II: <i>Sampling</i></h2>
+
+<h3 align="middle">Part 4: Barycentric coordinates</h3>
+As mentioned in Part 1, Barycentric coordinate (alpha, beta, gamma) can be thought of as weights. These weights are quite versatile. They can determine if a point lies within the boundaries of a triangle, or determine an average color, and even texture coordinates (more on that in the next section!)
+<p>α, β, and γ serve as weights and their sum should add up to 1. Consider vertex A. At that point, the values of the barycentric coordinates will be α = 1, β = 0, and γ = 0 because at that exact point A, there is only one weight determining the value and it is that of A. In a sense the influence of the other points fluctuate with proximity.  
 <div align="middle">
   <table style="width=100%">
     <tr>
       <td>
-        <img src="images/image1.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-      <td>
-        <img src="images/image2.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-    </tr>
-    <br>
-    <tr>
-      <td>
-        <img src="images/image3.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-      <td>
-        <img src="images/image4.png" align="middle" width="400px"/>
+        <img src="images/sc2.png" align="center" width="430px"/>
         <figcaption align="middle">Caption goes here.</figcaption>
       </td>
     </tr>
   </table>
 </div>
 
-
-<h3 align="middle">Part 2: Antialiasing triangles</h3>
-
-
-
-<h3 align="middle">Part 3: Transforms</h3>
-
-
-
-<h2 align="middle">Section II: Sampling</h2>
-
-<h3 align="middle">Part 4: Barycentric coordinates</h3>
-
-
 <h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
-
+<p>Pixel sampling is image scaling that will interpolate colors depending on the technique. There are two at hand; nearest neighbor and Bilinear. Nearest neighbor sampling -  given a (U,V) coordinate, scale this point but the mipmap’s width and height. Locate the texel at this point and scale it with the MipLevel and return the interpolated color. Bilinear sampling - given a (U,V) coordinate, find its neighboring points around it. Interpolate a color based on these points and return it.  
+<p> 
+  Here is test6.svg in quite a number of sample rates. The winner (but barely) is bilinear sampling, of course. In the case of the third figure, (nearest sampling, sample rate 16) when compared to the fourth figure (bilinear sampling, sample rate 16), it still seems a little more jagged. 
+  <div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/z0.png" align="middle" width="375px"/>
+        <figcaption align="middle">nearest sampling, sample rate 1</figcaption>
+      </td>
+      <td>
+        <img src="images/z1.png" align="middle" width="375px"/>
+        <figcaption align="middle">bilinear sampling, sample rate 1</figcaption>
+      </td>
+      </tr>
+      <td>
+        <img src="images/z2.png" align="middle" width="375px"/>
+        <figcaption align="middle">nearest sampling, sample rate 16</figcaption>
+      </td>
+      <td>
+        <img src="images/z3.png" align="middle" width="375px"/>
+        <figcaption align="middle">bilinear sampling, sample rate 16</figcaption>
+      </td>
+      </tr>
+  </table>
+</div>
+<p>
+  The more apparant differences between the two techniques occur with images with sharper edges. Given a certain point, if the neighboring points are similar, then there is really not need to resort to a bilinear sampling. In this case, the techniques could be interchangable. As in the examples I outlined, the contrast between the campanile and the sky looks smoother in the bilinear output, where that technique would be necessary. 
 
 <h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
+<p> Level sampling is sampling done on different mipmap levels. 
+  <p>
+    In order to get the right mipmap level, (dudx,dvdx)(dudx,dvdx) and (dvdx,dvdy)(dvdx,dvdy) are needed. In order to get these values corresponding to a point p=(x,y) inside a triangle, the barycentric coordinates of (x+1,y)(x+1,y) and (x,y+1)(x,y+1)need be calculated in rasterize_triangle, setting them as the variables p_dx_bary and p_dy_bary. The uv coordinates sp.p_dx_uv and sp.p_dy_uv need be calculated. The difference vectors sp.p_dx_uv - sp.p_uv and sp.p_dy_uv - sp.p_uv are scaled up those difference vectors respectively by the width and height of the full-resolution texture image. THe level is computed by the log of the max vector.
+    <p>
+      Using this texture, here are some texture map samples!
+      <img src="images/standby.png" align="middle" width="750px"/>
+
+  <div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/f0.png" align="middle" width="375px"/>
+        <figcaption align="middle">L_ZERO,P_NEAREST</figcaption>
+      </td>
+      <td>
+        <img src="images/f1.png" align="middle" width="375px"/>
+        <figcaption align="middle">L_ZERO, P_LINEAR</figcaption>
+      </td>
+      </tr>
+      <td>
+        <img src="images/f2.png" align="middle" width="375px"/>
+        <figcaption align="middle">L_NEAREST, P_NEAREST</figcaption>
+      </td>
+      <td>
+        <img src="images/f3.png" align="middle" width="375px"/>
+        <figcaption align="middle">L_NEAREST, P_LINEAR</figcaption>
+      </td>
+      </tr>
+  </table>
+</div>
+<p> Unfortunatly, there are only slight differences. 
 
 
-
-<h2 align="middle">Section III: Art Competition</h2>
+<h2 align="middle">Section III: <i>Art Competition</i></h2>
 <p>If you are not participating in the optional art competition, don't worry about this section!</p>
 
 <h3 align="middle">Part 7: Draw something interesting!</h3>
