@@ -34,7 +34,14 @@
 </head>
 <body>
 <br />
-<h1 align="middle">Assignment 3: PathTracer</h1>
+                             <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td align="middle">
+                    <img src="images/title_card.png" width="500px" />
+                </tr>
+            </table>
+        </div>
     <h2 align="middle">Ricky Herrera | cs184-abx</h2>
 
     <div class="padded">
@@ -43,8 +50,24 @@
         </p>
 
     <h2 align="middle">PART 1: Ray Generation and Intersection</h2>
-        <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space. To begin, generate_ray() - given a 2D (X,Y) coordinate, will generate a ray from camera space to world space. It is important to make sure our mapping is normalized; that is, the coordinates bottomLeft = (-tan(radians(hFov)*.5), -tan(radians(vFov)*.5),-1) = (0,0) and topRight  = ( tan(radians(hFov)*.5),  tan(radians(vFov)*.5),-1) = (1,1). 
-        </p> In order to accomplish triangle intersection, the Moller Trumbore ray triangle intersection algorithm is sought. This calculates the intersection of a ray + triangle. 
+    <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space. To begin,
+
+    <p>The Spectrum class is a crucial to this project; consisting of floats r, g, and b, the Spectrum class can roughly represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly" since it is not strictly an actual spectrum with all wavelengths.
+    <p>
+    PathTracer::raytrace_pixel(x,y) - this function returns a Spectrum corresponding to the integral of the irradiance over the pixel space coordinate (x,y), which is estimated by averaging over ns_aa samples (number of camera rays in one pixel along one axis). These samples are created with the camera's generate_ray fucntion. 
+
+         <p>Camera::generate_ray(x,y) - given a 2D (X,Y) coordinate, will generate a ray from camera space to world space. It is important to make sure the ray mapping is normalized since the camera has its own coordinate system. That is, in camera space the camera is positioned at the origin, looks along the -z axis, has the +y axis as image space "up". So consider hFov and vFov, the horizontal and vertical field of view angles. With these fov's, a sensor plane can be defined one unit along the camera's view direction; the bottom left and top right corners at  the coordinates (-tan(radians(hFov)*.5), -tan(radians(vFov)*.5),-1) = (0,0) and similarly topRight  = ( tan(radians(hFov)*.5),  tan(radians(vFov)*.5),-1) = (1,1). The original X,Y coordinate is properly interpolating on this new plane. It should then be transformed from camera to world space via a matrix transform. 
+                             <div align="center">
+            <table style="width=100%">
+                <tr>
+                    <td align="middle">
+                    <img src="images/slide_006.jpg" width="350px" />
+                    <figcaption align="middle">camera to world transform </figcaption>
+                </tr>
+            </table>
+        </div>
+
+        </p>Now that the creation and averaging of these camera rays are possible, lets have them interact with a virtual scene. In order to accomplish triangle intersection, the Moller Trumbore ray triangle intersection algorithm is sought. This calculates the intersection of a ray + triangle. 
         
                 <div align="center">
             <table style="width=100%">
