@@ -46,7 +46,8 @@
 
     <div class="padded">
         <p>
-            This is my attempt at a path tracer. How <i>do</i> renders of 3D models simulate the illusion of light? One technique is to path trace them, which accomplishes much more realistic renders than a rasterizer. There is actual surface material, effected by direct and indirect lighting. I know what youre thinking, <i>"but Ricky, isnt this computationally expensive?</i> Why yes it is, but consider the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage of in order to optimize renders.  As tough as this project was, I realy enjoyed learning the material, so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced. 
+            This is my attempt at a path tracer. How <i>do</i> renders of 3D models simulate the illusion of light? One technique is to path trace them, which accomplishes much more realistic renders than a rasterizer. There is actual surface material, effected by direct and indirect lighting. Path tracing partitions the rendering equation into two parts: direct and indirect illumination. In direct - sample the light and calculate the light samples contribution to the shading point, testing visibility. In indirect illumination - sample BRDF to somewhere else, and we have new intersections; at these new intersections we repeat these recursive computations until we meet some termination. 
+            <p>I know what youre thinking, <i>"but Ricky, isnt this computationally expensive?</i> Why yes it is, but consider the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage of in order to optimize renders.  As tough as this project was, I realy enjoyed learning the material, so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced. 
         </p>
         FIRST HALF OF PROJECT<br>
         p1) ray generation and intersection<br>
@@ -368,7 +369,7 @@ Physically based rendering would not be complete without emulating the way light
 
     </table>
   </div>
-  
+  There are scenes that are difficult for path tracers. The light goes through sphere and gets concentrated and forms a disc shape highlight on the floor. These are referred to as caustics. Once the scene contains caustics, it become tough on the renderer. Why is that? <p> Well suppose you shoot more rays into the scene that actually hit the caustics. Also consider that the floor has a diffuse BRDF material. You want to sample it, according to the diffuse brdf. TO get caustics, it should come from light, so it makes sense to want to intersect the ray on that caustic to the sphere, however BRDF has uniform sampling, which ultimatly means there is low chance of hitting out point of interest (the light source). Consider the scenes with max ray depth greater than or equal to 3; these artifacts are apparent in here :( . 
 
 
 
