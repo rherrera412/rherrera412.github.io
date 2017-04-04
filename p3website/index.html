@@ -46,13 +46,11 @@
 
     <div class="padded">
         <p>
-            This is my attempt at a path tracer. How do 3D models simulate the illusion of realness and light? One technique is to path trace them. This technique used to create physically based renders of 3D models that interact with lights as they would in ~real life~. Like any techinique, there were several optimizations that were implemented to avoid redundant calculations, and take advantage of the structures. Bounding volume hierarchies contain bounding boxes; these structures are taken advantage of in order to optimize. Cornel boxes are just as plentiful in a computer graphics class as I expected. Pathtracer is much more realistic than rasterizing. As tough as this project was, I realy enjoyed learning the material, so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced. I fried my computer trying to render something at 1024 samples, so I rendered most of the images on the school computers. 
+            This is my attempt at a path tracer. How <i>do</i> renders of 3D models simulate the illusion of light? One technique is to path trace them, which accomplishes much more realistic renders than a rasterizer. There is actual surface material, effected by direct and indirect lighting. I know what youre thinking, <i>"but Ricky, isnt this computationally expensive?</i> Why yes it is, but consider the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage of in order to optimize renders.  As tough as this project was, I realy enjoyed learning the material, so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced. 
         </p>
 
     <h2 align="middle">PART 1: Ray Generation and Intersection</h2>
-    <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space. To begin,
-
-    <p>The Spectrum class is a crucial to this project; consisting of floats r, g, and b, the Spectrum class can roughly represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly" since it is not strictly an actual spectrum with all wavelengths.
+    <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space. To begin, consider the Spectrum class. Consisting of floats r, g, and b, the Spectrum class can roughly represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly" since it is not strictly an actual spectrum with all wavelengths.
     <p>
     PathTracer::raytrace_pixel(x,y) - this function returns a Spectrum corresponding to the integral of the irradiance over the pixel space coordinate (x,y), which is estimated by averaging over ns_aa samples (number of camera rays in one pixel along one axis). These samples are created with the camera's generate_ray fucntion. 
 
@@ -100,6 +98,7 @@
                 </tr>
             </table>
         </div>
+        Hooray, we have accurate light rays that can intersect with models. Not so physically based yet though are we? For the moment lets try to figure out optimization for ray generation. 
       
     <h2 align="middle">PART 2: Bounding Volume Hierarchy</h2>
         <p>Using uniform grids in order to seperate primitive and to determine where a ray will intersect can be quite inefficeint. Fortunately BVH (bounding volume hierarchies) can prevent the "Teapot in a Stadium"" problem that arises from using uniform grids. These non-uniform spatial partitions are a much smarter way to store information about the location of these primitives. It is necessary to go through all of the primitives and determine if the current batch fit the max_leaf_size. Otherwise we would want to recurse, in order to properly split the primitives. So a threshold must be generated. From the bbox's extent, which every axis has the highest value will be the axis we choose. Then the axis value of the centroid box's serves as a threshold. Depending on how the axis values of the other primitives related to the threshold (less than or greater than), they will either be put on the left or right list. This is essentialy how the recursion works. 
@@ -111,31 +110,31 @@
                                 <tr>
                     <td>
                         <img src="images/p2_3.png" width="350px" />
-                        <figcaption align="middle">lucy at a dutch angle</figcaption>
+                        <figcaption align="middle"></figcaption>
                     </td>
                                         <td>
                         <img src="images/p2_4.png" width="350px" />
-                        <figcaption align="middle">max pondering</figcaption>
+                        <figcaption align="middle"></figcaption>
                     </td>
                 </tr>
                                 </tr>
                                 <tr>
                     <td>
                         <img src="images/p2_6.png" width="350px" />
-                        <figcaption align="middle">the bench beyonce uses in partition</figcaption>
+                        <figcaption align="middle"></figcaption>
                     </td>
                                         <td>
                         <img src="images/pt2_7.png" width="350px" />
-                        <figcaption align="middle">dragon</figcaption>
+                        <figcaption align="middle"></figcaption>
                     </td>
                 </tr>
             </table>
         </div>
-
+So smarter calculations for rays are possible now, I thinks its time to move onto trying to make real surfaces!!! 
     <h2 align="middle">PART 3: Direct Illumination</h2>
-    <p> A bidirectional scattering distribution function (BSDF) 
+   The surface of a 3D model can have properties of physically based surfaces (such as chalkboard, reflections, mirrors, etc.). For example, a diffuse material is that which spreads lights equally in all directions (this is not common in the physical world, but a close approximation are chalk boards and matte paint). In addition to diffuse material, glossy specular and perfect specular are also common surface types. These materials can be modeled with BSDFs (bidirectional scattering distribution function). This (depending on what resource is read) serves to encomass BRDFs and BRTFs. 
 
-        <p>In this section, estimate_direct_lighting emulates the effect of a direct light source on a mesh. This function calculates an estimate of the direct lighting on a point hit by a ray. The function sums over all of the light sources, taking samples from the surface of each light, computing the incoming radiance from those sampled directions. It then converts those to outgoing radiance using the BSDF at the surface. If a light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call to sample_L finds the point of contact, returning the radiance, the wi direction, distToLight point of contact (hit_p), and pdf (probability density function) that was calculated with wi. Now for every light sample, the wi direction returned by the sample is in world space, but in order for it to be passed into the BSDF it needs to be in object space (i.e. w20*wi). Now that the coordinate is in object space, it needs to be ensured that it is not negative, which in that case it means the point lies behind the surface. A shadow is casted to determine if it intersect with BVH. If it does not intersect the irradiance of the light is calculated along with the BSDF and then divided by the PDF to reduce bias. 
+        <p>The path tracer now has a physically based material to render, but that means nothing if direct illumination is not possible. estimate_direct_lighting emulates the effect of a direct light on a particular surface (diffuse in this case). This function calculates an estimate of the direct lighting on a point hit by a ray. The function sums over all of the light sources, taking samples from the surface of each light, computing the incoming radiance from those sampled directions. It then converts those to outgoing radiance using the BSDF at the surface. If a light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call to sample_L finds the point of contact, returning the radiance, the wi direction, distToLight point of contact (hit_p), and pdf (probability density function) that was calculated with wi. Now for every light sample, the wi direction returned by the sample is in world space, but in order for it to be passed into the BSDF it needs to be in object space (i.e. w20*wi). Now that the coordinate is in object space, it needs to be ensured that it is not negative, which in that case it means the point lies behind the surface. A shadow is casted to determine if it intersect with BVH. If it does not intersect the irradiance of the light is calculated along with the BSDF and then divided by the PDF to reduce bias. 
             </p>
 
 
