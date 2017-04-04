@@ -141,9 +141,10 @@
                 </tr>
             </table>
         </div>
-Moving beyond just triangles and spheres, smarter calculations for rays are possible now! I think its time to move onto trying to make real surfaces!!! 
+Moving beyond just triangles and spheres, smarter calculations for rays are possible now! I think its time to move onto trying to make real surfaces!!!
+
     <h2 align="middle">PART 3: Direct Illumination</h2>
-   The surface of a 3D model can have properties of physically based surfaces (such as chalkboard, reflections, mirrors, etc.). For example, a diffuse material is that which spreads lights equally in all directions (this is not common in the physical world, but a close approximation are chalk boards and matte paint). In addition to diffuse material, glossy specular and perfect specular are also common surface types. These materials can be modeled with BSDFs (bidirectional scattering distribution function). This (depending on what resource is read) serves to encomass BRDFs and BRTFs. 
+   The surface of a 3D model can have properties of physically based surfaces (such as chalkboard, reflections, mirrors, etc.). For example, a diffuse material is that which spreads lights equally in all directions (this is not common in the physical world, but a close approximation are chalk boards and matte paint). In addition to diffuse material, glossy specular and perfect specular are also common surface types. These materials can be modeled with BSDFs (bidirectional scattering distribution function). This (depending on what resource is read) serves to encomass BRDFs and BRTFs. The BRDF specifies how light interacts with the material. 
 
         <p>The path tracer now has a physically based material to render, but that means nothing if direct illumination is not possible. estimate_direct_lighting emulates the effect of a direct light on a particular surface (diffuse in this case). This function calculates an estimate of the direct lighting on a point hit by a ray. The function sums over all of the light sources, taking samples from the surface of each light, computing the incoming radiance from those sampled directions. It then converts those to outgoing radiance using the BSDF at the surface. 
             <p> 
@@ -374,7 +375,7 @@ Physically based rendering would not be complete without emulating the way light
 
 
 <h2 align="middle">Part 2: Microfacet Material</h2>
-This portion really made the enire physically based rendering idea hit home. At first I was struggling to understand what the spec was trying to tell me, but after testing out this website (https://refractiveindex.info/?shelf=main&book=Si&page=Aspnes), I realized that the physical properties of conductor material can essentially be mapped in computer graphics. This was a lot to take in, as the implementation was pretty challenging. It is safe to assume that rough surfaces can be modeled as a collection of microfacets. According to Pharr & Humphries, surfaces made of microfacets are "essentially  heightfield, where the distribution is described statistically". It was trying to understand it statistically that was a bit challenging. Here we alter the alpha value (0.005, 0.05, 0.25, 0.5). 
+This portion really made the enire physically based rendering idea hit home. At first I was struggling to understand what the spec was trying to tell me, but after testing out this website (https://refractiveindex.info/?shelf=main&book=Si&page=Aspnes), I realized that the physical properties of conductor material can essentially be mapped in computer graphics. This was a lot to take in, as the implementation was pretty challenging. It is safe to assume that rough surfaces can be modeled as a collection of microfacets. According to Pharr & Humphries, surfaces made of microfacets are "essentially  heightfield, where the distribution is described statistically". It was trying to understand it statistically that was a bit challenging. Here we alter the alpha value (0.005, 0.05, 0.25, 0.5), which is basically the roughness term. 
   <div align="center">
     <table style="width=100%">
       <tr>
