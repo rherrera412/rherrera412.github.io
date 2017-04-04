@@ -48,22 +48,29 @@
         <p>
             This is my attempt at a path tracer. How <i>do</i> renders of 3D models simulate the illusion of light? One technique is to path trace them, which accomplishes much more realistic renders than a rasterizer. There is actual surface material, effected by direct and indirect lighting. I know what youre thinking, <i>"but Ricky, isnt this computationally expensive?</i> Why yes it is, but consider the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage of in order to optimize renders.  As tough as this project was, I realy enjoyed learning the material, so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced. 
         </p>
+        p1) ray generation and intersection<br>
+        p2) bounding volume hierarchy<br>
+        p3) direct illumination<br> 
+        p4) indirect illumination <br>
+        p5) adaptive sampling
 
     <h2 align="middle">PART 1: Ray Generation and Intersection</h2>
+
     <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space. To begin, consider the Spectrum class. Consisting of floats r, g, and b, the Spectrum class can roughly represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly" since it is not strictly an actual spectrum with all wavelengths.
+                                <div align="center">
+            <table style="width=100%">
+                                <tr>
+                    
+                        <img src="images/p1_1.png" width="450px" />
+                        <figcaption align="middle">woah how is this possible? keep reading and find out!</figcaption>
+                                
+                </tr>
+            </table>
+        </div>
     <p>
     PathTracer::raytrace_pixel(x,y) - this function returns a Spectrum corresponding to the integral of the irradiance over the pixel space coordinate (x,y), which is estimated by averaging over ns_aa samples (number of camera rays in one pixel along one axis). These samples are created with the camera's generate_ray fucntion. 
 
          <p>Camera::generate_ray(x,y) - given a 2D (X,Y) coordinate, will generate a ray from camera space to world space. It is important to make sure the ray mapping is normalized since the camera has its own coordinate system. That is, in camera space the camera is positioned at the origin, looks along the -z axis, has the +y axis as image space "up". So consider hFov and vFov, the horizontal and vertical field of view angles. With these fov's, a sensor plane can be defined one unit along the camera's view direction; the bottom left and top right corners at  the coordinates (-tan(radians(hFov)*.5), -tan(radians(vFov)*.5),-1) = (0,0) and similarly topRight  = ( tan(radians(hFov)*.5),  tan(radians(vFov)*.5),-1) = (1,1). The original X,Y coordinate is properly interpolating on this new plane. It should then be transformed from camera to world space via a matrix transform. 
-                             <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td align="middle">
-                    <img src="images/slide_006.jpg" width="350px" />
-                    <figcaption align="middle">camera to world transform </figcaption>
-                </tr>
-            </table>
-        </div>
 
         </p>Now that the creation and averaging of these camera rays are possible, lets have them interact with a virtual scene. In order to accomplish triangle intersection, the Moller Trumbore ray triangle intersection algorithm is sought. This calculates the intersection of a ray + triangle. 
         
@@ -90,12 +97,7 @@
                         <figcaption align="middle"></figcaption>
                     </td>
                 </tr>
-                                <tr>
-                    
-                        <img src="images/p1_1.png" width="450px" />
-                        <figcaption align="middle"></figcaption>
-                                
-                </tr>
+
             </table>
         </div>
         Hooray, we have accurate light rays that can intersect with models. Not so physically based yet though are we? For the moment lets try to figure out optimization for ray generation. 
@@ -182,7 +184,7 @@ So smarter calculations for rays are possible now, I thinks its time to move ont
                 </tr>
             </table>
         </div>
-
+Consider a scene with 64 image samples and 1 light sample. Now consider the same scene with 1 image sample and 64 light samples.  The latter will be noisier, however only in some regions. Why is that? Only one image sample is not enough for geometry that that is smaller than a pixel (sub pixel features). Wont be as noisy since we sampled the light enough. A good compromise is a scene sampled with 8 image samples and 8 light samples. Its much master than the first setting proposed since the intersection calulation for image samples can be terminated once a target is hit, wheras light samples could benefit from more samples. 
 
     <h2 align="middle">PART 4: Indirect Illumination</h2>
         <p>The start of estimate_indirect_lighting is similar to that of ‘direct’. ‘Russian roulette’ is used to determine the BSDF on the surface, and to determine which samples are to be discarded. The probability is multiplied by 11 and then added 0.049 to make sure the rays weren't cut off too short / cut off prematurely. The probability should have a value between 0 and 1. For more randomness, a coin flip function takes in the ray probability and determines if it should cast a shadow. Now, the origin of the shadow ray is offset by EPS_D to make sure that the same region of light is not sampled more than it should. trace_ray is used to recursively trace this ray, forming an approximation for its incoming radiance. The includeLe parameter is set to isect.bsdf->is_delta() since emission is not included in the direct lighting calculation for delta BSDFs. This incoming radiance is converted into an outgoing radiance estimator; it is scaled by the BSDF and a cosine factor, then divided by the BSDF pdf and one minus the Russian roulette termination probability. It was a little upsetting trying to get the indirect lighting to show up when I forgot to set the depth of a ray to the max_ray_depth (that prevented the actual indirect light from showing up).
