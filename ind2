@@ -37,17 +37,18 @@
 
     <link href="v3.css" rel="stylesheet">
 
+    <div id="top"></div>
 
     <body onload="start()"> 
-        <div style="background-color: #000000; margin: 0 auto;width: 858px;height: 4px;"> 
+<div style="background-color: #000000; margin: 0 auto;width: 858px;height: 4px;"> 
         </div>
 <div id="mainBody">
-            <div id="col1" style="float:left; margin:0; width:250px; padding-top:13%;">
-                    <mainHead>
+        <div id="sideside">
+                    <mainHead >
                     <b>ricky herrera</b>
                     </mainHead>
                     
-                    <div style="background-color: #000000; margin: 0 ;width: 250px;height: 1px"> 
+                    <div style="background-color: #000000; margin: 0 ;width: 250px;height: 1px;"> 
                     </div>
 
                     <div id="mySidenav" class="navbar" style="text-align: left;"> 
@@ -62,31 +63,29 @@
                         <a href="#" onClick="musicPage()">music</a>
                     </div>
 
-                    <div style="background-color: #e81f55; margin: 0 ;width: 250px;height: 1px"> 
+                    <div style="background-color: #e81f55; margin: 0 ;width: 250px;height: 1px;"> 
                     </div>
                     
                     
-                    <div style="width: 250px;margin:0px ;padding-top: 10px;">
+                    <div style="width: 250px;margin:0px ;padding-top: 10px;padding-bottom: 10px;">
                     Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley studying Computer Science and Film. I have a passion for computer graphics, movies, art, and science. <br>
                     </div>
-            </div>
+        </div>
 
-            <div id="col2" style="float:right; margin:0; width:550px;padding-top:11%;padding-right: 2%;">
-                <canvas id="glcanvas" width="540" height="304">
-                Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
-                </canvas>
-            </div>
+        <boxGL>
+            <canvas id="glcanvas" width="540" height="304">
+            Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
+            </canvas>
+        </boxGL>
 
+    <br>
+    Please follow me on twitter (or browse my tweets up to you)<br>
+<a class="twitter-timeline" data-width="550" data-theme="light" data-link-color="#ed702d" href="https://twitter.com/nutritiousbig">Tweets by nutritiousbig</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-
-
-        <div style="background-color: #000000; margin: 0 auto;width: 858px;height: 4px;"> 
+<div style="background-color: #000000; margin: 0 auto;width: 858px;height: 4px;"> 
         </div>
 
-        <div id="bott">
-        Please follow me on twitter (or browse my tweets up to you)<br>
-        <a class="twitter-timeline" data-width="550" data-theme="light" data-link-color="#ed702d" href="https://twitter.com/nutritiousbig">Tweets from nutritiousbig</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
     
-</body>
+
+    </body>
 </html>
