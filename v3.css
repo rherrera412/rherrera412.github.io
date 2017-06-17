@@ -26,7 +26,7 @@ body {
             background-color: #ffffff;
 
             padding-top:1px;
-            padding-left: 17px;
+            padding-left: 10px;
             padding-bottom: 10px;
             margin:0px auto;
             text-align: left;
@@ -35,7 +35,6 @@ body {
             width: 840px;
             font-size: 16px;
             font-weight: 200;
-            min-width: 864;
             min-height: 486px; 
             height: 100%;
 
