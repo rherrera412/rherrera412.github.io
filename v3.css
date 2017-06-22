@@ -7,12 +7,10 @@ background {
     font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
     color: #f1f1f1;
     background-color:#121212;
-    font-weight: 100;
 }
 
 body {
     font-family: "Nunito Sans", Helvetica, sans-serif;
-    font-weight: 100;
     background-color:#fffff;
     width: 75%;
     height: 75%;
@@ -35,7 +33,6 @@ body {
             height: 473px;
             width: 840px;
             font-size: 16px;
-            font-weight: 200;
             min-height: 486px; 
             height: 100%;
 
@@ -81,10 +78,10 @@ aboutSec {
             bottom: 0; }
 
 mainHead {
-    font-family: "Nunito", Helvetica;
+    font-family: "Nunito Sans", Helvetica Neue;
     font-size: 32px;
+    font-weight: 900;
     color: #00000f;/*e8b21f*/
-    background-color: #ffffff;
     
 }
 
