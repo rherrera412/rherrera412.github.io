@@ -16,7 +16,7 @@ background {
 }
 
 body {
-    font-family: 'Avenir', Helvetica Neue, sans-serif;
+    font-family: 'Avenir Next', Helvetica Neue, sans-serif;
 
     background-color:#fffff;
     width: 75%;
@@ -84,8 +84,9 @@ aboutSec {
             bottom: 0; }
 
 mainHead {
-    font-size: 30px;
-    font-weight: 800;
+    font-family: "Avenir Next";
+    font-size: 32px;
+    font-weight: 700;
     color: #00000f;/*e8b21f*/
     
 }
