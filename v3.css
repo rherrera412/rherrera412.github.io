@@ -6,8 +6,8 @@
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
 @font-face {
 	font-family: 'Avenir';
-	src: url('Avenir.ttc');
-	src: local('Avenir Next'), local('Avenir Next.ttc'), url('Avenir Roman.otf') format('truetype');
+	src: url('Avenir Next.ttc');
+	src: local('Avenir Next'), url('Avenir Next.ttc'), url('Avenir Roman.otf') format('truetype');
 }
 
 
@@ -85,7 +85,7 @@ aboutSec {
             bottom: 0; }
 
 mainHead {
-    font-family: "Avenir Next", "Avenir";
+    font-family: 'Avenir Next', "Avenir";
     font-size: 32px;
     font-weight: 700;
     color: #00000f;/*e8b21f*/
