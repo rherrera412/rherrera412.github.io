@@ -3,14 +3,17 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,800,900');
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
+@import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
+
 
 background {
-    font-family: 'Nunito', Arial, Helvetica, sans-serif;
     color: #f1f1f1;
     background-color:#121212;
 }
 
 body {
+    font-family: Avenir, Helvetica Neue, sans-serif;
+
     background-color:#fffff;
     width: 75%;
     height: 75%;
@@ -77,8 +80,8 @@ aboutSec {
             bottom: 0; }
 
 mainHead {
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 30px;
+    font-weight: 800;
     color: #00000f;/*e8b21f*/
     
 }
