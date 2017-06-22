@@ -31,7 +31,7 @@ function start() {
   // Only continue if WebGL is available and working
 
   if (gl) {
-    gl.clearColor(0.05, 0.08, 0.06, 1.0);  // Clear to black, fully opaque
+    gl.clearColor(0.898, 0.788, 0.635, 1.0);  // Clear to black, fully opaque
     gl.clearDepth(1.0);                 // Clear everything
     gl.enable(gl.DEPTH_TEST);           // Enable depth testing
     gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
@@ -111,10 +111,10 @@ function initBuffers() {
   // Now set up the colors for the vertices
 
   var colors = [
-    0.929,  0.627,  0.176,  1.0,    // white
-    0.929,  0.439,  0.176,  1.0,    // red
-    0.929,  0.251,  0.176,  1.0,    // green
-    0.929,  0.176,  0.29,  1.0     // blue
+    0.996,  0.408,  0.475,  1.0,    // red
+    0.996,  0.408,  0.475,  1.0,    // red
+    0.996,  0.498,  0.408,  1.0,    // red
+    0.996,  0.635,  0.408,  1.0,    // red
 
     
   ];

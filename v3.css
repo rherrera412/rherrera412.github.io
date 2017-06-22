@@ -1,18 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans+Black');
 
 background {
-    font-family: 'Avenir', Arial, Helvetica, sans-serif;
+    font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
     color: #f1f1f1;
     background-color:#121212;
     font-weight: 100;
 }
 
 body {
-    font-family: "Avenir", Helvetica, sans-serif;
+    font-family: "Nunito Sans", Helvetica, sans-serif;
     font-weight: 100;
-    background-color:#ffffff;
+    background-color:#fffff;
     width: 75%;
     height: 75%;
     padding: 25px;
@@ -22,7 +23,7 @@ body {
 
 }
 #mainBody {
-            font-family: "Avenir", Helvetica, sans-serif;
+            font-family: "Nunito Sans", Helvetica, sans-serif;
             background-color: #ffffff;
 
             padding-top:1px;
@@ -80,7 +81,7 @@ aboutSec {
             bottom: 0; }
 
 mainHead {
-    font-family: "Avenir", Helvetica;
+    font-family: "Nunito", Helvetica;
     font-size: 32px;
     color: #00000f;/*e8b21f*/
     background-color: #ffffff;
@@ -92,8 +93,8 @@ mainHead {
     width: 75%;
     height: 75%;
     margin: 0 ;
-    font-family: "Avenir", Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    font-size: 14px;
     /*font-style: italic;*/
     color: #00000f;/*e81f55*/;
     text-decoration: none;
