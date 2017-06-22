@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,900');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,800,900');
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
 
 background {
-    font-family: 'Nunito Sans', Arial, Helvetica, sans-serif;
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
     color: #f1f1f1;
     background-color:#121212;
 }
 
 body {
-    font-family: "Nunito Sans", Helvetica, sans-serif;
     background-color:#fffff;
     width: 75%;
     height: 75%;
@@ -20,7 +21,6 @@ body {
 
 }
 #mainBody {
-            font-family: "Nunito Sans", Helvetica, sans-serif;
             background-color: #ffffff;
 
             padding-top:1px;
@@ -77,9 +77,8 @@ aboutSec {
             bottom: 0; }
 
 mainHead {
-    font-family: "Nunito Sans", Helvetica Neue;
     font-size: 32px;
-    font-weight: 900;
+    font-weight: 700;
     color: #00000f;/*e8b21f*/
     
 }
@@ -89,7 +88,6 @@ mainHead {
     width: 75%;
     height: 75%;
     margin: 0 ;
-    font-family: "Nunito", Arial, Helvetica, sans-serif;
     font-size: 14px;
     /*font-style: italic;*/
     color: #00000f;/*e81f55*/;
