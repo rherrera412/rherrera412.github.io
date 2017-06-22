@@ -4,7 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
-
+@font-face {
+	font-family: 'Avenir';
+	src: url('Avenir.ttc');
+	src: local('Avenir'), local('Avenir Next'), url('Avenir Roman.otf') format('truetype');
+}
 
 background {
     color: #f1f1f1;
@@ -12,7 +16,7 @@ background {
 }
 
 body {
-    font-family: Avenir, Helvetica Neue, sans-serif;
+    font-family: 'Avenir', Helvetica Neue, sans-serif;
 
     background-color:#fffff;
     width: 75%;
