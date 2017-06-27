@@ -6,7 +6,7 @@
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
 @font-face {
 	font-family: 'Avenir';
-	src: url('Avenir.ttc');
+	src: local('Avenir.ttc');
 }
 @font-face {
 	font-family: 'Avenir Next';
