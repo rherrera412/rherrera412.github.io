@@ -5,9 +5,13 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
 @font-face {
-	font-family: 'Avenir';
+	font-family: 'boncho';
 	src: url('Avenir.ttc');
 	src: local('Avenir Next'), url('Avenir Next.ttc'), url('Avenir Roman.otf') format('truetype');
+}
+@font-face {
+	font-family: 'bincho';
+	src: url('Avenir Next'), url('Avenir Next.ttc'), url('Avenir Roman.otf') format('truetype');
 }
 
 
@@ -18,7 +22,7 @@ background {
 }
 
 body {
-    font-family: 'Avenir', Helvetica Neue, sans-serif;
+    font-family: 'boncho', Helvetica Neue, sans-serif;
 
     background-color:#fffff;
     height: 75%;
@@ -85,7 +89,7 @@ aboutSec {
             bottom: 0; }
 
 mainHead {
-    font-family: 'Avenir Next', "Avenir";
+    font-family: 'bincho';
     font-size: 32px;
     font-weight: 700;
     color: #00000f;/*e8b21f*/
