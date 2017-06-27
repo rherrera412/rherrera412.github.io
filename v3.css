@@ -9,11 +9,7 @@
 	src: url('Avenir.ttc');
 	src: local('Avenir Next'), url('Avenir Next.ttc'), url('Avenir Roman.otf') format('truetype');
 }
-@font-face {
-	font-family: 'Avenir Next';
-	src: url('Avenir Next.ttc'),
-    format('truetype');
-}
+
 
 
 background {
