@@ -6,11 +6,13 @@
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
 @font-face {
 	font-family: 'Avenir';
-	src: local('Avenir.ttc');
+	src: url('Avenir.ttc');
+	src: local('Avenir Next'), url('Avenir Next.ttc'), url('Avenir Roman.otf') format('truetype');
 }
 @font-face {
 	font-family: 'Avenir Next';
-	src: local('Avenir Next.ttc');
+	src: url('Avenir Next.ttc'),
+    format('truetype');
 }
 
 
@@ -21,7 +23,7 @@ background {
 
 body {
     font-family: 'Avenir', Helvetica Neue, sans-serif;
-    font-weight: 700;
+
     background-color:#fffff;
     height: 75%;
     padding: 25px;
