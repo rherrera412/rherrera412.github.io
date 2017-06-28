@@ -17,14 +17,26 @@
 
 
 background {
-    color: #f1f1f1;
-    background-color:#121212;
+    color: #ffffff;
+    background-color: #121212;
 }
 
 body {
     font-family: 'boncho', Helvetica Neue, sans-serif;
+    color: #ffffff;
+    background-color:#000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+text-rendering: optimizeLegibility;
+text-rendering: geometricPrecision;
+font-smooth: always;
 
-    background-color:#ffffff;
+font-smoothing: antialiased;
+-moz-font-smoothing: antialiased;
+-webkit-font-smoothing: antialiased;
+-webkit-font-smoothing: subpixel-antialiased;
+
     height: 75%;
     padding: 25px;
     padding-top: 66px;
@@ -32,8 +44,10 @@ body {
     text-align: center;
 
 }
+#grad {
+
+}
 #mainBody {
-            background-color: #ffffff;
 
             padding-top:1px;
             padding-left: 10px;
@@ -43,7 +57,7 @@ body {
             /*position: center;*/
             height: 473px;
             width: 840px;
-            font-size: 16px;
+            font-size: 18px;
             min-height: 486px; 
             height: 100%;
 
@@ -90,20 +104,21 @@ aboutSec {
 
 mainHead {
     font-family: 'bincho';
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 700;
-    color: #00000f;/*e8b21f*/
+    color: #ffffff;/*e8b21f*/
+      -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
     
 }
 
 .navbar a {
-    background-color: #ffffff;
     width: 75%;
     height: 75%;
     margin: 0 ;
     font-size: 14px;
     /*font-style: italic;*/
-    color: #00000f;/*e81f55*/;
+    color: #ffffff;/*e81f55*/;
     text-decoration: none;
     /*border-bottom: 2px solid #e81f55;*/
 }
@@ -112,6 +127,3 @@ mainHead {
             display: inline;
             font-style: italic;
         }
-em {
-    font-size: 24px;
-}
