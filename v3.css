@@ -23,7 +23,7 @@ background {
 
 body {
     font-family: 'boncho', Helvetica Neue, sans-serif;
-    color: #ffffff;
+    color: #c0c0c0;
     background-color:#000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -49,9 +49,8 @@ font-smoothing: antialiased;
 }
 #mainBody {
 
-            padding-top:1px;
+            padding-top:0px;
             padding-left: 10px;
-            padding-bottom: 10px;
             margin:0px auto;
             text-align: left;
             /*position: center;*/
@@ -66,14 +65,7 @@ sideside {
     column-width: 250px;
 }
 
-glBox {  
-}
-aboutSec {
-    width: 250px;
-    margin:0px ;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    }
+
 
 #top, #bottom, #left, #right {
 	background: #000000;
@@ -113,8 +105,8 @@ mainHead {
 }
 
 .navbar a {
+    padding-bottom: 10px;
     width: 75%;
-    height: 75%;
     margin: 0 ;
     font-size: 14px;
     /*font-style: italic;*/
