@@ -6,8 +6,8 @@
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
 @font-face {
 	font-family: 'boncho';
-	src: url('Avenir.ttc');
-	src: local('Avenir Next'), url('Avenir Next.ttc'), url('Avenir Roman.otf') format('truetype');
+	src: url('Avenir.ttc')
+ 
 }
 @font-face {
 	font-family: 'bincho';
@@ -24,7 +24,7 @@ background {
 body {
     font-family: 'boncho', Helvetica Neue, sans-serif;
 
-    background-color:#fffff;
+    background-color:#ffffff;
     height: 75%;
     padding: 25px;
     padding-top: 66px;
