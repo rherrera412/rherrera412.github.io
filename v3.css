@@ -56,7 +56,7 @@ font-smoothing: antialiased;
             /*position: center;*/
             height: 473px;
             width: 840px;
-            font-size: 18px;
+            font-size: 16px;
             min-height: 486px; 
             height: 100%;
 
@@ -96,7 +96,7 @@ sideside {
 
 mainHead {
     font-family: 'bincho';
-    font-size: 38px;
+    font-size: 34px;
     font-weight: 700;
     color: #ffffff;/*e8b21f*/
       -webkit-font-smoothing: antialiased;
@@ -105,7 +105,6 @@ mainHead {
 }
 
 .navbar a {
-    padding-bottom: 10px;
     width: 75%;
     margin: 0 ;
     font-size: 14px;
