@@ -38,7 +38,8 @@
     <link href="v3.css" rel="stylesheet">
 
 
-    <body onload="start()"> 
+
+    <body onload="start();"> 
         <div style="background-color: #76b1d3; margin: 0 auto;width: 858px;height: 4px;"> 
         </div>
 <div id="mainBody">
@@ -50,6 +51,10 @@
                     <div style="background-color: #ffffff; margin: 0 ;width: 250px;height: 1px"> 
                     </div>
 
+
+
+
+<!--
                     <div id="mySidenav" class="navbar" style="text-align: left; padding-bottom: 2px;"> 
                         <a href="index.html" >about</a>
                         -
@@ -61,21 +66,70 @@
                         -
                         <a href="#" onClick="musicPage()">music</a>
                     </div>
+-->
+    <script type="text/javascript" src="v3.js">       
+                 </script>
 
+
+                    <div class="tab" > 
+                        <button class="tablinks" onclick="openC(event, 'about')" id="defaultOpen">about</button>
+                        <script>
+                        // Get the element with id="defaultOpen" and click on it
+                        document.getElementById("defaultOpen").click();
+                        </script>
+                        <button class="tablinks" onclick="openC(event, 'blog')">blog</button>
+                        
+                        <button class="tablinks" onclick="openC(event, 'projects')">projects</button>
+                        
+                        <button class="tablinks" onclick="openC(event, 'films')">films</button>
+                        
+                        <button class="tablinks" onclick="openC(event, 'music')">music</button>
+                    </div>
                     <div style="background-color: #e81f55; margin: 0 ;width: 250px;height: 1px;"> 
                     </div>
-                    
-                    
+
                     <div style="width: 250px;margin:0px ;padding-top: 40px;">
                     Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley studying Computer Science and Film. I have a passion for computer graphics, movies, art, and science. <br>
                     </div>
             </div>
 
             <div id="col2" style="float:right; margin:0; width:550px;padding-top:11%;padding-right: 2%;">
+
+              <div id="about" class="tabcontent">
                 <canvas id="glcanvas" width="540" height="304">
                 Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
                 </canvas>
+                </div>
+
+              <div id="about" class="tabcontent">
+              <h3>London</h3>
+                <p>London is the capital city of England.</p>
+              </div>
+
+              <div id="blog" class="tabcontent">
+                <h3>BLOG</h3>
+                <p>blog is not available at the moment, however here are some tweets.</p> 
+
+                <a class="twitter-timeline" data-lang="en" data-width="540" data-height="600" data-theme="dark" data-link-color="#E81f55" href="https://twitter.com/nutritiousbig">Tweets by nutritiousbig</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+
+              <div id="projects" class="tabcontent">
+                    <h3>PROJECTS</h3>
+
+                            <img src="icon_rasterizer.png" style="width:100px;padding-right:2%;" align="left">
+       <a href="p1website/index.html" >Rasterizer</a> - C++ implemented image rasterizer – performs supersampling, hierarchical
+transforms, and texture mapping with antialiasing on SVG files and converts to 2D image. <br><br>
+<p>
+       <img src="icon_meshedit.png" style="width:100px;padding-right:2%;" align="left">
+       <a href="p2website/index.html" >MeshEdit</a> - C++ implemented 3D model mesh application; load and edit basic COLLADA mesh files (used by many major modeling packages and real time graphics engines).<br><br>
+<p>
+       <img src="icon_pathtracer.png" style="width:100px;padding-right:2%;" align="left">
+       <a href="p3website/index.html" >PathTracer</a> -  C++ implemented, based on Physically Based Rendering (Pharr & Humphries) <br><br>
+              </div>
             </div>
+
+
+
 
 
 
@@ -90,6 +144,9 @@
 
         <div style="background-color: #76b1d3; margin: 0 auto;width: 858px;height: 4px;"> 
         </div>
-    
+        <script>
+document.getElementById("defaultOpen").click();
+</script>
+
 </body>
 </html>

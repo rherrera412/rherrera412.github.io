@@ -1,41 +1,24 @@
-<script>
-var nav = false;
 
-function openNav() {
-    document.getElementById("mySidenav").style.height = "24px";
-    document.getElementById("pre").style.height = "0px";
-    document.getElementById("newSidenav").style.height = "0px";
-    document.getElementById("newSidenav1").style.height = "0px";
-    document.getElementById("newSidenav2").style.height = "0px";
-    document.getElementById("newSidenav3").style.height = "0px";
-    document.getElementById("newSidenav4").style.height = "0px";
 
-    document.body.style.backgroundColor = "rgb(45,170,237)";
-    document.body.style.color = "rgb(237,208,45)";
-    nav = true;
-}
-function closeNav() {
-    document.getElementById("pre").style.height = "12px";
-    document.getElementById("newSidenav").style.height = "12px";
-    document.getElementById("newSidenav1").style.height = "12px";
-    document.getElementById("newSidenav2").style.height = "12px";
-    document.getElementById("newSidenav3").style.height = "12px";
-    document.getElementById("newSidenav4").style.height = "12px";
+function openC(evt, cityName) {
+    // Declare all variables
+    var i, tabcontent, tablinks;
 
-    document.body.style.backgroundColor = "rgb(237,112,45)";
-    document.body.style.color = "rgb(250,250,250)";
-    nav = false;
-}
-function musicPage() {
-    document.body.style.backgroundColor = "rgb(254,247,244)";
-    document.body.style.color = "rgb(0,0,0)"; 
-}
-function filmPage() {
-    document.body.style.backgroundColor = "rgb(25,10,2)";
-    document.body.style.color = "rgb(50,250,250)"; 
+    // Get all elements with class="tabcontent" and hide them
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+
+    // Get all elements with class="tablinks" and remove the class "active"
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+
+    // Show the current tab, and add an "active" class to the link that opened the tab
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
 
-function toggleNav() {
-    nav ? closeNav() : openNav();
-}
-</script>
+                        document.getElementById("defaultOpen").click();
