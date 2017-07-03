@@ -22,7 +22,7 @@ background {
 }
 
 body {
-    font-family: 'boncho', Helvetica Neue, Nunito, sans-serif;
+    font-family: 'boncho', Nunito, Helvetica Neue, sans-serif;
     color: #c0c0c0;
     background-color:#000000;
   -webkit-font-smoothing: antialiased;
@@ -95,10 +95,10 @@ sideside {
             bottom: 0; }
 
 mainHead {
-    font-family: 'bincho', "Noto Sans", Arial, Helvetica, sans-serif;
+    font-family: 'bincho', Nunito Sans, Helvetica, Arial, sans-serif;
     font-size: 34px;
     font-weight: 700;
-    color: #ffffff;/*e8b21f*/
+    color: #fffff0;/*e8b21f*/
       -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
     
