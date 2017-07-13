@@ -21,4 +21,4 @@ function openC(evt, cityName) {
     evt.currentTarget.className += " active";
 }
 
-                        document.getElementById("defaultOpen").click();
+document.getElementById("defaultOpen").click();
