@@ -1,60 +1,52 @@
 ﻿<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>ricky herrera</title>
-        <!-- https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_objects_with_WebGL -->
 
-    <link rel="stylesheet" href="webgl.css" type="text/css">
-    <script src="sylvester.js" type="text/javascript"></script>
-    <script src="glUtils.js" type="text/javascript"></script>
-    <script src="webgl-demo.js" type="text/javascript"></script>
+<head>
+  <meta charset="utf-8">
+  <title>ricky herrera</title>
+  <!-- https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_objects_with_WebGL -->
 
-    <!-- Fragment shader program -->
+  <link rel="stylesheet" href="webgl.css" type="text/css">
+  <script src="sylvester.js" type="text/javascript"></script>
+  <script src="glUtils.js" type="text/javascript"></script>
+  <script src="webgl-demo.js" type="text/javascript"></script>
 
-    <script id="shader-fs" type="x-shader/x-fragment">
-      varying lowp vec4 vColor;
-      void main(void) {
-        gl_FragColor = vColor;
-      }
-    </script>
+  <!-- Fragment shader program -->
 
-    <!-- Vertex shader program -->
+  <script id="shader-fs" type="x-shader/x-fragment">
+    varying lowp vec4 vColor; void main(void) { gl_FragColor = vColor; }
+  </script>
 
-    <script id="shader-vs" type="x-shader/x-vertex">
-      attribute vec3 aVertexPosition;
-      attribute vec4 aVertexColor;
-      uniform mat4 uMVMatrix;
-      uniform mat4 uPMatrix;
-      varying lowp vec4 vColor;
-      void main(void) {
-        gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0);
-        vColor = aVertexColor;
-      }
-    </script>
+  <!-- Vertex shader program -->
 
-    </head>
+  <script id="shader-vs" type="x-shader/x-vertex">
+    attribute vec3 aVertexPosition; attribute vec4 aVertexColor; uniform mat4 uMVMatrix; uniform mat4 uPMatrix; varying lowp
+    vec4 vColor; void main(void) { gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0); vColor = aVertexColor;
+    }
+  </script>
 
-    <link href="v3.css" rel="stylesheet">
+</head>
+
+<link href="v3.css" rel="stylesheet">
 
 
 
-    <body onload="start();"> 
-        <div style="background-color: #76b1d3; margin: 0 auto;width: 858px;height: 4px;"> 
-        </div>
-<div id="mainBody">
-            <div id="col1" style="float:left; margin:0; width:250px; padding-top:10%;">
-                    <mainHead>
-                    <b>Ricky Herrera</b>
-                    </mainHead>
-                    
-                    <div style="background-color: #ffffff; margin: 0 ;width: 250px;height: 1px"> 
-                    </div>
+<body onload="start();">
+  <div style="background-color: #76b1d3; margin: 0 auto;width: 858px;height: 4px;">
+  </div>
+  <div id="mainBody">
+    <div id="col1" style="float:left; margin:0; width:250px; padding-top:10%;">
+      <mainHead>
+        <b>Ricky Herrera</b>
+      </mainHead>
+
+      <div style="background-color: #ffffff; margin: 0 ;width: 250px;height: 1px">
+      </div>
 
 
 
 
-<!--
+      <!--
                     <div id="mySidenav" class="navbar" style="text-align: left; padding-bottom: 2px;"> 
                         <a href="index.html" >about</a>
                         -
@@ -67,86 +59,121 @@
                         <a href="#" onClick="musicPage()">music</a>
                     </div>
 -->
-    <script type="text/javascript" src="v3.js">       
-                 </script>
+      <script type="text/javascript" src="v3.js">
+
+      </script>
 
 
-                    <div class="tab" > 
-                        <button class="tablinks" onclick="openC(event, 'about')" id="defaultOpen">about</button>
-                        <script>
-                        // Get the element with id="defaultOpen" and click on it
-                        document.getElementById("defaultOpen").click();
-                        </script>
-                        <button class="tablinks" onclick="openC(event, 'blog')">blog</button>
-                        
-                        <button class="tablinks" onclick="openC(event, 'projects')">projects</button>
-                        
-                        <button class="tablinks" onclick="openC(event, 'films')">films</button>
-                        
-                        <button class="tablinks" onclick="openC(event, 'music')">music</button>
-                    </div>
-                    <div style="background-color: #e81f55; margin: 0 ;width: 250px;height: 1px;"> 
-                    </div>
-
-                    <div style="width: 250px;margin:0px ;padding-top: 40px;">
-                    Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley studying Computer Science and Film. I have a passion for computer graphics, movies, art, and science. <br>
-                    </div>
-            </div>
-
-            <div id="col2" style="float:right; margin:0; width:550px;padding-top:11%;padding-right: 2%;">
-
-              <div id="about" class="tabcontent">
-                <canvas id="glcanvas" width="540" height="304">
-                Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
-                </canvas>
-                </div>
-
-              <div id="about" class="tabcontent">
-              <h3>London</h3>
-                <p>London is the capital city of England.</p>
-              </div>
-
-              <div id="blog" class="tabcontent">
-                <h3>BLOG</h3>
-                <p>blog is not available at the moment, however here are some tweets.</p> 
-
-                <a class="twitter-timeline" data-lang="en" data-width="540" data-height="600" data-theme="dark" data-link-color="#E81f55" href="https://twitter.com/nutritiousbig">Tweets by nutritiousbig</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-              </div>
-
-              <div id="projects" class="tabcontent">
-                    <h3>PROJECTS</h3>
-
-                            <img src="icon_rasterizer.png" style="width:100px;padding-right:2%;" align="left">
-       <a href="p1website/index.html" >Rasterizer</a> - C++ implemented image rasterizer – performs supersampling, hierarchical
-transforms, and texture mapping with antialiasing on SVG files and converts to 2D image. <br><br>
-<p>
-       <img src="icon_meshedit.png" style="width:100px;padding-right:2%;" align="left">
-       <a href="p2website/index.html" >MeshEdit</a> - C++ implemented 3D model mesh application; load and edit basic COLLADA mesh files (used by many major modeling packages and real time graphics engines).<br><br>
-<p>
-       <img src="icon_pathtracer.png" style="width:100px;padding-right:2%;" align="left">
-       <a href="p3website/index.html" >PathTracer</a> -  C++ implemented, based on Physically Based Rendering (Pharr & Humphries) <br><br>
-              </div>
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-
-        <div style="background-color: #76b1d3; margin: 0 auto;width: 858px;height: 4px;"> 
-        </div>
+      <div class="tab">
+        <button class="tablinks" onclick="openC(event, 'about')" id="defaultOpen">about</button>
         <script>
-document.getElementById("defaultOpen").click();
-</script>
+          // Get the element with id="defaultOpen" and click on it
+          document.getElementById("defaultOpen").click();
+        </script>
+        <button class="tablinks" onclick="openC(event, 'blog')">blog</button>
+
+        <button class="tablinks" onclick="openC(event, 'projects')">projects</button>
+
+        <button class="tablinks" onclick="openC(event, 'films')">films</button>
+
+        <button class="tablinks" onclick="openC(event, 'notes')">notes</button>
+      </div>
+      <div style="background-color: #e81f55; margin: 0 ;width: 250px;height: 1px;">
+      </div>
+
+      <div style="width: 250px;margin:0px ;padding-top: 40px;">
+        Technically, it's Ricardo, but its <i>whutever</i>. I'm a student at UC Berkeley studying Computer Science and Film.
+        I have a passion for computer graphics, movies, art, and science. <br>
+      </div>
+    </div>
+
+    <div id="col2" style="float:right; margin:0; width:550px; ;padding-right: 2%;">
+
+      <div id="about" class="tabcontent" style="padding-top:15%">
+        <canvas id="glcanvas" width="540" height="304">
+          Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
+        </canvas>
+      </div>
+
+
+      <div id="blog" class="tabcontent">
+        <h3>BLOG</h3>
+        <p>blog is not available at the moment, however here are some tweets.</p>
+
+        <a class="twitter-timeline" data-lang="en" data-width="540" data-height="600" data-theme="dark" data-link-color="#E81f55"
+          href="https://twitter.com/nutritiousbig">Tweets by nutritiousbig</a>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+
+      <div id="projects" class="tabcontent">
+        <h3>PROJECTS</h3>
+
+        <img src="icon_rasterizer.png" style="width:100px;padding-right:2%;" align="left">
+        <a href="p1website/index.html">Rasterizer</a> - C++ implemented image rasterizer – performs supersampling, hierarchical
+        transforms, and texture mapping with antialiasing on SVG files and converts to 2D image. <br><br>
+        <p>
+          <img src="icon_meshedit.png" style="width:100px;padding-right:2%;" align="left">
+          <a href="p2website/index.html">MeshEdit</a> - C++ implemented 3D model mesh application; load and edit basic COLLADA
+          mesh files (used by many major modeling packages and real time graphics engines).<br><br>
+          <p>
+            <img src="icon_pathtracer.png" style="width:100px;padding-right:2%;" align="left">
+            <a href="p3website/index.html">PathTracer</a> - C++ implemented, based on Physically Based Rendering (Pharr &
+            Humphries) <br><br>
+      </div>
+
+
+
+      <div id="notes" class="tabcontent">
+        <h3>NOTES</h3>
+
+        Here are some notes I have done for UC Berkeley's CS184 Computer Graphics and Imaging course. (I am currently typing up the
+        notes.)<br><br> Geometry for Graphics<br> Ray Tracing and Optimizations<br> Monte Carlo and Global Illumination
+        <br> Camera and Lenses<br>
+
+      </div>
+
+      <div id="films" class="tabcontent" style="overflow:auto;">
+        <h3>FILMS</h3>
+        <b><i>Sweet Victory</i> (2016)</b>
+        <iframe width="540" height="304" src="https://www.youtube.com/embed/KFBjPTmTnWQ" frameborder="0" allowfullscreen></iframe>
+        My first 3D animated short! My notable contribution to this masterpiece is Marshmallow (or as like my mom refers to it, "El
+        Bombon"), which I modeled and animated.
+
+        </p>
+
+        <b><i>Walden</i> (2016) </b>
+        <iframe width="540" height="304" src="https://www.youtube.com/embed/VXAhPhIJJVg" frameborder="0" allowfullscreen></iframe>
+        The piece was my group's submission for Cal State Long Beach's 24 Hours Challenge; as the name implies this was made in under
+        24 hours. The prompt was "make a 1 minute short that contains a physical or metaphorical wall".
+        <p>
+
+        <b><i>The Only Love a Mans Ever Known</i> (exp. 2017) </b><br> 
+        This project was made for UC Berkeley Advanced Digital Animation course, CNM190. In essence, its a short about the pangs of alcoholism, but that is all I can say for now. I worked on audio, lighting, modeling, and post-production for this short. It has won an award at the East LA film festival, and is being considered for other film festivals!
+        </p>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+  <div style="background-color: #76b1d3; margin: 0 auto;width: 858px;height: 4px;">
+  </div>
+  <script>
+    document.getElementById("defaultOpen").click();
+  </script>
 
 </body>
+
 </html>
