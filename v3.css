@@ -4,14 +4,15 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
+
 @font-face {
-	font-family: 'boncho';
-	src: url('Avenir.ttc')
- 
+    font-family: 'boncho';
+    src: url('Avenir.ttc');
 }
+
 @font-face {
-	font-family: 'bincho';
-	src: url('Avenir Next.ttc')
+    font-family: 'bincho';
+    src: url('Avenir Next.ttc');
 }
 
 
@@ -23,128 +24,91 @@ background {
 
 body {
     font-family: 'boncho', Nunito, Helvetica Neue, sans-serif;
-    color: #ffffff;
-    background-color:#000000;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    color: #000000;
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-text-rendering: optimizeLegibility;
-text-rendering: geometricPrecision;
-font-smooth: always;
-
-font-smoothing: antialiased;
--moz-font-smoothing: antialiased;
--webkit-font-smoothing: antialiased;
--webkit-font-smoothing: subpixel-antialiased;
-
-    height: 75%;
+    text-rendering: optimizeLegibility;
+    text-rendering: geometricPrecision;
+    font-smooth: always;
+    font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: subpixel-antialiased;
     padding: 25px;
     padding-top: 66px;
     margin: auto;
     text-align: center;
-
 }
-#grad {
 
-}
 #mainBody {
-
-            padding-top:0px;
-            padding-left: 10px;
-            margin:0px auto;
-            text-align: left;
-            /*position: center;*/
-            height: 473px;
-            width: 840px;
-            font-size: 16px;
-            min-height: 486px; 
-            height: 100%;
-
+    padding-top: 0px;
+    padding-left: 10px;
+    margin: 0px auto;
+    text-align: left;
+    width: 840px;
+    font-size: 16px;
 }
+
 sideside {
     column-width: 250px;
 }
 
 
 
-#top, #bottom, #left, #right {
-	background: #000000;
-	position: fixed;
-	}
-	#left, #right {
-        
-		top: 0; bottom: 0;
-		width: 10px;
-		}
-		#left { 
-            /*border-right: 2px solid #e8b21f;*/
-            left: 0; }
-		#right { 
-            /*border-left: 2px solid #e8b21f;*/
-            right: 0; }
-		
-	#top, #bottom {
-		left: 0; right: 0;
-		height: 1px;
-		}
-		#top { 
-            /*border-bottom: 2px solid #e8b21f;*/
-            top: 0; }
-		#bottom { 
-            /*border-top: 2px solid #e8b21f;*/
-            bottom: 0; }
 
 mainHead {
     font-family: 'bincho', Nunito Sans, Helvetica, Arial, sans-serif;
     font-size: 34px;
     font-weight: 700;
-    color: #fffff0;/*e8b21f*/
-      -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-    
+    color: #000000; /*e8b21f*/
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .navbar a {
     width: 75%;
-    margin: 0 ;
+    margin: 0;
     font-size: 14px;
     /*font-style: italic;*/
-    color: #ffffff;/*e81f55*/;
+    color: #ffffff; /*e81f55*/
+    ;
     text-decoration: none;
     /*border-bottom: 2px solid #e81f55;*/
 }
-.navbar a:hover, .offcanvas a:focus{
-            color: #e81f55;
-            display: inline;
-            font-style: italic;
-        }
+
+    .navbar a:hover, .offcanvas a:focus {
+        color: #e81f55;
+        display: inline;
+        font-style: italic;
+    }
 
 /* Style the tab */
 div.tab {
     overflow: hidden;
 }
 
-/* Style the buttons inside the tab */
-div.tab button {
-    color: #ffffff;
-    background-color: #000000;
-    border: none;
-	padding: 5px;
+    /* Style the buttons inside the tab */
+    div.tab button {
+        color: #000000;
+        background-color: #ffffff;
+        border: none;
+        padding: 5px;
+        transition: 0.1s;
+    }
 
-    transition: 0.1s;
-}
+        /* Change background color of buttons on hover */
+        div.tab button:hover {
+            background-color: #ffffff;
+            color: #e81f55;
+        }
 
-/* Change background color of buttons on hover */
-div.tab button:hover {
-    background-color: #ffffff;
-    color: #e81f55;
-
-}
-
-/* Create an active/current "tab button" class */
-div.tab button.active {
-    background-color: #e81f55;
-}
+        /* Create an active/current "tab button" class */
+        div.tab button.active {
+            color: #ffffff;
+            background-color: #e81f55;
+        }
 
 /* Style the tab content */
 .tabcontent {
