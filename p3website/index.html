@@ -3,556 +3,831 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-<style>
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,800,900');
-  body {
-    padding:32px;
-    width: 750px;
-    margin: auto;
-    text-align: left;
-    font-weight: 200;
-    font-family: Nunito Sans, 'Avenir', Arial, Helvetica, sans-serif;
-    color: #ffffff;
-    background-color: #1c1c1c;
-    
-  }
-  h1 {
-    font-family: Nunito Sans, 'Avenir', Helvetica, sans-serif;
-    font-size: 20px;
-  }
-  h2, h4 {
-    font-family: Nunito Sans, 'Avenir', Helvetica, sans-serif;
-    text-decoration: underline;
-  }
-  h3 {
-      font-family: Nunito Sans, 'Avenir', Helvetica, sans-serif;
-      font-size: 25px;
-      text-align: left;
-      
-  } 
-  </style> 
-<title>Pathtracer</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,800,900');
+        body {
+            padding: 32px;
+            width: 750px;
+            margin: auto;
+            text-align: left;
+            font-weight: 200;
+            font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
+            color: #000000;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            font-family: 'Avenir', Nunito Sans,  Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+        h2,
+        h4 {
+            font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
+            text-decoration: underline;
+        }
+
+        h3 {
+            font-family: 'Avenir', Nunito Sans,  Helvetica, sans-serif;
+            font-size: 25px;
+            text-align: left;
+        }
+        /* Style the tab */
+
+        div.tab {
+            overflow: hidden;
+        }
+        /* Style the buttons inside the tab */
+
+        div.tab button {
+            color: #000000;
+            background-color: #ffffff;
+            border: none;
+            padding: 5px;
+            transition: 0.1s;
+        }
+        /* Change background color of buttons on hover */
+
+        div.tab button:hover {
+            background-color: #ffffff;
+            color: #e81f55;
+        }
+        /* Create an active/current "tab button" class */
+
+        div.tab button.active {
+            color: #ffffff;
+            background-color: #e81f55;
+        }
+        /* Style the tab content */
+
+        .tabcontent {
+            border-left: none;
+        }
+
+    </style>
+    <script>
+        function openC(evt, cityName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the link that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        function openD(evt, cityName) {
+            // Declare all variables
+            var i, tabc, tabl;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabc = document.getElementsByClassName("tabc");
+            for (i = 0; i < tabc.length; i++) {
+                tabc[i].style.display = "none";
+            }
+
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tabl = document.getElementsByClassName("tabl");
+            for (i = 0; i < tabl.length; i++) {
+                tabl[i].className = tabl[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the link that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        function openP(evt, cityName) {
+            // Declare all variables
+            var i, spp, tablp;
+
+            // Get all elements with class="tabcontent" and hide them
+            spp = document.getElementsByClassName("spp");
+            for (i = 0; i < spp.length; i++) {
+                spp[i].style.display = "none";
+            }
+
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablp = document.getElementsByClassName("tablp");
+            for (i = 0; i < tablp.length; i++) {
+                tablp[i].className = tablp[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the link that opened the tab
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+    <title>Pathtracer</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
+
 <body>
-<br />
-                             <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td align="middle">
+    <br />
+    <div align="center">
+        <table style="width=100%">
+            <tr>
+                <td align="middle">
                     <img src="images/title_card.png" width="500px" />
-                </tr>
-            </table>
-        </div>
+            </tr>
+        </table>
+    </div>
     <h2 align="middle">Ricky Herrera | cs184-abx</h2>
 
     <div class="padded">
         <p>
-            This is my attempt at a path tracer. How <i>do</i> renders of 3D models simulate the illusion of light? One technique is to path trace them, which accomplishes much more realistic renders than a rasterizer. There is actual surface material, affected by direct and indirect lighting. Path tracing partitions the rendering equation into two parts: direct and indirect illumination. In direct - sample the light and calculate the light samples contribution to the shading point, testing visibility. In indirect illumination - sample BRDF to somewhere else, and we have new intersections; at these new intersections we repeat these recursive computations until we meet some termination. 
-            <p>I know what youre thinking, <i>"but Ricky, isnt this computationally expensive?</i> Why yes it is, but consider the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage of in order to optimize renders.  As tough as this project was, I realy enjoyed learning the material, so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced. 
-        </p>
-        FIRST HALF OF PROJECT<br>
-        p1) ray generation and intersection<br>
-        p2) bounding volume hierarchy<br>
-        p3) direct illumination<br> 
-        p4) indirect illumination <br>
-        p5) adaptive sampling
-        <p>
-        SECOND HALF OF PROJECT<br>
-        p1) mirror and glass material<br>
-        p2) microfacet material <br>
-        p3) environment light<br>
-        p4) depth of field <br>
-
-
-    <h2 align="middle">PART 1: Ray Generation and Intersection</h2>
-
-    <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space. To begin, consider the Spectrum class. Consisting of floats r, g, and b, the Spectrum class can roughly represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly" since it is not strictly an actual spectrum with all wavelengths.
-                                <div align="center">
-            <table style="width=100%">
-                                <tr>
-                    
-                        <img src="images/p1_1.png" width="450px" />
-                        <figcaption align="middle">woah how is this possible? keep reading and find out!</figcaption>
-                                
-                </tr>
-            </table>
-        </div>
-    <p>
-    PathTracer::raytrace_pixel(x,y) - this function returns a Spectrum corresponding to the integral of the irradiance over the pixel space coordinate (x,y), which is estimated by averaging over ns_aa samples (number of camera rays in one pixel along one axis). These samples are created with the camera's generate_ray fucntion. 
-
-         <p>Camera::generate_ray(x,y) - given a 2D (X,Y) coordinate, will generate a ray from camera space to world space. It is important to make sure the ray mapping is normalized since the camera has its own coordinate system. That is, in camera space the camera is positioned at the origin, looks along the -z axis, has the +y axis as image space "up". So consider hFov and vFov, the horizontal and vertical field of view angles. With these fov's, a sensor plane can be defined one unit along the camera's view direction; the bottom left and top right corners at  the coordinates (-tan(radians(hFov)*.5), -tan(radians(vFov)*.5),-1) = (0,0) and similarly topRight  = ( tan(radians(hFov)*.5),  tan(radians(vFov)*.5),-1) = (1,1). The original X,Y coordinate is properly interpolating on this new plane. It should then be transformed from camera to world space via a matrix transform. 
-
-        </p>Now that the creation and averaging of these camera rays are possible, lets have them interact with a virtual scene. In order to accomplish triangle intersection, the Moller Trumbore ray triangle intersection algorithm is sought. This calculates the intersection of a ray + triangle. 
-        
-                <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td align="middle">
-                    <img src="images/slide_060.jpg" width="400px" />
-                    <figcaption align="middle">Moller Trumbore in diagram form.</figcaption>
-                </tr>
-            </table>
-        </div>
-        <p>
-        M.T. takes advantage of the fact that triangles belong to a single plane. With barycentric coordinates, if a ray intersects with a triangle, it will do so at one or between two points of the triangle, and in turn it can find a point P on the triangle. </p>
-                        <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td>
-                        <img src="images/p2_1.png" width="350px" />
-                        <figcaption align="middle"></figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/p2_2.png" width="350px" />
-                        <figcaption align="middle"></figcaption>
-                    </td>
-                </tr>
-
-            </table>
-        </div>
-        Hooray, we have accurate light rays that can intersect with models. Not so physically based yet though are we? For the moment lets try to figure out optimization for ray generation. 
-      
-    <h2 align="middle">PART 2: Bounding Volume Hierarchy</h2>
-        <p>Using uniform grids in order to seperate primitive and to determine where a ray will intersect can be quite inefficeint. Fortunately BVH (bounding volume hierarchies) can prevent the "Teapot in a Stadium"" problem that arises from using uniform grids. These non-uniform spatial partitions are a much smarter way to store information about the location of these primitives. It is necessary to go through all of the primitives and determine if the current batch fit the max_leaf_size. Otherwise we would want to recurse, in order to properly split the primitives. So a threshold must be generated. From the bbox's extent, which every axis has the highest value will be the axis we choose. Then the axis value of the centroid box's serves as a threshold. Depending on how the axis values of the other primitives related to the threshold (less than or greater than), they will either be put on the left or right list. This is essentialy how the recursion works. 
+            This is my attempt at a path tracer. How <i>do</i> renders of 3D models simulate the illusion of light? One technique
+            is to path trace them, which accomplishes much more realistic renders than a rasterizer. There is actual surface
+            material, affected by direct and indirect lighting. Path tracing partitions the rendering equation into two parts:
+            direct and indirect illumination. In direct - sample the light and calculate the light samples contribution to
+            the shading point, testing visibility. In indirect illumination - sample BRDF to somewhere else, and we have
+            new intersections; at these new intersections we repeat these recursive computations until we meet some termination.
+            <p>I know what youre thinking, <i>"but Ricky, isnt this computationally expensive?</i> Why yes it is, but consider
+                the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage
+                of in order to optimize renders. As tough as this project was, I realy enjoyed learning the material, so
+                I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced.
             </p>
-            <p>With the newly constructed BVH tree, more efficient intersections are possible. First, it determines if a ray has intersected the bounding box of the current node. In the case that it doesnt, it follows that the ray will not intersect with any of the primitives of the BVH. Early termination is possible! Otherwise, each of its primitives needs to be checked in order to retrieve the closest intersection and return true if we have hit anything at all. If the node that was being checked is not a leaf, recurse through its left and right children and determine if there is a hit. </p>
-                                    <div align="center">
-            <table style="width=100%">
+            FIRST HALF OF PROJECT<br> p1) ray generation and intersection<br> p2) bounding volume hierarchy<br> p3) direct
+            illumination
+            <br> p4) indirect illumination <br> p5) adaptive sampling
+            <p>
+                SECOND HALF OF PROJECT<br> p1) mirror and glass material<br> p2) microfacet material <br> p3) environment
+                light
+                <br> p4) depth of field <br>
+
+
+                <h2 align="middle">PART 1: Ray Generation and Intersection</h2>
+
+                <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space.
+                    To begin, consider the Spectrum class. Consisting of floats r, g, and b, the Spectrum class can roughly
+                    represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly"
+                    since it is not strictly an actual spectrum with all wavelengths.
+                    <div align="center">
+                        <table style="width=100%">
+                            <tr>
+
+                                <img src="images/p1_1.png" width="450px" />
+                                <figcaption align="middle">woah how is this possible? keep reading and find out!</figcaption>
+
+                            </tr>
+                        </table>
+                    </div>
+                    <p>
+                        PathTracer::raytrace_pixel(x,y) - this function returns a Spectrum corresponding to the integral of the irradiance over the
+                        pixel space coordinate (x,y), which is estimated by averaging over ns_aa samples (number of camera
+                        rays in one pixel along one axis). These samples are created with the camera's generate_ray fucntion.
+
+                        <p>Camera::generate_ray(x,y) - given a 2D (X,Y) coordinate, will generate a ray from camera space to
+                            world space. It is important to make sure the ray mapping is normalized since the camera has
+                            its own coordinate system. That is, in camera space the camera is positioned at the origin, looks
+                            along the -z axis, has the +y axis as image space "up". So consider hFov and vFov, the horizontal
+                            and vertical field of view angles. With these fov's, a sensor plane can be defined one unit along
+                            the camera's view direction; the bottom left and top right corners at the coordinates (-tan(radians(hFov)*.5),
+                            -tan(radians(vFov)*.5),-1) = (0,0) and similarly topRight = ( tan(radians(hFov)*.5), tan(radians(vFov)*.5),-1)
+                            = (1,1). The original X,Y coordinate is properly interpolating on this new plane. It should then
+                            be transformed from camera to world space via a matrix transform.
+
+                        </p>Now that the creation and averaging of these camera rays are possible, lets have them interact
+                        with a virtual scene. In order to accomplish triangle intersection, the Moller Trumbore ray triangle
+                        intersection algorithm is sought. This calculates the intersection of a ray + triangle.
+
+                        <div align="center">
+                            <table style="width=100%">
+                                <tr>
+                                    <td align="middle">
+                                        <img src="images/slide_060.jpg" width="400px" />
+                                        <figcaption align="middle">Moller Trumbore in diagram form.</figcaption>
+                                </tr>
+                            </table>
+                        </div>
+                        <p>
+                            M.T. takes advantage of the fact that triangles belong to a single plane. With barycentric coordinates, if a ray intersects
+                            with a triangle, it will do so at one or between two points of the triangle, and in turn it can
+                            find a point P on the triangle. </p>
+                        <div align="center">
+                            <table style="width=100%">
+                                <tr>
+                                    <td>
+                                        <img src="images/p2_1.png" width="350px" />
+                                        <figcaption align="middle"></figcaption>
+                                    </td>
+                                    <td>
+                                        <img src="images/p2_2.png" width="350px" />
+                                        <figcaption align="middle"></figcaption>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        Hooray, we have accurate light rays that can intersect with models. Not so physically based yet though are we? For the moment
+                        lets try to figure out optimization for ray generation.
+
+                        <h2 align="middle">PART 2: Bounding Volume Hierarchy</h2>
+                        <p>Using uniform grids in order to seperate primitive and to determine where a ray will intersect can
+                            be quite inefficeint. Fortunately BVH (bounding volume hierarchies) can prevent the "Teapot in
+                            a Stadium"" problem that arises from using uniform grids. These non-uniform spatial partitions
+                            are a much smarter way to store information about the location of these primitives. It is necessary
+                            to go through all of the primitives and determine if the current batch fit the max_leaf_size.
+                            Otherwise we would want to recurse, in order to properly split the primitives. So a threshold
+                            must be generated. From the bbox's extent, which every axis has the highest value will be the
+                            axis we choose. Then the axis value of the centroid box's serves as a threshold. Depending on
+                            how the axis values of the other primitives related to the threshold (less than or greater than),
+                            they will either be put on the left or right list. This is essentialy how the recursion works.
+                        </p>
+                        <p>With the newly constructed BVH tree, more efficient intersections are possible. First, it determines
+                            if a ray has intersected the bounding box of the current node. In the case that it doesnt, it
+                            follows that the ray will not intersect with any of the primitives of the BVH. Early termination
+                            is possible! Otherwise, each of its primitives needs to be checked in order to retrieve the closest
+                            intersection and return true if we have hit anything at all. If the node that was being checked
+                            is not a leaf, recurse through its left and right children and determine if there is a hit. </p>
+                        <div align="center">
+                            <table style="width=100%">
 
                                 <tr>
-                    <td>
-                        <img src="images/p2_3.png" width="350px" />
-                        <figcaption align="middle"></figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/p2_4.png" width="350px" />
-                        <figcaption align="middle"></figcaption>
-                    </td>
-                </tr>
+                                    <td>
+                                        <img src="images/p2_3.png" width="350px" />
+                                        <figcaption align="middle"></figcaption>
+                                    </td>
+                                    <td>
+                                        <img src="images/p2_4.png" width="350px" />
+                                        <figcaption align="middle"></figcaption>
+                                    </td>
+                                </tr>
                                 </tr>
                                 <tr>
-                    <td>
-                        <img src="images/p2_6.png" width="350px" />
-                        <figcaption align="middle"></figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/pt2_7.png" width="350px" />
-                        <figcaption align="middle"></figcaption>
-                    </td>
-                </tr>
-            </table>
-        </div>
-Moving beyond just triangles and spheres, smarter calculations for rays are possible now! I think its time to move onto trying to make real surfaces!!!
+                                    <td>
+                                        <img src="images/p2_6.png" width="350px" />
+                                        <figcaption align="middle"></figcaption>
+                                    </td>
+                                    <td>
+                                        <img src="images/pt2_7.png" width="350px" />
+                                        <figcaption align="middle"></figcaption>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        Moving beyond just triangles and spheres, smarter calculations for rays are possible now! I think its time to move onto trying
+                        to make real surfaces!!!
 
-    <h2 align="middle">PART 3: Direct Illumination</h2>
-   The surface of a 3D model can have properties of physically based surfaces (such as chalkboard, reflections, mirrors, etc.). For example, a diffuse material is that which spreads lights equally in all directions (this is not common in the physical world, but a close approximation are chalk boards and matte paint). In addition to diffuse material, glossy specular and perfect specular are also common surface types. These materials can be modeled with BSDFs (bidirectional scattering distribution function). This (depending on what resource is read) serves to encomass BRDFs and BRTFs. The BRDF specifies how light interacts with the material. 
+                        <h2 align="middle">PART 3: Direct Illumination</h2>
+                        The surface of a 3D model can have properties of physically based surfaces (such as chalkboard, reflections, mirrors, etc.).
+                        For example, a diffuse material is that which spreads lights equally in all directions (this is not
+                        common in the physical world, but a close approximation are chalk boards and matte paint). In addition
+                        to diffuse material, glossy specular and perfect specular are also common surface types. These materials
+                        can be modeled with BSDFs (bidirectional scattering distribution function). This (depending on what
+                        resource is read) serves to encomass BRDFs and BRTFs. The BRDF specifies how light interacts with
+                        the material.
 
-        <p>The path tracer now has a physically based material to render, but that means nothing if direct illumination is not possible. estimate_direct_lighting emulates the effect of a direct light on a particular surface (diffuse in this case). This function calculates an estimate of the direct lighting on a point hit by a ray. The function sums over all of the light sources, taking samples from the surface of each light, computing the incoming radiance from those sampled directions. It then converts those to outgoing radiance using the BSDF at the surface. 
-            <p> 
-        If a light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call to sample_L finds the point of contact, returning the radiance, the wi direction, distToLight point of contact (hit_p), and pdf (probability density function) that was calculated with wi. Now for every light sample, the wi direction returned by the sample is in world space, but in order for it to be passed into the BSDF it needs to be in object space (i.e. w20*wi). Now that the coordinate is in object space, it needs to be ensured that it is not negative, which in that case it means the point lies behind the surface. A shadow is casted to determine if it intersect with BVH. If it does not intersect the irradiance of the light is calculated along with the BSDF and then divided by the PDF to reduce bias. 
-            </p>
+                        <p>The path tracer now has a physically based material to render, but that means nothing if direct illumination
+                            is not possible. estimate_direct_lighting emulates the effect of a direct light on a particular
+                            surface (diffuse in this case). This function calculates an estimate of the direct lighting on
+                            a point hit by a ray. The function sums over all of the light sources, taking samples from the
+                            surface of each light, computing the incoming radiance from those sampled directions. It then
+                            converts those to outgoing radiance using the BSDF at the surface.
+                            <p>
+                                If a light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call
+                                to sample_L finds the point of contact, returning the radiance, the wi direction, distToLight
+                                point of contact (hit_p), and pdf (probability density function) that was calculated with
+                                wi. Now for every light sample, the wi direction returned by the sample is in world space,
+                                but in order for it to be passed into the BSDF it needs to be in object space (i.e. w20*wi).
+                                Now that the coordinate is in object space, it needs to be ensured that it is not negative,
+                                which in that case it means the point lies behind the surface. A shadow is casted to determine
+                                if it intersect with BVH. If it does not intersect the irradiance of the light is calculated
+                                along with the BSDF and then divided by the PDF to reduce bias.
+                            </p>
 
+<br>
+                            <p> The following bunnies have only 1 sample per pixel, but varying light samples.
+                                <div align="center">
+                                    <div id="wow1" class="tabcontent" id="defaultOpen">
+                                        <img src="images/wow1.png" width="500px" />
+                                        <figcaption align="middle">1 light ray</figcaption>
+                                    </div>
 
-                                    <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td>
-                        <img src="images/p3_bench_832_45.png" width="350px" />
-                        <figcaption align="middle">bench</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/p3_blob_832_45.png" width="350px" />
-                        <figcaption align="middle">blob</figcaption>
-                    </td>
-                </tr>
-                <tr>
-                    
-                        <img src="images/p3_max_832_45.png" width="350px" />
-                        <figcaption align="middle">max</figcaption>
-             
-                </tr>
-            </table>
-        </div>
-        <p> The following bunnies have only 1 sample per pixel, but varying light samples.
-                                    <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td>
-                        <img src="images/wow1.png" width="350px" />
-                        <figcaption align="middle">1 light ray</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/wow4.png" width="350px" />
-                        <figcaption align="middle">4 light rays</figcaption>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="images/wow16.png" width="350px" />
-                        <figcaption align="middle">16 light rays</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/wow64.png" width="350px" />
-                        <figcaption align="middle">64 light rays</figcaption>
-                    </td>             
-                </tr>
-            </table>
-        </div>
-Consider a scene with 64 image samples and 1 light sample. Now consider the same scene with 1 image sample and 64 light samples.  The latter will be noisier, however only in some regions. Why is that? Only one image sample is not enough for geometry that that is smaller than a pixel (sub pixel features). Wont be as noisy since we sampled the light enough. A good compromise is a scene sampled with 8 image samples and 8 light samples. Its much master than the first setting proposed since the intersection calulation for image samples can be terminated once a target is hit, wheras light samples could benefit from more samples. 
+                                    <div id="wow4" class="tabcontent">
+                                        <img src="images/wow4.png" width="500px" />
+                                        <figcaption align="middle">4 light rays</figcaption>
+                                    </div>
+                                    <div id="wow16" class="tabcontent">
+                                        <img src="images/wow16.png" width="500px" />
+                                        <figcaption align="middle">16 light rays</figcaption>
+                                    </div>
+                                    <div id="wow64" class="tabcontent">
+                                        <img src="images/wow64.png" width="500px" />
+                                        <figcaption align="middle">64 light rays</figcaption>
+                                    </div>
+                                </div>
+                                <div class="tab" align="center">
 
-    <h2 align="middle">PART 4: Indirect Illumination</h2>
-        <p>The start of estimate_indirect_lighting is similar to that of ‘direct’. ‘Russian roulette’ is used to determine the BSDF on the surface, and to determine which samples are to be discarded. The probability is multiplied by 11 and then added 0.049 to make sure the rays weren't cut off too short / cut off prematurely. The probability should have a value between 0 and 1. For more randomness, a coin flip function takes in the ray probability and determines if it should cast a shadow. Now, the origin of the shadow ray is offset by EPS_D to make sure that the same region of light is not sampled more than it should. trace_ray is used to recursively trace this ray, forming an approximation for its incoming radiance. The includeLe parameter is set to isect.bsdf->is_delta() since emission is not included in the direct lighting calculation for delta BSDFs. This incoming radiance is converted into an outgoing radiance estimator; it is scaled by the BSDF and a cosine factor, then divided by the BSDF pdf and one minus the Russian roulette termination probability. It was a little upsetting trying to get the indirect lighting to show up when I forgot to set the depth of a ray to the max_ray_depth (that prevented the actual indirect light from showing up).
-            </p>
+                                    <button class="tablinks" onclick="openC(event, 'wow1')" id="defaultOpen">1 Light Ray</button>
+                                    <script>
+                                        // Get the element with id="defaultOpen" and click on it
+                                        document.getElementById("defaultOpen").click();
+                                    </script>
+                                    <button class="tablinks" onclick="openC(event, 'wow4')">4 Light Rays</button>
+                                    <button class="tablinks" onclick="openC(event, 'wow16')">16 Light Rays</button>
+                                    <button class="tablinks" onclick="openC(event, 'wow64')">64 Light Rays</button>
+                                </div>
+                                <br> Consider a scene with 64 image samples and 1 light sample. Now consider the same scene
+                                with 1 image sample and 64 light samples. The latter will be noisier, however only in some
+                                regions. Why is that? Only one image sample is not enough for geometry that that is smaller
+                                than a pixel (sub pixel features). Wont be as noisy since we sampled the light enough. A
+                                good compromise is a scene sampled with 8 image samples and 8 light samples. Its much master
+                                than the first setting proposed since the intersection calulation for image samples can be
+                                terminated once a target is hit, wheras light samples could benefit from more samples.
 
-        <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td>
-                        <img src="images/spheres4.png" width="350px" />
-                        <figcaption align="middle">max ray depth 0</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/spheres3.png" width="350px" />
-                        <figcaption align="middle">max ray depth 1</figcaption>
-                    </td>
-                </tr>
+                                <h2 align="middle">PART 4: Indirect Illumination</h2>
+                                <p>The start of estimate_indirect_lighting is similar to that of ‘direct’. ‘Russian roulette’
+                                    is used to determine the BSDF on the surface, and to determine which samples are to be
+                                    discarded. The probability is multiplied by 11 and then added 0.049 to make sure the
+                                    rays weren't cut off too short / cut off prematurely. The probability should have a value
+                                    between 0 and 1. For more randomness, a coin flip function takes in the ray probability
+                                    and determines if it should cast a shadow. Now, the origin of the shadow ray is offset
+                                    by EPS_D to make sure that the same region of light is not sampled more than it should.
+                                    trace_ray is used to recursively trace this ray, forming an approximation for its incoming
+                                    radiance. The includeLe parameter is set to isect.bsdf->is_delta() since emission is
+                                    not included in the direct lighting calculation for delta BSDFs. This incoming radiance
+                                    is converted into an outgoing radiance estimator; it is scaled by the BSDF and a cosine
+                                    factor, then divided by the BSDF pdf and one minus the Russian roulette termination probability.
+                                    It was a little upsetting trying to get the indirect lighting to show up when I forgot
+                                    to set the depth of a ray to the max_ray_depth (that prevented the actual indirect light
+                                    from showing up).
+                                </p>
 
-                <tr>
-                    <td>
-                        <img src="images/spheres2.png" width="350px" />
-                        <figcaption align="middle">max ray depth 2</figcaption>
-                    </td>
-                    <td>
-                        <img src="images/spheres1.png" width="350px" />
-                        <figcaption align="middle">max ray depth 3</figcaption>
-                    </td>             
-                </tr>
-                    
-                    <tr>
-                        <img src="images/spheres.png" width="350px" />
-                        <figcaption align="middle">max ray depth 100</figcaption>
-                    </tr>
-                     
-                    
-            </table>
-        </div>
-        <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td>
-                        <img src="images/part4del/p4spheres1.png" width="350px" />
-                        <figcaption align="middle">1 sample per pixel</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/part4del/p4spheres2.png" width="350px" />
-                        <figcaption align="middle">2 samples per pixel</figcaption>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="images/part4del/p4spheres4.png" width="350px" />
-                        <figcaption align="middle">4 samples per pixel</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/part4del/p4spheres8.png" width="350px" />
-                        <figcaption align="middle">8 samples per pixel</figcaption>
-                    </td>             
-                </tr>
-                                <tr>
-                    <td>
-                        <img src="images/part4del/p4spheres16.png" width="350px" />
-                        <figcaption align="middle">16 samples per pixel</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/part4del/p4spheres64.png" width="350px" />
-                        <figcaption align="middle">64 samples per pixel</figcaption>
-                    </td> 
-                            
-                </tr>
-                    <tr>
-                        <img src="images/part4del/1024spheres.png" width="350px" />
-                        <figcaption align="middle">1024 samples per pixel</figcaption>
-                    </tr> 
-            </table>
-        </div>
-                <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td>
-                        <img src="images/p4_u.png" width="350px" />
-                        <figcaption align="middle">only indirect light</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/p4_only_direct.png" width="350px" />
-                        <figcaption align="middle">only direct light</figcaption>
-                    </td>
-                </tr>                             
-                    
-            </table>
-        </div>
-    <h2 align="middle">PART 5: Adaptive Sampling</h2>
-        <p> An increase in the number of samples results in less noise (the wonders of higher frequency rates :] ). It follows that this improved rate will increase the render time. But of course there are solutions; adaptive sampling allows a reduction in noise, while still being more effecient than just an unoptimized increase in samples. The key is to focus on samples in select parts of the scene, those that end up being more difficult. This implementation determines if the illuminance of a pixel converges. Namely, the mean and the variance are calculated for calculation (light illuminance and light illuminance squared).
-            <p>
-                 Red and blue colors represent high and low sampling rates. Sampling rates are computed as the ratio between the actual number of samples and the maximum number of samples allowed.
-                 <p> If a pixel has reached a point where its average illuminance is bounded by some tolerance of its expected illuminance, then it does not need to trace more rays. One frustrating part, while rendering on my (weak) computer, the rate would only come out as a solid color. This was due to rendering at a low rate. This low rate prevented a higher concentration of sampled in the ~difficult areas of the scene. But luckily, using the strong lab computers and setting up a high sample render ensured the implementation was working. 
-            </p>
-                                                <div align="center">
-            <table style="width=100%">
-                <tr>
-                    <td>
-                        <img src="images/pt5_bunny.png" width="350px" />
-                        <figcaption align="middle">1028 samples per pixel</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/pt5_bunny_rate.png" width="350px" />
-                        <figcaption align="middle">corresponding rate</figcaption>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <img src="images/p5_ultra.png" width="350px" />
-                        <figcaption align="middle">2048 samples per pixel</figcaption>
-                    </td>
-                                        <td>
-                        <img src="images/p5_ultra_rate.png" width="350px" />
-                        <figcaption align="middle">corresponding rate</figcaption>
-                    </td>             
-                </tr>
-            </table>
-        </div>
+                                <div align="center">
+                                    <div id="depth0" class="tabc" id="defape">
+                                        <img src="images/spheres4.png" width="500px" />
+                                        <figcaption align="middle">max ray depth 0</figcaption>
+                                    </div>
+                                    <div id="depth1" class="tabc">
+                                        <img src="images/spheres3.png" width="500px" />
+                                        <figcaption align="middle">max ray depth 1</figcaption>
+                                    </div>
+                                    <div id="depth2" class="tabc">
+                                        <img src="images/spheres2.png" width="500px" />
+                                        <figcaption align="middle">max ray depth 2</figcaption>
+                                    </div>
+                                    <div id="depth3" class="tabc">
+                                        <img src="images/spheres1.png" width="500px" />
+                                        <figcaption align="middle">max ray depth 3</figcaption>
+                                    </div>
+                                    <div id="depth100" class="tabc">
+                                        <img src="images/spheres.png" width="500px" />
+                                        <figcaption align="middle">max ray depth 100</figcaption>
+                                    </div>
+                                </div>
+                                <div class="tab" align="center">
+                                    <button class="tabl" onclick="openD(event, 'depth0')" id="defape">depth 0</button>
+                                    <script>
+                                            // Get the element with id="defaultOpen" and click on it
+                                            document.getElementById("defape").click();
+                                    </script>
+                                    <button class="tabl" onclick="openD(event, 'depth1')">depth 1</button>
+                                    <button class="tabl" onclick="openD(event, 'depth2')">depth 2</button>
+                                    <button class="tabl" onclick="openD(event, 'depth3')">depth 3</button>
+                                    <button class="tabl" onclick="openD(event, 'depth100')">depth 100</button>
+                                </div>
+                                <br>
+                                <br>
+                                <div align="center">
+                                    <div id="1spp" class="spp" >
+                                                <img src="images/part4del/p4spheres1.png" width="500px" />
+                                                <figcaption align="middle">1 sample per pixel</figcaption>
+                                    </div>        
+                                    <div id="2spp" class="spp">
+                                                <img src="images/part4del/p4spheres2.png" width="500px" />
+                                                <figcaption align="middle">2 samples per pixel</figcaption>
+                                    </div>
+                                    <div id="4spp" class="spp">                
+                                                <img src="images/part4del/p4spheres4.png" width="500px" />
+                                                <figcaption align="middle">4 samples per pixel</figcaption>
+                                    </div>
+                                    <div id="8spp" class="spp">                
+                                                <img src="images/part4del/p4spheres8.png" width="500px" />
+                                                <figcaption align="middle">8 samples per pixel</figcaption>
+                                    </div>
+                                    <div id="16spp" class="spp">                  
+                                                <img src="images/part4del/p4spheres16.png" width="500px" />
+                                                <figcaption align="middle">16 samples per pixel</figcaption>
+                                    </div>     
+                                    <div id="64spp" class="spp">            
+                                                <img src="images/part4del/p4spheres64.png" width="500px" />
+                                                <figcaption align="middle">64 samples per pixel</figcaption>
+                                    </div>        
 
+                                    <div id="1024spp" class="spp">   
+                                                <img src="images/part4del/1024spheres.png" width="500px" />
+                                                <figcaption align="middle">1024 samples per pixel</figcaption>
+                                    </div>    
+                
+                                </div>
+                                <div class="tab" align="center">
+                                    <button class="tablp" onclick="openP(event, '1spp')" id="defspp">1 spp</button>
+                                    <script>
+                                            // Get the element with id="defaultOpen" and click on it
+                                            document.getElementById("defspp").click();
+                                    </script>
+                                    <button class="tablp" onclick="openP(event, '2spp')">2 spp</button>
+                                    <button class="tablp" onclick="openP(event, '4spp')">4 spp</button>
+                                    <button class="tablp" onclick="openP(event, '8spp')">8 spp</button>
+                                    <button class="tablp" onclick="openP(event, '16spp')">16 spp</button>
+                                    <button class="tablp" onclick="openP(event, '64spp')">64 spp</button>
+                                    <button class="tablp" onclick="openP(event, '1024spp')">1024 spp</button>
+                                </div>
+<br>
+                                <div align="center">
+                                    <table style="width=100%">
+                                        <tr>
+                                            <td>
+                                                <img src="images/p4_u.png" width="350px" />
+                                                <figcaption align="middle">only indirect light</figcaption>
+                                            </td>
+                                            <td>
+                                                <img src="images/p4_only_direct.png" width="350px" />
+                                                <figcaption align="middle">only direct light</figcaption>
+                                            </td>
+                                        </tr>
 
-
-<p>
-    <p>
-<h2 align="middle">Second Half of project - Overview</h2>
-<p>DISCLAIMER: the write up portion of this half of the project is still in the works.<p> This section concludes the pathtracer project, a basic but effectice ray tracer. First mirror and glass material surfaces were accomplished. I can't look at glass in real life the same way anymore. Then microfacet material, which work by statistically modeling light from a bigger collection of microfacets (PBRT). And then an attempt at hollywood magic was done by creating environment lights, which basically means taking exr images and having them in a sense project in the background of a scene, and serve as light sources that can interact with the surfaces on the model (probably the most challenging portion of this endeavor). And finally a ray tracer would not be complete without the ability to play with depth of field. This portion made me forget my final renders were derived from 3D models as opposed to an actual image of a real life dragon in a cubic room. Overall this was a really informative project, and what I got in the end was a new appreciation for light and computer graphics as a whole. I would not have finished this without referenceing Physically Based Rendering. </p>
-
-<h2 align="middle">Part 1: Mirror and Glass Materials</h2>
-Physically based rendering would not be complete without emulating the way light reflects and refracts on mirror and glass surfaces. In order to accomplish a mirror-like surface, it need be modeled with perfect specular reflection.For examplel MirrorBSDF::f() simply returns an empty Spectrum(), as it is safe to assume that a wi direction that was not created using sample_f() has no chance of being equal to the reflection of wo. In order to accomplish a glass-like surface, specular reflection and transmission are at its core. These are weighted by Fresnal terms (or Schlick's approximation) for accurate angular-dependent variation (Pharr&Humphries). We alter the maximum ray depth with values: 0, 1, 2, 3, 4, 5, 100. Once the ray depth is 3 or greater, some interesting artifacts begin to show up. The following sequence have 64 samples per pixel and 4 samples per light each, as well. 
-  <div align="center">
-    <table style="width=100%">
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p1/0_sphere.png" width="445px" />
-        <figcaption align="middle">max ray depth = 0</figcaption>
-        </td>
-        <td>
-        <img src="p32website/images/p1/1_sphere.png" width="445px" />
-        <figcaption align="middle">max ray depth = 1</figcaption>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-        <img src="p32website/images/p1/2_sphere.png" width="445px" />
-        <figcaption align="middle">max ray depth = 2</figcaption></td>
-        <td>
-        <img src="p32website/images/p1/3_sphere.png" width="445px" />
-        <figcaption align="middle">max ray depth = 3 (why the white spot on floor?)</figcaption>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-        <img src="p32website/images/p1/4_sphere.png" width="445px" />
-        <figcaption align="middle">max ray depth = 4</figcaption></td>
-        <td>
-        <img src="p32website/images/p1/5_sphere.png" width="445px" />
-        <figcaption align="middle">max ray depth = 5</figcaption>
-        </td>
-      </tr>
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p1/100_sphere.png" width="445px" />
-        <figcaption align="middle">max ray depth = 100</figcaption>
-        </td>
-      </tr>
-
-    </table>
-  </div>
-  There are scenes that are difficult for path tracers. The light goes through sphere and gets concentrated and forms a disc shape highlight on the floor. These are referred to as caustics. Once the scene contains caustics, it become tough on the renderer. Why is that? <p> Well suppose you shoot more rays into the scene that actually hit the caustics. Also consider that the floor has a diffuse BRDF material. You want to sample it, according to the diffuse brdf. TO get caustics, it should come from light, so it makes sense to want to intersect the ray on that caustic to the sphere, however BRDF has uniform sampling, which ultimatly means there is low chance of hitting out point of interest (the light source). Consider the scenes with max ray depth greater than or equal to 3; these artifacts are apparent in here :( . 
+                                    </table>
+                                </div>
+                                <h2 align="middle">PART 5: Adaptive Sampling</h2>
+                                <p> An increase in the number of samples results in less noise (the wonders of higher frequency
+                                    rates :] ). It follows that this improved rate will increase the render time. But of
+                                    course there are solutions; adaptive sampling allows a reduction in noise, while still
+                                    being more effecient than just an unoptimized increase in samples. The key is to focus
+                                    on samples in select parts of the scene, those that end up being more difficult. This
+                                    implementation determines if the illuminance of a pixel converges. Namely, the mean and
+                                    the variance are calculated for calculation (light illuminance and light illuminance
+                                    squared).
+                                    <p>
+                                        Red and blue colors represent high and low sampling rates. Sampling rates are computed as the ratio between the actual number
+                                        of samples and the maximum number of samples allowed.
+                                        <p> If a pixel has reached a point where its average illuminance is bounded by some tolerance
+                                            of its expected illuminance, then it does not need to trace more rays. One frustrating
+                                            part, while rendering on my (weak) computer, the rate would only come out as
+                                            a solid color. This was due to rendering at a low rate. This low rate prevented
+                                            a higher concentration of sampled in the ~difficult areas of the scene. But luckily,
+                                            using the strong lab computers and setting up a high sample render ensured the
+                                            implementation was working.
+                                        </p>
+                                        <div align="center">
+                                            <table style="width=100%">
+                                                <tr>
+                                                    <td>
+                                                        <img src="images/pt5_bunny.png" width="350px" />
+                                                        <figcaption align="middle">1028 samples per pixel</figcaption>
+                                                    </td>
+                                                    <td>
+                                                        <img src="images/pt5_bunny_rate.png" width="350px" />
+                                                        <figcaption align="middle">corresponding rate</figcaption>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="images/p5_ultra.png" width="350px" />
+                                                        <figcaption align="middle">2048 samples per pixel</figcaption>
+                                                    </td>
+                                                    <td>
+                                                        <img src="images/p5_ultra_rate.png" width="350px" />
+                                                        <figcaption align="middle">corresponding rate</figcaption>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
 
 
 
-<h2 align="middle">Part 2: Microfacet Material</h2>
-This portion really made the enire physically based rendering idea hit home. At first I was struggling to understand what the spec was trying to tell me, but after testing out this website (https://refractiveindex.info/?shelf=main&book=Si&page=Aspnes), I realized that the physical properties of conductor material can essentially be mapped in computer graphics. This was a lot to take in, as the implementation was pretty challenging. It is safe to assume that rough surfaces can be modeled as a collection of microfacets. According to Pharr & Humphries, surfaces made of microfacets are "essentially  heightfield, where the distribution is described statistically". It was trying to understand it statistically that was a bit challenging. Here we alter the alpha value (0.005, 0.05, 0.25, 0.5), which is basically the roughness term. 
-  <div align="center">
-    <table style="width=100%">
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p2/p2_a005r1.png" width="445px" />
-        <figcaption align="middle">alpha = 0.005</figcaption></td>
-        <td>
-        <img src="p32website/images/p2/p2_a05r.png" width="445px" />
-        <figcaption align="middle">alpha = 0.05</figcaption>
-        </td>
-      </tr>
+                                        <p>
+                                            <p>
+                                                <h2 align="middle">Second Half of project - Overview</h2>
+                                                <p>DISCLAIMER: the write up portion of this half of the project is still in
+                                                    the works.
+                                                    <p> This section concludes the pathtracer project, a basic but effectice
+                                                        ray tracer. First mirror and glass material surfaces were accomplished.
+                                                        I can't look at glass in real life the same way anymore. Then microfacet
+                                                        material, which work by statistically modeling light from a bigger
+                                                        collection of microfacets (PBRT). And then an attempt at hollywood
+                                                        magic was done by creating environment lights, which basically means
+                                                        taking exr images and having them in a sense project in the background
+                                                        of a scene, and serve as light sources that can interact with the
+                                                        surfaces on the model (probably the most challenging portion of this
+                                                        endeavor). And finally a ray tracer would not be complete without
+                                                        the ability to play with depth of field. This portion made me forget
+                                                        my final renders were derived from 3D models as opposed to an actual
+                                                        image of a real life dragon in a cubic room. Overall this was a really
+                                                        informative project, and what I got in the end was a new appreciation
+                                                        for light and computer graphics as a whole. I would not have finished
+                                                        this without referenceing Physically Based Rendering. </p>
 
-      <tr>
-        <td>
-        <img src="p32website/images/p2/p2_a25r0.png" width="445px" />
-        <figcaption align="middle">alpha = 0.25</figcaption>
-        </td>
-        <td>
-        <img src="p32website/images/p2/p2_a5r1.png" width="445px" />
-        <figcaption align="middle">alpha = 0.5</figcaption>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <p>
-Here, it is evident that a hemisphere sampling approach has much more noise than that of a importance sampling approach. For both renders, there are 64 samples per pixel, 1 sample per light, and max ray depth of 5. Again, the only varying factor is the sampling method.The physical properties of copper can be taken advantage of to create less noisy images, and overall replicate copper fairly realistically in CG. Importance sampling is evidently the stronger approach.
-  <div align="center">
-    <table style="width=100%">
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p2/p2_bunny_default6.png" width="445px" />
-        <figcaption align="middle">rendered using cosine hemisphere sampling </figcaption>
-        </td>
-        <td>
-        <img src="p32website/images/p2/p2_bunny_importance.png" width="445px" />
-        <figcaption align="middle">rendered using importance sampling </figcaption>
-        </td>
-      </tr>
-      </table>
-  </div>
+                                                    <h2 align="middle">Part 1: Mirror and Glass Materials</h2>
+                                                    Physically based rendering would not be complete without emulating the way light reflects and refracts on mirror and glass
+                                                    surfaces. In order to accomplish a mirror-like surface, it need be modeled
+                                                    with perfect specular reflection.For examplel MirrorBSDF::f() simply
+                                                    returns an empty Spectrum(), as it is safe to assume that a wi direction
+                                                    that was not created using sample_f() has no chance of being equal to
+                                                    the reflection of wo. In order to accomplish a glass-like surface, specular
+                                                    reflection and transmission are at its core. These are weighted by Fresnal
+                                                    terms (or Schlick's approximation) for accurate angular-dependent variation
+                                                    (Pharr&Humphries). We alter the maximum ray depth with values: 0, 1,
+                                                    2, 3, 4, 5, 100. Once the ray depth is 3 or greater, some interesting
+                                                    artifacts begin to show up. The following sequence have 64 samples per
+                                                    pixel and 4 samples per light each, as well.
+                                                    <div align="center">
+                                                        <table style="width=100%">
+                                                            <tr>
+                                                                <td align="middle">
+                                                                    <img src="p32website/images/p1/0_sphere.png" width="445px" />
+                                                                    <figcaption align="middle">max ray depth = 0</figcaption>
+                                                                </td>
+                                                                <td>
+                                                                    <img src="p32website/images/p1/1_sphere.png" width="445px" />
+                                                                    <figcaption align="middle">max ray depth = 1</figcaption>
+                                                                </td>
+                                                            </tr>
 
-  <div align="center">
-    <table style="width=100%">
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p2/neweta.png" width="445px" />
-        <figcaption align="middle"></figcaption>
-        </td>
-      </tr>
-      </table>
-  </div>
-This was the portion I found the most interesting, because the time spent debugging made the concepts a little stronger. For a while my renders came out quite splotchy and had too many white spots all over. I realized (after a while) that perhaps I was diving by 0 while calculating the indirect light. I feel I spent a little more time than I would have wanted on this section.
+                                                            <tr>
+                                                                <td>
+                                                                    <img src="p32website/images/p1/2_sphere.png" width="445px" />
+                                                                    <figcaption align="middle">max ray depth = 2</figcaption>
+                                                                </td>
+                                                                <td>
+                                                                    <img src="p32website/images/p1/3_sphere.png" width="445px" />
+                                                                    <figcaption align="middle">max ray depth = 3 (why the white spot on floor?)</figcaption>
+                                                                </td>
+                                                            </tr>
 
-<h2 align="middle">Part 3: Environment Light</h2>
-Suppose there is a need to create a scene of a forest, or cafe. As opposed to creating an entire scene with actual models in the scene, suppose we have a map that can mimic the illusion of being in that scene. That is, if we have a main mesh we want to focus on and want to place it in another low cost enviroment, we can opt for environment maps. Like adding a matte painting in post production of a film, adding an environment map can be quite effective in create a bigger world. Not only is the image map mapped out over the hemisphere of the scene, it can also create light that will bounce off meshes w/ physically based surfaces quite convincingly. 
-  <div align="center">
-    <table style="width=100%">
-      <tr>
-        <td>
-          <img src="p32website/images/p3/probability_debug.png" width="650px" />
-          <figcaption align="middle">probability debug image</figcaption>
-        </td>
-      </tr>
-    </table>
-  </div>
-<p>
-  Here are two renders of bunny_unlit.dae and the environment map. One was rendered with uniform sampling. The other one was rendered with importance sampling. Both images have 4 samples per pixel and 64 samples per light in each. The sampling method did not appear to make a visible difference. They are both the same in terms of level/amount of noise.
-    <div align="center">
-    <table style="width=100%">
-      <tr>
-        <td>
-          <img src="p32website/images/p3/p3_uniform_bun.png" width="445px" />
-          <figcaption align="middle">uniform sampling</figcaption>
-        </td>
-                <td>
-          <img src="p32website/images/p3/p3_import_bun.png" width="445px" />
-          <figcaption align="middle">importance sampling</figcaption>
-        </td>
-      </tr>
-    </table>
-  </div>
-<p>
-    Similarly as the previous section, here are two renders of bunny_microfacet_cu_unlit.dae and the environment map. One was rendered with uniform sampling, one with importance sampling. Both images have 4 samples per pixel and 64 samples per light in each. The noise on both surfaces look fairly similar. 
-    <div align="center">
-    <table style="width=100%">
-      <tr>
-        <td>
-          <img src="p32website/images/p3/p3_microbunny_uniform.png" width="445px" />
-          <figcaption align="middle">uniform sampling</figcaption>
-        </td>
-                <td>
-          <img src="p32website/images/p3/p3_microbunny_import.png" width="445px" />
-          <figcaption align="middle">importance sampling</figcaption>
-        </td>
-      </tr>
-    </table>
-  </div>
+                                                            <tr>
+                                                                <td>
+                                                                    <img src="p32website/images/p1/4_sphere.png" width="445px" />
+                                                                    <figcaption align="middle">max ray depth = 4</figcaption>
+                                                                </td>
+                                                                <td>
+                                                                    <img src="p32website/images/p1/5_sphere.png" width="445px" />
+                                                                    <figcaption align="middle">max ray depth = 5</figcaption>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="middle">
+                                                                    <img src="p32website/images/p1/100_sphere.png" width="445px" />
+                                                                    <figcaption align="middle">max ray depth = 100</figcaption>
+                                                                </td>
+                                                            </tr>
+
+                                                        </table>
+                                                    </div>
+                                                    There are scenes that are difficult for path tracers. The light goes through sphere and gets concentrated and forms a disc
+                                                    shape highlight on the floor. These are referred to as caustics. Once
+                                                    the scene contains caustics, it become tough on the renderer. Why is
+                                                    that?
+                                                    <p> Well suppose you shoot more rays into the scene that actually hit the
+                                                        caustics. Also consider that the floor has a diffuse BRDF material.
+                                                        You want to sample it, according to the diffuse brdf. TO get caustics,
+                                                        it should come from light, so it makes sense to want to intersect
+                                                        the ray on that caustic to the sphere, however BRDF has uniform sampling,
+                                                        which ultimatly means there is low chance of hitting out point of
+                                                        interest (the light source). Consider the scenes with max ray depth
+                                                        greater than or equal to 3; these artifacts are apparent in here
+                                                        :( .
 
 
-<h2 align="middle">Part 4: Depth of Field</h2>
-Depth of field is a characteristic that sells the illusion of renders having some physically based setting, or at least, they help sell the idea of these scenes being captured via a camera lens. This was a simple part to implement, however I was having a few miscalculations; when I would reorient the camera in the GUI and then render, I would recieve a completely obscure angle. This was just a matter of not normalizing and conertin world and camera points though. All of the following images were rendered with 64 samples per pixel, 4 lights per sample, max depth ray of 5. 
-Focus Stack - here, all of the images have an apperative size of 0.03, but have varying focus depth. I'd say the one that I find most pleasing is the one with focus depth 1.5.
-  <div align="center">
-    <table style="width=100%">
-        <tr>
-        <td>
-        <img src="p32website/images/p4/p4_1_05_f.png" width="445px" />
-        <figcaption align="middle">focus depth of 0.5</figcaption>
-        </td>
-      </tr>
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p4/p4_1_10_f.png" width="445px" />
-        <figcaption align="middle">focus depth of 1.0</figcaption>
-        </td>
-        <td>
-        <img src="p32website/images/p4/p4_1_15_r.png" width="445px" />
-        <figcaption align="middle">focus depth of 1.5</figcaption>
-        </td>
-      </tr>
 
-      <tr>
-        <td>
-        <img src="p32website/images/p4/p4_1_20_r.png" width="445px" />
-        <figcaption align="middle">focus depth of 2.0</figcaption>
-        </td>
-        <td>
-        <img src="p32website/images/p4/p4_1_25_r.png" width="445px" />
-        <figcaption align="middle">focus depth of 2.5</figcaption>
-        </td>
-      </tr>
+                                                        <h2 align="middle">Part 2: Microfacet Material</h2>
+                                                        This portion really made the enire physically based rendering idea hit home. At first I was struggling to understand what
+                                                        the spec was trying to tell me, but after testing out this website
+                                                        (https://refractiveindex.info/?shelf=main&book=Si&page=Aspnes), I
+                                                        realized that the physical properties of conductor material can essentially
+                                                        be mapped in computer graphics. This was a lot to take in, as the
+                                                        implementation was pretty challenging. It is safe to assume that
+                                                        rough surfaces can be modeled as a collection of microfacets. According
+                                                        to Pharr & Humphries, surfaces made of microfacets are "essentially
+                                                        heightfield, where the distribution is described statistically".
+                                                        It was trying to understand it statistically that was a bit challenging.
+                                                        Here we alter the alpha value (0.005, 0.05, 0.25, 0.5), which is
+                                                        basically the roughness term.
+                                                        <div align="center">
+                                                            <table style="width=100%">
+                                                                <tr>
+                                                                    <td align="middle">
+                                                                        <img src="p32website/images/p2/p2_a005r1.png" width="445px" />
+                                                                        <figcaption align="middle">alpha = 0.005</figcaption>
+                                                                    </td>
+                                                                    <td>
+                                                                        <img src="p32website/images/p2/p2_a05r.png" width="445px" />
+                                                                        <figcaption align="middle">alpha = 0.05</figcaption>
+                                                                    </td>
+                                                                </tr>
 
-    </table>
-  </div>
-Different Apperature sizes - the implementation of the thin lens creates the desired result/effect.
-    <div align="center">
-    <table style="width=100%">
+                                                                <tr>
+                                                                    <td>
+                                                                        <img src="p32website/images/p2/p2_a25r0.png" width="445px" />
+                                                                        <figcaption align="middle">alpha = 0.25</figcaption>
+                                                                    </td>
+                                                                    <td>
+                                                                        <img src="p32website/images/p2/p2_a5r1.png" width="445px" />
+                                                                        <figcaption align="middle">alpha = 0.5</figcaption>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                        <p>
+                                                            Here, it is evident that a hemisphere sampling approach has much more noise than that of a importance sampling approach.
+                                                            For both renders, there are 64 samples per pixel, 1 sample per
+                                                            light, and max ray depth of 5. Again, the only varying factor
+                                                            is the sampling method.The physical properties of copper can
+                                                            be taken advantage of to create less noisy images, and overall
+                                                            replicate copper fairly realistically in CG. Importance sampling
+                                                            is evidently the stronger approach.
+                                                            <div align="center">
+                                                                <table style="width=100%">
+                                                                    <tr>
+                                                                        <td align="middle">
+                                                                            <img src="p32website/images/p2/p2_bunny_default6.png" width="445px" />
+                                                                            <figcaption align="middle">rendered using cosine hemisphere sampling </figcaption>
+                                                                        </td>
+                                                                        <td>
+                                                                            <img src="p32website/images/p2/p2_bunny_importance.png" width="445px" />
+                                                                            <figcaption align="middle">rendered using importance sampling </figcaption>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
 
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p4/p4_1_15_r.png" width="445px" />
-        <figcaption align="middle">aperature size 0.03</figcaption>
-        </td>
-        <td>
-        <img src="p32website/images/p4/p4_2_13_f.png" width="445px" />
-        <figcaption align="middle">aperature size 0.13</figcaption>
-        </td>
-      </tr>
-      <tr>
-        <td align="middle">
-        <img src="p32website/images/p4/p4_2_23_f.png" width="445px" />
-        <figcaption align="middle">aperature size 0.23</figcaption>
-        </td>
-        <td>
-        <img src="p32website/images/p4/p4_2_33_f.png" width="445px" />
-        <figcaption align="middle">aperature size 0.33</figcaption>
-        </td>
-      </tr>
+                                                            <div align="center">
+                                                                <table style="width=100%">
+                                                                    <tr>
+                                                                        <td align="middle">
+                                                                            <img src="p32website/images/p2/neweta.png" width="445px" />
+                                                                            <figcaption align="middle"></figcaption>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            This was the portion I found the most interesting, because the time spent debugging made the concepts a little stronger.
+                                                            For a while my renders came out quite splotchy and had too many
+                                                            white spots all over. I realized (after a while) that perhaps
+                                                            I was diving by 0 while calculating the indirect light. I feel
+                                                            I spent a little more time than I would have wanted on this section.
 
-      <tr>
-        <td>
-        <img src="p32website/images/p4/p4_2_43_f.png" width="445px" />
-        <figcaption align="middle">aperature size 0.43</figcaption>
-        </td>
+                                                            <h2 align="middle">Part 3: Environment Light</h2>
+                                                            Suppose there is a need to create a scene of a forest, or cafe. As opposed to creating an entire scene with actual models
+                                                            in the scene, suppose we have a map that can mimic the illusion
+                                                            of being in that scene. That is, if we have a main mesh we want
+                                                            to focus on and want to place it in another low cost enviroment,
+                                                            we can opt for environment maps. Like adding a matte painting
+                                                            in post production of a film, adding an environment map can be
+                                                            quite effective in create a bigger world. Not only is the image
+                                                            map mapped out over the hemisphere of the scene, it can also
+                                                            create light that will bounce off meshes w/ physically based
+                                                            surfaces quite convincingly.
+                                                            <div align="center">
+                                                                <table style="width=100%">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <img src="p32website/images/p3/probability_debug.png" width="650px" />
+                                                                            <figcaption align="middle">probability debug image</figcaption>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <p>
+                                                                Here are two renders of bunny_unlit.dae and the environment map. One was rendered with uniform sampling. The other one was
+                                                                rendered with importance sampling. Both images have 4 samples
+                                                                per pixel and 64 samples per light in each. The sampling
+                                                                method did not appear to make a visible difference. They
+                                                                are both the same in terms of level/amount of noise.
+                                                                <div align="center">
+                                                                    <table style="width=100%">
+                                                                        <tr>
+                                                                            <td>
+                                                                                <img src="p32website/images/p3/p3_uniform_bun.png" width="445px" />
+                                                                                <figcaption align="middle">uniform sampling</figcaption>
+                                                                            </td>
+                                                                            <td>
+                                                                                <img src="p32website/images/p3/p3_import_bun.png" width="445px" />
+                                                                                <figcaption align="middle">importance sampling</figcaption>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                <p>
+                                                                    Similarly as the previous section, here are two renders of bunny_microfacet_cu_unlit.dae and the environment map. One was
+                                                                    rendered with uniform sampling, one with importance sampling.
+                                                                    Both images have 4 samples per pixel and 64 samples per
+                                                                    light in each. The noise on both surfaces look fairly
+                                                                    similar.
+                                                                    <div align="center">
+                                                                        <table style="width=100%">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p3/p3_microbunny_uniform.png" width="445px" />
+                                                                                    <figcaption align="middle">uniform sampling</figcaption>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p3/p3_microbunny_import.png" width="445px" />
+                                                                                    <figcaption align="middle">importance sampling</figcaption>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
 
-      </tr>
-    </table>
-  </div>
+
+                                                                    <h2 align="middle">Part 4: Depth of Field</h2>
+                                                                    Depth of field is a characteristic that sells the illusion of renders having some physically based setting, or at least,
+                                                                    they help sell the idea of these scenes being captured
+                                                                    via a camera lens. This was a simple part to implement,
+                                                                    however I was having a few miscalculations; when I would
+                                                                    reorient the camera in the GUI and then render, I would
+                                                                    recieve a completely obscure angle. This was just a matter
+                                                                    of not normalizing and conertin world and camera points
+                                                                    though. All of the following images were rendered with
+                                                                    64 samples per pixel, 4 lights per sample, max depth
+                                                                    ray of 5. Focus Stack - here, all of the images have
+                                                                    an apperative size of 0.03, but have varying focus depth.
+                                                                    I'd say the one that I find most pleasing is the one
+                                                                    with focus depth 1.5.
+                                                                    <div align="center">
+                                                                        <table style="width=100%">
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p4/p4_1_05_f.png" width="445px" />
+                                                                                    <figcaption align="middle">focus depth of 0.5</figcaption>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="middle">
+                                                                                    <img src="p32website/images/p4/p4_1_10_f.png" width="445px" />
+                                                                                    <figcaption align="middle">focus depth of 1.0</figcaption>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p4/p4_1_15_r.png" width="445px" />
+                                                                                    <figcaption align="middle">focus depth of 1.5</figcaption>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p4/p4_1_20_r.png" width="445px" />
+                                                                                    <figcaption align="middle">focus depth of 2.0</figcaption>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p4/p4_1_25_r.png" width="445px" />
+                                                                                    <figcaption align="middle">focus depth of 2.5</figcaption>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                        </table>
+                                                                    </div>
+                                                                    Different Apperature sizes - the implementation of the thin lens creates the desired result/effect.
+                                                                    <div align="center">
+                                                                        <table style="width=100%">
+
+                                                                            <tr>
+                                                                                <td align="middle">
+                                                                                    <img src="p32website/images/p4/p4_1_15_r.png" width="445px" />
+                                                                                    <figcaption align="middle">aperature size 0.03</figcaption>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p4/p4_2_13_f.png" width="445px" />
+                                                                                    <figcaption align="middle">aperature size 0.13</figcaption>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td align="middle">
+                                                                                    <img src="p32website/images/p4/p4_2_23_f.png" width="445px" />
+                                                                                    <figcaption align="middle">aperature size 0.23</figcaption>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p4/p4_2_33_f.png" width="445px" />
+                                                                                    <figcaption align="middle">aperature size 0.33</figcaption>
+                                                                                </td>
+                                                                            </tr>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                    <img src="p32website/images/p4/p4_2_43_f.png" width="445px" />
+                                                                                    <figcaption align="middle">aperature size 0.43</figcaption>
+                                                                                </td>
+
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
 
 
-</div>
+    </div>
 </body>
+
 </html>
-
-
-
-
