@@ -122,9 +122,28 @@
       <div id="notes" class="tabcontent">
         <mainHead>
           NOTES</mainHead><br /> Here are some notes I have done for UC Berkeley's CS184 Computer Graphics and Imaging course.
-        (I am currently typing up the notes.)
-        <br><br> Geometry for Graphics<br> Ray Tracing and Optimizations<br> Monte Carlo and Global Illumination
-        <br> Camera and Lenses<br>
+        (I am currently typing up some of the notes.)
+        <br>
+      <div class="tabn" >
+        <button class="notetab" onclick="openT(event, 'rastr')">Rasterization</button><br>
+            <notesec>- Rasterization<br>
+            <notesec>- Transforms & Projection<br>
+            <notesec>- Texture Mapping<br>
+            <notesec>- Visibility, Shading, Overall Pipeline<br>
+
+        <br>
+        <button class="notetab" onclick="openT(event, 'geom')">Geometry for Graphics</button>
+
+        <br>
+        <button class="notetab" onclick="openT(event, 'light')">Lighting and Materials</button><br>
+            <notesec>- Introduction to ray tracing<br>
+            <notesec>- Radiometry and Photometry<br>
+            <notesec>- Monte Carlo Integration <br>
+            <notesec>- Global Illumination<br>
+            <notesec>- Material Modeling <br>
+        <br>
+        <button class="notetab" onclick="openT(event, 'cam')">Camera and Lenses</button>
+      </div>
       </div>
 
       <div id="films" class="tabcontent">

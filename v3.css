@@ -110,7 +110,40 @@ div.tab {
             background-color: #e81f55;
         }
 
+/* Style the tab */
+div.tabn {
+    overflow: hidden;
+}
+
+    /* Style the buttons inside the tab */
+    div.tabn button {
+    font-family: 'boncho', Nunito, Helvetica Neue, sans-serif;
+        font-size: 20px;
+        font-weight: 900;
+        color: #000000;
+        background-color: #ffffff;
+        border: none;
+        padding: 5px;
+        transition: 0.1s;
+text-decoration: underline;    }
+
+        /* Change background color of buttons on hover */
+        div.tabn button:hover {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        /* Create an active/current "tab button" class */
+        div.tabn button.active {
+            color: #ffffff;
+            background-color: #e81f55;
+        }        
+
 /* Style the tab content */
 .tabcontent {
     border-left: none;
+}
+
+notesec {
+    padding-left: 10%;
 }
