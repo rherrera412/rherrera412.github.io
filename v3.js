@@ -17,8 +17,16 @@ function openC(evt, cityName) {
     }
 
     // Show the current tab, and add an "active" class to the link that opened the tab
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
+    if (cityName === "about"){
+        document.getElementById(cityName).style.display = "block";
+        //evt.currentTarget.className += " active";
+        document.getElementById('aboot').style.display = "block";
+        evt.currentTarget.className += " active";
+    } else {
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    
+    
 }
 
-document.getElementById("defaultOpen").click();
