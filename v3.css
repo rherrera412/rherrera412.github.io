@@ -16,19 +16,20 @@
 }
 
 
-
+html, html a {
+    -webkit-font-smoothing: antialiased !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
+}
 background {
-    color: #ffffff;
-    background-color: #121212;
+    color: #fefeff;
+    background-color: #161616;
 }
 
 body {
-    font-family: 'boncho', Nunito, Helvetica Neue, sans-serif;
-    color: #000000;
-    background-color: #ffffff;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    font-family: Avenir Next, Avenir,'boncho', Nunito, Helvetica Neue, sans-serif;
+    color: #161616;
+    background-color: #fefeff;
+    -webkit-font-smoothing: antialiased !important;
     text-rendering: optimizeLegibility;
     text-rendering: geometricPrecision;
     font-smooth: always;
@@ -59,10 +60,11 @@ sideside {
 
 
 mainHead {
-    font-family: 'bincho', Nunito Sans, Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased !important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
     font-size: 34px;
     font-weight: 700;
-    color: #000000; /*e8b21f*/
+    color: #161616; /*e8b21f*/
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -91,6 +93,8 @@ div.tab {
 
     /* Style the buttons inside the tab */
     div.tab button {
+        font-family: Avenir Next, Avenir, 'boncho', Nunito, Helvetica Neue, sans-serif;
+
         color: #000000;
         background-color: #ffffff;
         border: none;
@@ -117,20 +121,21 @@ div.tabn {
 
     /* Style the buttons inside the tab */
     div.tabn button {
-    font-family: 'boncho', Nunito, Helvetica Neue, sans-serif;
+    font-family: Avenir Next, Avenir, 'boncho', Nunito, Helvetica Neue, sans-serif;
         font-size: 20px;
-        font-weight: 900;
+        font-weight: 700;
         color: #000000;
-        background-color: #ffffff;
+        background-color: #ffdb2e;
         border: none;
         padding: 5px;
         transition: 0.1s;
-text-decoration: underline;    }
+text-decoration: underline;   
+ }
 
         /* Change background color of buttons on hover */
         div.tabn button:hover {
             background-color: #000000;
-            color: #ffffff;
+            color: #92C5A9;
         }
 
         /* Create an active/current "tab button" class */

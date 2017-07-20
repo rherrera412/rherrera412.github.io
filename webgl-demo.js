@@ -33,7 +33,7 @@ function start() {
   // Only continue if WebGL is available and working
 
   if (gl) {
-    gl.clearColor(0.0, 0.0, 0.0, 0.0);  // Clear to black, fully opaque
+    gl.clearColor(0.086, 0.086, 0.086, 1.0);  // Clear to black, fully opaque
     gl.clearDepth(1.0);                 // Clear everything
     gl.enable(gl.DEPTH_TEST);           // Enable depth testing
     gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
@@ -143,12 +143,12 @@ function initBuffers() {
   // for each face.
 
   var colors = [
-  [0.87,  1.0,  1.0,  1.0],    // Front face: white
-  [1.0,  0.0,  0.0,  1.0],    // Back face: red
-  [0.996,  0.408,  0.475,  1.0],    // Top face: boop
-  [0.996,  0.498,  0.408,  1.0],    // Bottom face: boop
-  [1.0,  0.814,  0.0,  1.0],    // Right face: yellow
-  [1.0,  0.0,  1.0,  1.0]     // Left face: purple
+  [0.91,  0.122,  0.333, 1.0],    // Front face: white
+  [0.91,  0.122,  0.333, 1.0],    // Back face: red
+  [0.573, 0.773,  0.663, 1.0],    // Top face: boop
+  [0.573, 0.773,  0.663, 1.0],    // Bottom face: boop
+  [1.0,  0.854,  0.18,  1.0],    // Right face: yellow
+  [1.0,  0.854,  0.18,  1.0]     // Left face: purple
 ];
 
   // Convert the array of colors into a table for all the vertices.
@@ -219,12 +219,12 @@ function drawScene() {
   // Now move the drawing position a bit to where we want to start
   // drawing the cube.
 
-  mvTranslate([-0.0, 0.0, -6.0]);
+  mvTranslate([-0.0, 0.0, -10.0]);
 
   // Save the current matrix, then rotate before we draw.
 
   mvPushMatrix();
-  mvRotate(cubeRotation, [1, 0, 1]);
+  mvRotate(cubeRotation, [1, 1, 1]);
   mvTranslate([cubeXOffset, cubeYOffset, cubeZOffset]);
 
   // Draw the cube by binding the array buffer to the cube's vertices
@@ -254,7 +254,7 @@ function drawScene() {
   if (lastCubeUpdateTime) {
     var delta = currentTime - lastCubeUpdateTime;
 
-    cubeRotation += (25 * delta) / 1000.0;
+    cubeRotation += (30 * delta) / 1000.0;
     cubeXOffset += xIncValue * ((1 * delta) / 1000.0);
     cubeYOffset += yIncValue * ((8 * delta) / 1000.0);
     cubeZOffset += zIncValue * ((2 * delta) / 1000.0);
