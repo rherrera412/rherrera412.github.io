@@ -6,7 +6,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,800,900');
         body {
-            padding: 32px;
+            padding: 16px;
             width: 775px;
             margin: auto;
             text-align: left;
@@ -19,12 +19,17 @@
         h1 {
             font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
             font-weight: 400;
-            font-size: 14px;
+            font-size: 15px;
         }
 
-        h2,
-        h4 {
+        h4{
+            font-size: 25px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 20px;
             font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
+            text-align: left;
         }
 
         h3 {
@@ -43,7 +48,7 @@
             font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
             font-size: 14px;
             color: #000000;
-            background-color: #ffffff;
+            background-color: #f0f0f0;
             border: none;
             padding: 4px;
             transition: 0.1s;
@@ -174,7 +179,7 @@
         }
     </script>
 
-    <title>Pathtracer</title>
+    <title>pathtracer | ricky herrera</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
 </head>
@@ -190,7 +195,7 @@
         </table>
     </div>
     -->
-    <h2 align="middle">pathtracer - physically based renderer</h2>
+    <h4 align="middle">Pathtracer - physically based renderer</h4>
 
 
     <div class="padded">
@@ -211,19 +216,23 @@
             </div>
             <div id="p1_0" class="p_section" >
                 <h2 align="middle">Overview</h2>
+                                                <center><img src="images/p5_ultra.png"></center><br>
 
-                This is my attempt at a path tracer. How <i>do</i> renders of 3D models simulate the illusion of light? One
-                technique is to path trace them, which accomplishes much more realistic renders than a rasterizer. There
-                is actual surface material, affected by direct and indirect lighting. Path tracing partitions the rendering
-                equation into two parts: direct and indirect illumination. In direct - sample the light and calculate the
-                light samples contribution to the shading point, testing visibility. In indirect illumination - sample BRDF
-                to somewhere else, and we have new intersections; at these new intersections we repeat these recursive computations
-                until we meet some termination.
-                <p>I know what youre thinking, <i>"but Ricky, isnt this computationally expensive?</i> Why yes it is, but consider
-                    the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage
-                    of in order to optimize renders. As tough as this project was, I realy enjoyed learning the material,
+                How <i>do</i> 3D scenes simulate the illusion of light? One technique is pathtracing! In the virtual 3D space, there
+                are models with surface material properties, affected by direct and indirect lighting. 
+                Pathtracing partitions the rendering
+                equation into two parts: direct and indirect illumination. 
+                                                <center><img src="renderequation.jpg" width="450px" /></center>
+
+                <br>
+                In english, the outgoing radiance is equal to emitted radiance plus the integral over the hemisphere of the incoming radiance multiplied by the BRDF and a cosine factor.<br><br>
+                This recursively describes the propogration of light in a scene. For each bounce of light, the interaction is computed based on the BRDF. That is, for direct illumination (only one bounce of light) - sample the light and calculate that
+                light sample's contribution to the shading at some point. Indirect illumination (more than one bounce of light) goes beyond that; sample the BRDF of the first bounce
+                to another location in the scene (thus leading to a new intersections). It is at these new intersections we repeat these recursive computations until we meet some termination.<br>
+                <br>I know what you're thinking, <i>"but Ricky, isnt this computationally expensive?"</i> Why yes it is, but there are plenty of optimizations. Consider the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage of in order to optimize render calculations. Different Monte Carlo sampling techniques also lead to faster render times. <br>
+                    <br>As tough as this project was, I thouroughly enjoyed learning the material,
                     so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced.
-                </p>
+                
                     <h1 align="middle">Ricky Herrera - cs184-abx</h2>
 
             </div>
@@ -240,7 +249,7 @@
                         <table style="width=100%">
                             <tr>
 
-                                <img src="images/p1_1.png" width="450px" />
+                                <img src="images/p1_1.png" />
                                 <figcaption align="middle">woah how is this possible? keep reading and find out!</figcaption>
 
                             </tr>
