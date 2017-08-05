@@ -229,7 +229,15 @@
                 This recursively describes the propogration of light in a scene. For each bounce of light, the interaction is computed based on the BRDF. That is, for direct illumination (only one bounce of light) - sample the light and calculate that
                 light sample's contribution to the shading at some point. Indirect illumination (more than one bounce of light) goes beyond that; sample the BRDF of the first bounce
                 to another location in the scene (thus leading to a new intersections). It is at these new intersections we repeat these recursive computations until we meet some termination.<br>
+
                 <br>I know what you're thinking, <i>"but Ricky, isnt this computationally expensive?"</i> Why yes it is, but there are plenty of optimizations. Consider the bounding volume hierarchies structure that contain bounding boxes. these structures are taken advantage of in order to optimize render calculations. Different Monte Carlo sampling techniques also lead to faster render times. <br>
+<br>
+                <b>From a high level, this is what the code does:</b><br>
+                1) A 3D collada file is parsed.<br>
+                2) The Pathtracer GUI is created, providing OpenGL scene information.<br>
+                3) Once the GUI takes input (number of samples, focal distance, ..), the scene is partitioned with BVHs, preparing for the rendering process.<br>
+                4) The scene is divided into tiles. They are then put into a queue. <br>
+                5) A thread processes a tile from the queue. For every pixel in a tile, the pathtracing starts the <i> actual</i> rendering. <br>
                     <br>As tough as this project was, I thouroughly enjoyed learning the material,
                     so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced.
                 
@@ -241,26 +249,27 @@
             <div id="p1_1" class="p_section">
                 <h2 align="middle">Part 1: Ray Generation and Intersection</h2>
 
-                <p>The effect of light is emulated through the use of light rays that will act on 3D models in our virtual space.
-                    To begin, consider the Spectrum class. Consisting of floats r, g, and b, the Spectrum class can roughly
-                    represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly"
-                    since it is not strictly an actual spectrum with all wavelengths.
+                    We want to represent rays of light, and their interactions with a given scene. 
+                    To begin, we want to construct a way for these rays to interact in a scene, but not necessarily compute physically based shading. <br><br>
                     <div align="center">
                         <table style="width=100%">
                             <tr>
 
-                                <img src="images/p1_1.png" />
+                                <img src="images/p1_1.png" width="450px" >
                                 <figcaption align="middle">woah how is this possible? keep reading and find out!</figcaption>
 
                             </tr>
                         </table>
                     </div>
-                    <p>
+
+                    Consider the Spectrum class; consisting of floats r, g, and b, the Spectrum class can roughly
+                    represent the radiance & irradiance values by the intensity of each visible spectrum. I say "roughly"
+                    since it is not strictly an actual spectrum with all wavelengths.
                         PathTracer::raytrace_pixel(x,y) - this function returns a Spectrum corresponding to the integral of the irradiance over the
                         pixel space coordinate (x,y), which is estimated by averaging over ns_aa samples (number of camera
                         rays in one pixel along one axis). These samples are created with the camera's generate_ray fucntion.
 
-                        <p>Camera::generate_ray(x,y) - given a 2D (X,Y) coordinate, will generate a ray from camera space to
+                        Camera::generate_ray(x,y) - given a 2D (X,Y) coordinate, will generate a ray from camera space to
                             world space. It is important to make sure the ray mapping is normalized since the camera has
                             its own coordinate system. That is, in camera space the camera is positioned at the origin, looks
                             along the -z axis, has the +y axis as image space "up". So consider hFov and vFov, the horizontal
@@ -270,7 +279,7 @@
                             = (1,1). The original X,Y coordinate is properly interpolating on this new plane. It should then
                             be transformed from camera to world space via a matrix transform.
 
-                        </p>Now that the creation and averaging of these camera rays are possible, lets have them interact
+                        Now that the creation and averaging of these camera rays are possible, lets have them interact
                         with a virtual scene. In order to accomplish triangle intersection, the Moller Trumbore ray triangle
                         intersection algorithm is sought. This calculates the intersection of a ray + triangle.
 
@@ -278,7 +287,7 @@
                             <table style="width=100%">
                                 <tr>
                                     <td align="middle">
-                                        <img src="images/slide_060.jpg" width="400px" />
+                                        <img src="images/slide_060.jpg" width="450px" />
                                         <figcaption align="middle">Moller Trumbore in diagram form.</figcaption>
                                 </tr>
                             </table>
@@ -302,8 +311,7 @@
 
                             </table>
                         </div>
-                        Hooray, we have accurate light rays that can intersect with models. Not so physically based yet though are we? For the moment
-                        lets try to figure out optimization for ray generation.
+                        Hooray, we have accurate light rays that can intersect with models. Not so physically based yet though are we? For the moment. (lets try to figure out optimization for ray generation)
             </div>
             <div id="p1_2" class="p_section">
                 <h2 align="middle">Part 2: Bounding Volume Hierarchy</h2>
