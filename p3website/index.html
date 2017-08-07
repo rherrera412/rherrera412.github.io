@@ -380,7 +380,7 @@
                     using the BSDF at the surface.
                     <br>
                     <br>
-                        If a light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call
+                        If the light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call
                         to sample_L finds the point of contact, returning the radiance, the wi direction, distToLight point
                         of contact (hit_p), and pdf (probability density function) that was calculated with wi. Now for every
                         light sample, the wi direction returned by the sample is in world space, but in order for it to be
