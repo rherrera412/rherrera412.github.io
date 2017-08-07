@@ -5,36 +5,36 @@
 <head>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,500,700,800,900');
+        @import url('https://fonts.googleapis.com/css?family=Nunito:400,500,700,800,900');
         body {
             padding: 16px;
             width: 775px;
             margin: auto;
             text-align: left;
-            font-weight: 200;
             font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
             color: #000000;
             background-color: #ffffff;
         }
 
         h1 {
-            font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
+            font-family: 'Avenir', Nunito , Helvetica, sans-serif;
             font-weight: 400;
             font-size: 15px;
         }
 
         h4{
-            font-size: 25px;
+            font-size: 24px;
             text-align: center;
         }
         h2 {
-            font-size: 20px;
-            font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
+            font-size: 32px;
+            font-family: 'Avenir', Nunito , Helvetica, sans-serif;
             text-align: left;
         }
 
         h3 {
-            font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
-            font-size: 25px;
+            font-family: 'Avenir', Nunito , Helvetica, sans-serif;
+            font-size: 24px;
             text-align: left;
         }
         /* Style the tab */
@@ -45,7 +45,7 @@
         /* Style the buttons inside the tab */
 
         div.tab button {
-            font-family: 'Avenir', Nunito Sans, Helvetica, sans-serif;
+            font-family: 'Avenir', Nunito , Helvetica, sans-serif;
             font-size: 14px;
             color: #000000;
             background-color: #f0f0f0;
@@ -199,10 +199,10 @@
 
 
     <div class="padded">
-        
+
             <div class="tab" align="center">
                 <button class="s_tab" onclick="openS(event, 'p1_0')" id="defaultsection">overview</button>
-                                        
+
                 <button class="s_tab" onclick="openS(event, 'p1_1')">ray generation and intersection</button>
                 <button class="s_tab" onclick="openS(event, 'p1_2')">bounding volume hierarchy</button>
                 <button class="s_tab" onclick="openS(event, 'p1_3')">direct illumination</button>
@@ -219,9 +219,9 @@
                                                 <center><img src="images/p5_ultra.png"></center><br>
 
                 How <i>do</i> 3D scenes simulate the illusion of light? One technique is pathtracing! In the virtual 3D space, there
-                are models with surface material properties, affected by direct and indirect lighting. 
+                are models with surface material properties, affected by direct and indirect lighting.
                 Pathtracing partitions the rendering
-                equation into two parts: direct and indirect illumination. 
+                equation into two parts: direct and indirect illumination.
                                                 <center><img src="renderequation.jpg" width="450px" /></center>
 
                 <br>
@@ -240,7 +240,7 @@
                 5) A thread processes a tile from the queue. For every pixel in a tile, the pathtracing starts the <i> actual</i> rendering. <br>
                     <br>As tough as this project was, I thouroughly enjoyed learning the material,
                     so I purchased a copy of the book Physically Based Rendering (Pharr and Humphreys), which I also referenced.
-                
+
                     <h1 align="middle">Ricky Herrera - cs184-abx</h2>
 
             </div>
@@ -249,7 +249,7 @@
             <div id="p1_1" class="p_section">
                 <h2 align="middle">Part 1: Ray Generation and Intersection</h2>
 
-                    We want to represent rays of light, and their interactions with a given scene. 
+                    We want to represent rays of light, and their interactions with a given scene.
                     To begin, we want to construct a way for these rays to interact in a scene, but not necessarily compute physically based shading. <br><br>
                     <div align="center">
                         <table style="width=100%">
@@ -313,6 +313,7 @@
                         </div>
                         Hooray, we have accurate light rays that can intersect with models. Not so physically based yet though are we? For the moment. (lets try to figure out optimization for ray generation)
             </div>
+
             <div id="p1_2" class="p_section">
                 <h2 align="middle">Part 2: Bounding Volume Hierarchy</h2>
                 <p>Using uniform grids in order to seperate primitive and to determine where a ray will intersect can be quite
@@ -361,22 +362,24 @@
                 Moving beyond just triangles and spheres, smarter calculations for rays are possible now! I think its time to move onto trying
                 to make real surfaces!!!
             </div>
+
             <div id="p1_3" class="p_section">
                 <h2 align="middle">Part 3: Direct Illumination</h2>
-                The surface of a 3D model can have properties of physically based surfaces (such as chalkboard, reflections, mirrors, etc.).
-                For example, a diffuse material is that which spreads lights equally in all directions (this is not common
-                in the physical world, but a close approximation are chalk boards and matte paint). In addition to diffuse
-                material, glossy specular and perfect specular are also common surface types. These materials can be modeled
-                with BSDFs (bidirectional scattering distribution function). This (depending on what resource is read) serves
-                to encomass BRDFs and BRTFs. The BRDF specifies how light interacts with the material.
 
-                <p>The path tracer now has a physically based material to render, but that means nothing if direct illumination
+                The surface of a 3D model can have properties of physical surfaces.
+                For example, a <b>diffuse </b>material is one that spreads lights equally in all directions (this is not common
+                in the physical world, but a close approximation are chalk boards and matte paint).
+                In addition to diffuse material, <b>glossy specular</b> and <b>perfect specular</b> are also common surface types. These materials are accomplished with
+                BSDFs (bidirectional scattering distribution function), an umbrella term for BRDFs and BRTFs. These are mathematical descriptions of light sccattering properties of surfaces (Veach).
+                <br>
+                <br>The path tracer now has a physically based material to render, but that means nothing if direct illumination
                     is not possible. estimate_direct_lighting emulates the effect of a direct light on a particular surface
                     (diffuse in this case). This function calculates an estimate of the direct lighting on a point hit by
                     a ray. The function sums over all of the light sources, taking samples from the surface of each light,
                     computing the incoming radiance from those sampled directions. It then converts those to outgoing radiance
                     using the BSDF at the surface.
-                    <p>
+                    <br>
+                    <br>
                         If a light is a delta light, only one sample would need to be taken, otherwise there would be ns_area_light samples. A call
                         to sample_L finds the point of contact, returning the radiance, the wi direction, distToLight point
                         of contact (hit_p), and pdf (probability density function) that was calculated with wi. Now for every
@@ -386,10 +389,10 @@
                         lies behind the surface. A shadow is casted to determine if it intersect with BVH. If it does not
                         intersect the irradiance of the light is calculated along with the BSDF and then divided by the PDF
                         to reduce bias.
-                    </p>
+                    <br>
 
                     <br>
-                    <p> The following bunnies have only 1 sample per pixel, but varying light samples.
+                    <p> The following bunnies have only 1 sample per pixel, but a varying amount of light samples.
                         <div align="center">
                             <div id="wow1" class="tabcontent" id="defaultOpen">
                                 <img src="images/wow1.png" width="500px" />
@@ -428,6 +431,8 @@
                         since the intersection calulation for image samples can be terminated once a target is hit, wheras
                         light samples could benefit from more samples.
             </div>
+
+
             <div id="p1_4" class="p_section">
                 <h2 align="middle">Part 4: Indirect Illumination</h2>
                 <p>The start of estimate_indirect_lighting is similar to that of ‘direct’. ‘Russian roulette’ is used to determine
