@@ -22,7 +22,13 @@ function openC(evt, cityName) {
         //evt.currentTarget.className += " active";
         document.getElementById('aboot').style.display = "block";
         evt.currentTarget.className += " active";
-    } else {
+    } else if (cityName === "projects") {
+        document.getElementById(cityName).style.display = "block";
+        //evt.currentTarget.className += " active";
+        document.getElementById('projz').style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    else {
         document.getElementById(cityName).style.display = "block";
         evt.currentTarget.className += " active";
     }
