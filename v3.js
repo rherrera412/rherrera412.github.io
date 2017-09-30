@@ -27,6 +27,11 @@ function openC(evt, cityName) {
         //evt.currentTarget.className += " active";
         document.getElementById('projz').style.display = "block";
         evt.currentTarget.className += " active";
+    } else if (cityName === "films") {
+        document.getElementById(cityName).style.display = "block";
+        //evt.currentTarget.className += " active";
+        document.getElementById('filmz').style.display = "block";
+        evt.currentTarget.className += " active";
     }
  else if (cityName === "films") {
     document.getElementById(cityName).style.display = "block";
