@@ -4,27 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>ricky herrera</title>
-  <!-- https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial/Animating_objects_with_WebGL -->
-
-  <link rel="stylesheet" href="webgl.css" type="text/css">
-  <script src="sylvester.js" type="text/javascript"></script>
-  <script src="glUtils.js" type="text/javascript"></script>
-  <script src="webgl-demo.js" type="text/javascript"></script>
-
-  <!-- Fragment shader program -->
-
-  <script id="shader-fs" type="x-shader/x-fragment">
-    varying lowp vec4 vColor; void main(void) { gl_FragColor = vColor; }
-  </script>
-
-  <!-- Vertex shader program -->
-
-  <script id="shader-vs" type="x-shader/x-vertex">
-    attribute vec3 aVertexPosition; attribute vec4 aVertexColor; uniform mat4 uMVMatrix; uniform mat4 uPMatrix; varying lowp
-    vec4 vColor; void main(void) { gl_Position = uPMatrix * uMVMatrix * vec4(aVertexPosition, 1.0); vColor = aVertexColor;
-    }
-  </script>
-
+  <link rel="stylesheet" href="../webgl.css" type="text/css">
 </head>
 
 <link href="v3.css" rel="stylesheet">
@@ -36,11 +16,10 @@
   <div id="mainBody">
     <div id="col1" style="float:left; margin:0; width:240px; padding-top:10%;">
       <mainHead>
-
         Ricky Herrera
       </mainHead>
 
-      <div style="background-color: #ffffff; margin: 0 ;width: 250px;height: 1px">
+      <div style="background-color: #000000; margin: 0 ;width: 240px;height: 1px">
       </div>
 
       <script type="text/javascript" src="v3.js">
@@ -48,16 +27,17 @@
       </script>
 
 
-      <div class="tab" >
-        <button class="tablinks" onclick="openC(event, 'about')" id="defaultOpen">about</button>
-        <script>
-          document.getElementById("defaultOpen").click();
-        </script>
-        <button class="tablinks" onclick="openC(event, 'blog')">blog</button>
-        <button class="tablinks" onclick="openC(event, 'projects')">projects</button>
-        <button class="tablinks" onclick="openC(event, 'films')">films</button>
-        <button class="tablinks" onclick="openC(event, 'notes')">notes</button>
+      <div class="tab">
+              <button class="tablinks" onclick="openC(event, 'about')" id="defaultOpen">about</button>
+              <script>
+                document.getElementById("defaultOpen").click();
+              </script>
+              <button class="tablinks" onclick="openC(event, 'blog')">blog</button>
+              <button class="tablinks" onclick="openC(event, 'projects')">projects</button>
+              <button class="tablinks" onclick="openC(event, 'films')">films</button>
+              <button class="tablinks" onclick="openC(event, 'notes')">notes</button>
       </div>
+
       <div style="background-color: #e81f55; margin: 0 ;width: 239px;height: 1px;">
       </div>
 
@@ -94,16 +74,15 @@
     <div id="col2" style="float:right; width:550px; ;padding-right: 2%;">
 
       <div id="about" class="tabcontent" style="padding-top:15%">
-                <canvas id="glcanvas" width="540" height="304">
+          <canvas id="glcanvas" width="500" height="300"></canvas><br>
                   Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
-                </canvas>
       </div>
 
       <div id="blog" class="tabcontent">
         <mainHead>BLOG</mainHead>
 
         <p>blog is not available at the moment, however here are some tweets.</p>
-        <a class="twitter-timeline" data-lang="en" data-width="540" data-height="600" data-theme="dark" data-link-color="#E81f55"
+        <a class="twitter-timeline" data-lang="en" data-width="540" data-height="600" data-theme="light" data-link-color="#E81f55"
           href="https://twitter.com/nutritiousbig">Tweets by nutritiousbig</a>
         <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
       </div>
@@ -117,14 +96,14 @@
         
           <img src="icon_meshedit.png" style="width:100px;padding-right:2%;" align="left"><br />
           <a href="p2website/index.html">MeshEdit</a> - C++ implemented 3D model mesh application; load and edit basic COLLADA
-          mesh files (used by many major modeling packages and real time graphics engines).<br/><br><br >
+          mesh files (used by many major modeling packages and real time graphics engines).<br/><br><br>
           
             <img src="icon_pathtracer.png" style="width:100px;padding-right:2%;" align="left"><br />
             <a href="p3website/index.html">PathTracer</a> - C++ implemented, based on Physically Based Rendering (Pharr &
             Humphries) <br/><br><br>
 
             <img src="eminorweb/images/patologo.png" style="width:100px;padding-right:2%;" align="left"><br />
-            <a href="eminorweb/index.html">E-Minor Engine </a> - C++ implemented, OpenGL simulator, loads models, textures. <br/><br>
+            <a href="eminorweb/index.html">E-Minor Engine </a> - OpenGL simulator, supports textures, model loading, gameplay, and lighting. <br/><br>
 
               
               
@@ -230,16 +209,16 @@ Radiance is the fundamental field quantity that describes the distribution of li
 <h2>3.2.1 – Irradiance and Radiance<h2>
 
 <h1>3.3 - Monte Carlo Integration </h1><br>
-Although the cursor will never fall off the left end, it will often wander off the right end of the string. In this case we think that the cursor scans a U, which of course may be overwritten immediately. This is how the string becomes longer-a necessary feature, if we wish our machines to perform general computation. The string never becomes shorter.
+The following is text from another textbook, simply for fluff, and design process. Although the cursor will never fall off the left end, it will often wander off the right end of the string. In this case we think that the cursor scans a U, which of course may be overwritten immediately. This is how the string becomes longer-a necessary feature, if we wish our machines to perform general computation. The string never becomes shorter.
 Since 8 is a completely specified function, and the cursor never falls off the left end, there is only one reason why the machine cannot continue: One of the three halting states h, "yes", and "no" has been reached. If this happens, we say that the machine has halted. Furthermore, if state "yes" has been reached, we say the machine accepts its input; if "no" has been reached, then it rejects its input. If a machine halts on input x, we can define the output of the machine M on x, denoted M(x). If M accepts or rejects x, then M(x) = "yes" or "no", respectively. Otherwise, if h was reached, then the output is the string of M at the time of halting. Since the computation has gone on for finitely many steps, the string consists of at>, followed by a finite stringy, whose last symbol is not aU, possibly followed by a string-of Us (y could be empty). We consider stringy to be the output of the computation, and write M(x) = y. Naturally, it is possible that M will never halt on input x. If this is the case we write M(x) =/.
 <br>
 <h1>3.4 - Global Illumination</h1><br>
-It is amazing how little we need to have everything! Viewed as a programming language, the Turing machine has a single data structure, and rather primitive one at that: A string of symbols. The available operations allow the program to move a cursor left and right on the string, to write on the current position, and to branch depending on the value of the current symbol. All in all, it is an extremely weak and primitive language. And yet, we shall argue in this chap- ter, it is capable of expressing any algorithm, of simulating any programming language.
+Fluff - - It is amazing how little we need to have everything! Viewed as a programming language, the Turing machine has a single data structure, and rather primitive one at that: A string of symbols. The available operations allow the program to move a cursor left and right on the string, to write on the current position, and to branch depending on the value of the current symbol. All in all, it is an extremely weak and primitive language. And yet, we shall argue in this chap- ter, it is capable of expressing any algorithm, of simulating any programming language.
 <br>
 From this initial configuration the machine takes a step according to 8, changing its state, printing a symbol, and moving the cursor; then it takes another step, and another. Note that, by our requirement on 8(p, t>), the string will always start with at>, and thus the cursor will never "fall off" the left end of the string.
 <br>
 <h1>3.5 - Material Modeling</h1><br>
-It is amazing how little we need to have everything! Viewed as a programming language, the Turing machine has a single data structure, and rather primitive one at that: A string of symbols. The available operations allow the program to move a cursor left and right on the string, to write on the current position, and to branch depending on the value of the current symbol. All in all, it is an extremely weak and primitive language. And yet, we shall argue in this chap- ter, it is capable of expressing any algorithm, of simulating any programming language.
+Fluff - - It is amazing how little we need to have everything! Viewed as a programming language, the Turing machine has a single data structure, and rather primitive one at that: A string of symbols. The available operations allow the program to move a cursor left and right on the string, to write on the current position, and to branch depending on the value of the current symbol. All in all, it is an extremely weak and primitive language. And yet, we shall argue in this chap- ter, it is capable of expressing any algorithm, of simulating any programming language.
 
 
 
@@ -268,7 +247,7 @@ It is amazing how little we need to have everything! Viewed as a programming lan
           LA film festival, and is being considered for other film festivals!<br >
           
           <h2><i>The Loop</i> (2017) <br /></h2>
-          <iframe width="540" height="304" src="https://www.youtube.com/embed/gXxwrEiDg48g" frameborder="0" allowfullscreen></iframe><br> 
+          <iframe width="540" height="304" src="https://www.youtube.com/embed/gXxwrEiDg48" frameborder="0" allowfullscreen></iframe><br> 
           This short was made for the Campus Movie Festival @ UC Berkeley. I worked on the music, some color grading, and story ideas. (I wrote the music in 30 minutes, while waiting to get medication).<br>
 
           <br>
@@ -287,6 +266,7 @@ It is amazing how little we need to have everything! Viewed as a programming lan
 
 </body>
 
-
+<script src="gl-matrix.js"></script>
+<script src="webgl-demo.js"></script>
 
 </html>
