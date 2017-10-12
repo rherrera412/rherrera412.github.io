@@ -99,10 +99,10 @@ function initBuffers(gl) {
 
   const positions = [
     // Front face
-    -1.0, -1.0,  1.0,
-     1.0, -1.0,  1.0,
-     1.0,  1.0,  1.0,
-    -1.0,  1.0,  1.0,
+    -.10, -.10,  .10,
+     .10, -.10,  .10,
+     .10,  .10,  .10,
+    -.10,  .10,  .10,
 
     // Back face
     -1.0, -1.0, -1.0,
@@ -133,6 +133,7 @@ function initBuffers(gl) {
     -1.0, -1.0,  1.0,
     -1.0,  1.0,  1.0,
     -1.0,  1.0, -1.0,
+
   ];
 
   // Now pass the list of positions into WebGL to build the
@@ -145,12 +146,12 @@ function initBuffers(gl) {
   // for each face.
 
   const faceColors = [
-    [1.0,  1.0,  1.0,  1.0],    // Front face: white
-    [1.0,  0.0,  0.0,  1.0],    // Back face: red
-    [0.0,  1.0,  0.0,  1.0],    // Top face: green
-    [0.0,  0.0,  1.0,  1.0],    // Bottom face: blue
-    [1.0,  1.0,  0.0,  1.0],    // Right face: yellow
-    [1.0,  0.0,  1.0,  1.0],    // Left face: purple
+    [.988, .937, .902,  1.0],    // Front face: white
+    [.91, .122, .333,  1.0],    // Back face: red
+    [.416, .549, .498, 1.0],    // Top face: green
+    [0.233,  0.233,  0.233,  1.0],    // Bottom face: blue
+    [.392, .525, .608,  1.0],    // Right face: yellow
+    [1.0,  0.659,  0.0,  1.0],    // Left face: purple
   ];
 
   // Convert the array of colors into a table for all the vertices.
@@ -203,7 +204,7 @@ function initBuffers(gl) {
 // Draw the scene.
 //
 function drawScene(gl, programInfo, buffers, deltaTime) {
-  gl.clearColor(0.0, 0.0, 0.0, 1.0);  // Clear to black, fully opaque
+  gl.clearColor(.937, .867, .812, 1.0);  // Clear to black, fully opaque
   gl.clearDepth(1.0);                 // Clear everything
   gl.enable(gl.DEPTH_TEST);           // Enable depth testing
   gl.depthFunc(gl.LEQUAL);            // Near things obscure far things
@@ -249,7 +250,7 @@ function drawScene(gl, programInfo, buffers, deltaTime) {
               [0, 0, 1]);       // axis to rotate around (Z)
   mat4.rotate(modelViewMatrix,  // destination matrix
               modelViewMatrix,  // matrix to rotate
-              cubeRotation * .7,// amount to rotate in radians
+              cubeRotation * .5,// amount to rotate in radians
               [0, 1, 0]);       // axis to rotate around (X)
 
   // Tell WebGL how to pull out the positions from the position
