@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<style>
+          body {
+            padding: 100px;
+            width: 900px;
+            margin: auto;
+            text-align: left;
+            font-weight: 300;
+            font-family: 'Open Sans', sans-serif;
+            color: #121212;
+          }
+          h1, h2, h3, h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+          }
+</style>
+
+<title>CS 184 Ray Tracer, Part 2</title>
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+<body>
+
+<h1 align="middle">CS 184: Computer Graphics and Imaging, Spring 2017</h1>
+<h2 align="middle">Ricardo Herrera, CS184-abx</h2>
+
+<br><br>
+
+<div>
+
+<h2 align="middle">Part Two - Overview</h2>
+<p>This section concludes the pathtracer project, a basic but effectice ray tracer. First mirror and glass material surfaces were accomplished. I can't look at glass in real life the same way anymore. Then microfacet material, which work by statistically modeling light from a bigger collection of microfacets (PBRT). And then an attempt at hollywood magic was done by creating environment lights, which basically means taking exr images and having them in a sense project in the background of a scene, and serve as light sources that can interact with the surfaces on the model (probably the most challenging portion of this endeavor). And finally a ray tracer would not be complete without the ability to play with depth of field. This portion made me forget my final renders were derived from 3D models as opposed to an actual image of a real life dragon in a cubic room. Overall this was a really informative project, and what I got in the end was a new appreciation for light and computer graphics as a whole. I would not have finished this without referenceing Physically Based Rendering. </p>
+
+<h2 align="middle">Part 1: Mirror and Glass Materials</h2>
+Physically based rendering would not be complete without emulating the way light reflects and refracts on mirror and glass surfaces. In order to accomplish a mirror-like surface, it need be modeled with perfect specular reflection.For examplel MirrorBSDF::f() simply returns an empty Spectrum(), as it is safe to assume that a wi direction that was not created using sample_f() has no chance of being equal to the reflection of wo. In order to accomplish a glass-like surface, specular reflection and transmission are at its core. These are weighted by Fresnal terms (or Schlick's approximation) for accurate angular-dependent variation (Pharr&Humphries). We alter the maximum ray depth with values: 0, 1, 2, 3, 4, 5, 100. Once the ray depth is 3 or greater, some interesting artifacts begin to show up. The following sequence have 64 samples per pixel and 4 samples per light each, as well. 
+  <div align="center">
+    <table style="width=100%">
+      <tr>
+        <td align="middle">
+        <img src="images/p1/0_sphere.png" width="445px" />
+        <figcaption align="middle">max ray depth = 0</figcaption>
+        </td>
+        <td>
+        <img src="images/p1/1_sphere.png" width="445px" />
+        <figcaption align="middle">max ray depth = 1</figcaption>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        <img src="images/p1/2_sphere.png" width="445px" />
+        <figcaption align="middle">max ray depth = 2</figcaption></td>
+        <td>
+        <img src="images/p1/3_sphere.png" width="445px" />
+        <figcaption align="middle">max ray depth = 3 (why the white spot on floor?)</figcaption>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        <img src="images/p1/4_sphere.png" width="445px" />
+        <figcaption align="middle">max ray depth = 4</figcaption></td>
+        <td>
+        <img src="images/p1/5_sphere.png" width="445px" />
+        <figcaption align="middle">max ray depth = 5</figcaption>
+        </td>
+      </tr>
+      <tr>
+        <td align="middle">
+        <img src="images/p1/100_sphere.png" width="445px" />
+        <figcaption align="middle">max ray depth = 100</figcaption>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+  
+
+
+
+<h2 align="middle">Part 2: Microfacet Material</h2>
+This portion really made the enire physically based rendering idea hit home. At first I was struggling to understand what the spec was trying to tell me, but after testing out this website (https://refractiveindex.info/?shelf=main&book=Si&page=Aspnes), I realized that the physical properties of conductor material can essentially be mapped in computer graphics. This was a lot to take in, as the implementation was pretty challenging. It is safe to assume that rough surfaces can be modeled as a collection of microfacets. According to Pharr & Humphries, surfaces made of microfacets are "essentially  heightfield, where the distribution is described statistically". It was trying to understand it statistically that was a bit challenging. Here we alter the alpha value (0.005, 0.05, 0.25, 0.5). 
+  <div align="center">
+    <table style="width=100%">
+      <tr>
+        <td align="middle">
+        <img src="images/p2/p2_a005r1.png" width="445px" />
+        <figcaption align="middle">alpha = 0.005</figcaption></td>
+        <td>
+        <img src="images/p2/p2_a05r.png" width="445px" />
+        <figcaption align="middle">alpha = 0.05</figcaption>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        <img src="images/p2/p2_a25r0.png" width="445px" />
+        <figcaption align="middle">alpha = 0.25</figcaption>
+        </td>
+        <td>
+        <img src="images/p2/p2_a5r1.png" width="445px" />
+        <figcaption align="middle">alpha = 0.5</figcaption>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <p>
+Here, it is evident that a hemisphere sampling approach has much more noise than that of a importance sampling approach. For both renders, there are 64 samples per pixel, 1 sample per light, and max ray depth of 5. Again, the only varying factor is the sampling method.The physical properties of copper can be taken advantage of to create less noisy images, and overall replicate copper fairly realistically in CG. Importance sampling is evidently the stronger approach.
+  <div align="center">
+    <table style="width=100%">
+      <tr>
+        <td align="middle">
+        <img src="images/p2/p2_bunny_default6.png" width="445px" />
+        <figcaption align="middle">rendered using cosine hemisphere sampling </figcaption>
+        </td>
+        <td>
+        <img src="images/p2/p2_bunny_importance.png" width="445px" />
+        <figcaption align="middle">rendered using importance sampling </figcaption>
+        </td>
+      </tr>
+      </table>
+  </div>
+
+  <div align="center">
+    <table style="width=100%">
+      <tr>
+        <td align="middle">
+        <img src="images/p2/neweta.png" width="445px" />
+        <figcaption align="middle">eta and k values that correspond to silicon</figcaption>
+        </td>
+      </tr>
+      </table>
+  </div>
+This was the portion I found the most interesting, because the time spent debugging made the concepts a little stronger. For a while my renders came out quite splotchy and had too many white spots all over. I realized (after a while) that perhaps I was diving by 0 while calculating the indirect light. I feel I spent a little more time than I would have wanted on this section.
+
+<h2 align="middle">Part 3: Environment Light</h2>
+Suppose there is a need to create a scene of a forest, or cafe. As opposed to creating an entire scene with actual models in the scene, suppose we have a map that can mimic the illusion of being in that scene. That is, if we have a main mesh we want to focus on and want to place it in another low cost enviroment, we can opt for environment maps. Like adding a matte painting in post production of a film, adding an environment map can be quite effective in create a bigger world. Not only is the image map mapped out over the hemisphere of the scene, it can also create light that will bounce off meshes w/ physically based surfaces quite convincingly. 
+  <div align="center">
+    <table style="width=100%">
+      <tr>
+        <td>
+          <img src="images/p3/probability_debug.png" width="650px" />
+          <figcaption align="middle">probability debug image</figcaption>
+        </td>
+      </tr>
+    </table>
+  </div>
+<p>
+  Here are two renders of bunny_unlit.dae and the environment map. One was rendered with uniform sampling. The other one was rendered with importance sampling. Both images have 4 samples per pixel and 64 samples per light in each. The sampling method did not appear to make a visible difference. They are both the same in terms of level/amount of noise.
+    <div align="center">
+    <table style="width=100%">
+      <tr>
+        <td>
+          <img src="images/p3/p3_uniform_bun.png" width="445px" />
+          <figcaption align="middle">uniform sampling</figcaption>
+        </td>
+                <td>
+          <img src="images/p3/p3_import_bun.png" width="445px" />
+          <figcaption align="middle">importance sampling</figcaption>
+        </td>
+      </tr>
+    </table>
+  </div>
+<p>
+    Similarly as the previous section, here are two renders of bunny_microfacet_cu_unlit.dae and the environment map. One was rendered with uniform sampling, one with importance sampling. Both images have 4 samples per pixel and 64 samples per light in each. The noise on both surfaces look fairly similar. 
+    <div align="center">
+    <table style="width=100%">
+      <tr>
+        <td>
+          <img src="images/p3/p3_microbunny_uniform.png" width="445px" />
+          <figcaption align="middle">uniform sampling</figcaption>
+        </td>
+                <td>
+          <img src="images/p3/p3_microbunny_import.png" width="445px" />
+          <figcaption align="middle">importance sampling</figcaption>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+<h2 align="middle">Part 4: Depth of Field</h2>
+Depth of field is a characteristic that sells the illusion of renders having some physically based setting, or at least, they help sell the idea of these scenes being captured via a camera lens. This was a simple part to implement, however I was having a few miscalculations; when I would reorient the camera in the GUI and then render, I would recieve a completely obscure angle. This was just a matter of not normalizing and conertin world and camera points though. All of the following images were rendered with 64 samples per pixel, 4 lights per sample, max depth ray of 5. 
+Focus Stack - here, all of the images have an apperative size of 0.03, but have varying focus depth. I'd say the one that I find most pleasing is the one with focus depth 1.5.
+  <div align="center">
+    <table style="width=100%">
+        <tr>
+        <td>
+        <img src="images/p4/p4_1_05_f.png" width="445px" />
+        <figcaption align="middle">focus depth of 0.5</figcaption>
+        </td>
+      </tr>
+      <tr>
+        <td align="middle">
+        <img src="images/p4/p4_1_10_f.png" width="445px" />
+        <figcaption align="middle">focus depth of 1.0</figcaption>
+        </td>
+        <td>
+        <img src="images/p4/p4_1_15_r.png" width="445px" />
+        <figcaption align="middle">focus depth of 1.5</figcaption>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        <img src="images/p4/p4_1_20_r.png" width="445px" />
+        <figcaption align="middle">focus depth of 2.0</figcaption>
+        </td>
+        <td>
+        <img src="images/p4/p4_1_25_r.png" width="445px" />
+        <figcaption align="middle">focus depth of 2.5</figcaption>
+        </td>
+      </tr>
+
+    </table>
+  </div>
+Different Apperature sizes - the implementation of the thin lens creates the desired result/effect.
+    <div align="center">
+    <table style="width=100%">
+
+      <tr>
+        <td align="middle">
+        <img src="images/p4/p4_1_15_r.png" width="445px" />
+        <figcaption align="middle">aperature size 0.03</figcaption>
+        </td>
+        <td>
+        <img src="images/p4/p4_2_13_f.png" width="445px" />
+        <figcaption align="middle">aperature size 0.13</figcaption>
+        </td>
+      </tr>
+      <tr>
+        <td align="middle">
+        <img src="images/p4/p4_2_23_f.png" width="445px" />
+        <figcaption align="middle">aperature size 0.23</figcaption>
+        </td>
+        <td>
+        <img src="images/p4/p4_2_33_f.png" width="445px" />
+        <figcaption align="middle">aperature size 0.33</figcaption>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+        <img src="images/p4/p4_2_43_f.png" width="445px" />
+        <figcaption align="middle">aperature size 0.43</figcaption>
+        </td>
+
+      </tr>
+    </table>
+  </div>
+</div>
+</body>
+</html>

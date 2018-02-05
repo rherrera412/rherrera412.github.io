@@ -1,6 +1,6 @@
 
 
-function openC(evt, cityName) {
+function openNavTab(evt, tabName) {
     // Declare all variables
     var i, tabcontent, tablinks;
 
@@ -18,29 +18,35 @@ function openC(evt, cityName) {
 
     // Show the current tab, and add an "active" class to the link that opened the tab
     if (cityName === "about"){
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(tabName).style.display = "block";
         //evt.currentTarget.className += " active";
         document.getElementById('aboot').style.display = "block";
         evt.currentTarget.className += " active";
     } else if (cityName === "projects") {
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(tabName).style.display = "block";
         //evt.currentTarget.className += " active";
         document.getElementById('projz').style.display = "block";
         evt.currentTarget.className += " active";
     } else if (cityName === "films") {
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(tabName).style.display = "block";
         //evt.currentTarget.className += " active";
         document.getElementById('filmz').style.display = "block";
         evt.currentTarget.className += " active";
     }
- else if (cityName === "films") {
+ else if (tabName === "films") {
     document.getElementById(cityName).style.display = "block";
     //evt.currentTarget.className += " active";
     document.getElementById('filmz').style.display = "block";
     evt.currentTarget.className += " active";
 }
+else if (tabName === "pt") {
+    document.getElementById(cityName).style.display = "block";
+    //evt.currentTarget.className += " active";
+    document.getElementById('ptz').style.display = "block";
+    evt.currentTarget.className += " active";
+}
     else {
-        document.getElementById(cityName).style.display = "block";
+        document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
     }
     
@@ -73,4 +79,5 @@ function openT(evt, cityName) {
     
     
 }
+
 
