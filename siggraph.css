@@ -8,6 +8,7 @@ body {
     background-color: #ffffff;
 
     font-family:"helvetica neue","helvetica",san-serif;
+    font-weight: 300;
 
     color: #222222;
 
@@ -30,6 +31,9 @@ h3 {
 }
 p {
   padding-left: 12px;
+}
+b {
+  font-weight: 600
 }
 tab{
     padding-left: 20px;
