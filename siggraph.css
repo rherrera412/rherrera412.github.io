@@ -21,6 +21,9 @@ h1 {
 }
 h2 {
   font-size: 32px;
+  color: #000000;
+  background-color: #ffc125;
+  padding-left: 6px;
 }
 h3 {
   font-size: 16px;
