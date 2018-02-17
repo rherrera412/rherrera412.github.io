@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
 @import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
+@import url('https://fonts.googleapis.com/css?family=Asar');
+
+@import url('https://fonts.googleapis.com/css?family=Buenard|Crimson+Text|Fenix');
+
 
 @font-face {
     font-family: 'boncho';
@@ -24,9 +28,9 @@ background {
 
 
 body {
-    font-family: Avenir Next,'boncho', Nunito, Helvetica Neue, sans-serif;
+    font-family: Avenir Next,Avenir,'bincho', Helvetica Neue, sans-serif;
     color: #222222;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
     -webkit-font-smoothing: antialiased !important;
     text-rendering: optimizeLegibility;
     text-rendering: geometricPrecision;
@@ -38,6 +42,7 @@ body {
     padding: 25px;
     padding-top: 66px;
     margin: auto;
+    font-weight: 400;
 }
 
 #mainBody {
@@ -54,17 +59,19 @@ h4 {
 
 
 mainHead {
+  /*background-color: #ff9200;*/
+    font-family: 'bincho';
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-    font-size: 32px;
-    font-weight: 700;
-    color: #222222; /*e8b21f*/
+    font-size: 38px;
+    font-weight: 400;
+    color: #2f2f2f; /*e8b21f*/
 
 }
 
 
 
 /* Style the tab */
-div.tab {    
+div.tab {
     overflow: hidden;
 }
 
@@ -101,13 +108,13 @@ div.tabn {
     div.tabn button {
     font-family: Avenir Next, Avenir, 'boncho', Nunito, Helvetica Neue, sans-serif;
         font-size: 20px;
-        font-weight: 700;
+        font-weight: 400;
         color: #000000;
         background-color: #ffc53f;
         border: none;
         padding: 5px;
         transition: 0.1s;
-text-decoration: underline;   
+text-decoration: underline;
  }
 
         /* Change background color of buttons on hover */
@@ -120,10 +127,13 @@ text-decoration: underline;
         div.tabn button.active {
             color: #ffffff;
             background-color: #ff4245;
-        }        
+        }
 
 /* Style the tab content */
 .tabcontent {
+  font-family: 'Buenard','Fenix';
+  color: #222222;
+    font-size: 18px;
     border-left: none;
 }
 
