@@ -18,7 +18,22 @@
     src: url('Avenir Next.ttc');
 }
 
-
+@font-face {
+    font-family: 'Archivo_r';
+    src: url('Archivo-Narrow/ArchivoNarrow-Regular.ttf');
+}
+@font-face {
+    font-family: 'Archivo';
+    src: url('Archivo-Narrow/ArchivoNarrow-Bold.ttf');
+}
+@font-face {
+    font-family: 'Archivo_s';
+    src: url('Archivo-Narrow/ArchivoNarrow-SemiBold.ttf');
+}
+@font-face {
+    font-family: 'Archivo_m';
+    src: url('Archivo-Narrow/ArchivoNarrow-Medium.ttf');
+}
 html, html a {
     -webkit-font-smoothing: antialiased !important;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
@@ -31,7 +46,7 @@ background {
 
 
 body {
-    font-family:'Secular One', sans-serif;
+    font-family:'Archivo_r','Secular One', sans-serif;
     color: #333333;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased !important;
@@ -66,14 +81,16 @@ h4 {
 }
 
 .maintitle {
-    font-family:'Yantramanav';
-    font-size: 46px;
-    font-weight: 700;
-    color: #333333; /*e8b21f*/
+    font-family:'Archivo';
+    font-size: 48px;
+    color: #111222;
+    letter-spacing: 1px;
+    font-weight: bold;
+    width: 300;
 }
 .mainHead {
 
-    font-family: 'Yantramanav','Mallanna','Secular One', 'bincho';
+    font-family: 'Archivo','Mallanna','Secular One', 'bincho';
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
     font-size: 34px;
     font-weight: 600;
@@ -91,7 +108,7 @@ div.tab {
     /* Style the buttons inside the tab */
     div.tab button {
         font-family: 'Yantramanav';
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         font-weight: 400;
         font-size: 16px;
         color: #222222;
@@ -145,11 +162,10 @@ text-decoration: underline;
 
 /* Style the tab content */
 .tabcontent {
-  font-family: 'Buenard','Fenix';
-  color: #222222;
-    font-size: 20px;
+  font-family: 'Fenix','Buenard','Fenix';
+  color: #111111;
+    font-size: 21px;
     border-left: none;
-    font-weight: 400;
 }
 
 notesec {
