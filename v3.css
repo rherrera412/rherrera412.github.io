@@ -1,39 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:700');
-@import url(/t/1.css?apiType=css&projectid=af395689-2c2c-43f9-9e8f-68fdef40ecac);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Asar');
 
 @import url('https://fonts.googleapis.com/css?family=Buenard|Crimson+Text|Fenix');
-@import url('https://fonts.googleapis.com/css?family=Archivo+Black|Asap:700|Buenard|Palanquin+Dark|Gidugu|Dosis:700|Fenix|Josefin+Sans:700|Meera+Inimai|Mitr|Mallanna|Secular+One');
-@import url('https://fonts.googleapis.com/css?family=Rakkas');
 
 @import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700,900');
-
-@font-face {
-    font-family: 'boncho';
-    src: url('Avenir.ttc');
-}
-
-@font-face {
-    font-family: 'bincho';
-    src: url('Avenir Next.ttc');
-}
-
-@font-face {
-    font-family: 'Archivo_r';
-    src: url('Archivo-Narrow/ArchivoNarrow-Regular.ttf');
-}
-@font-face {
-    font-family: 'Archivo';
-    src: url('Archivo-Narrow/ArchivoNarrow-Bold.ttf');
-}
-@font-face {
-    font-family: 'Archivo_s';
-    src: url('Archivo-Narrow/ArchivoNarrow-SemiBold.ttf');
-}
-@font-face {
-    font-family: 'Archivo_m';
-    src: url('Archivo-Narrow/ArchivoNarrow-Medium.ttf');
-}
 html, html a {
     -webkit-font-smoothing: antialiased !important;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
@@ -46,9 +16,8 @@ background {
 
 
 body {
-    font-family:'Archivo_r','Secular One', sans-serif;
-    color: #333333;
-    background-color: #ffffff;
+    font-family: sans-serif;
+    color: #222222;
     -webkit-font-smoothing: antialiased !important;
     text-rendering: optimizeLegibility;
     text-rendering: geometricPrecision;
@@ -59,7 +28,6 @@ body {
     -webkit-font-smoothing: subpixel-antialiased;
     padding: 25px;
     padding-top: 66px;
-    margin: auto;
 }
 
 #mainBody {
@@ -81,18 +49,19 @@ h4 {
 }
 
 .maintitle {
-    font-family:'Archivo';
+    font-family:'Yantramanav';
     font-size: 48px;
     color: #111222;
     letter-spacing: 1px;
     font-weight: bold;
-    width: 300;
+    width: 300px;
+    height: 75px;
 }
 .mainHead {
 
-    font-family: 'Archivo','Mallanna','Secular One', 'bincho';
+    font-family: 'Yantramanav';
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 600;
     color: #333333; /*e8b21f*/
 
@@ -162,10 +131,9 @@ text-decoration: underline;
 
 /* Style the tab content */
 .tabcontent {
-  font-family: 'Fenix','Buenard','Fenix';
+  font-family: 'Buenard','Open Sans','Fenix';
   color: #111111;
-    font-size: 21px;
-    border-left: none;
+    font-size: 19.5px;
 }
 
 notesec {
