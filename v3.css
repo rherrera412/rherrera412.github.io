@@ -14,6 +14,10 @@ background {
     background-color: #222222;
 }
 
+a {
+    font-size: 24px;
+    
+}
 
 
 body {
@@ -33,7 +37,7 @@ body {
 
 #mainBody {
     padding-top: 0px;
-    margin: auto 1%;
+    margin: auto 0%;
     width: 1050px;
 }
 h2{
