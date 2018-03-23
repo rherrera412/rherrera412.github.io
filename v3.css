@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Asar');
 
-@import url('https://fonts.googleapis.com/css?family=Buenard|Crimson+Text|Fenix');
+@import url('https://fonts.googleapis.com/css?family=Buenard|Crimson+Text');
 
 @import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700,900');
 
@@ -16,6 +15,7 @@ background {
 
 a {
     font-size: 24px;
+<<<<<<< HEAD
     color: #59a3ff;
     
 }
@@ -25,11 +25,13 @@ a:hover {
     color: #ff4245;
     transition: 0.25s;
     
+=======
+
+>>>>>>> 46ba5b5945269430b85e703e076e1e8d64e6adb5
 }
 
 
 body {
-    font-family: sans-serif;
     color: #222222;
     -webkit-font-smoothing: antialiased !important;
     text-rendering: optimizeLegibility;
@@ -49,7 +51,7 @@ body {
     width: 1050px;
 }
 h2{
-  font-family:'Yantramanav','Asap', 'bincho';
+  font-family:'Yantramanav';
   text-align: left;
   font-style: italic;
   color: #333333;
@@ -76,7 +78,7 @@ h4 {
     font-size: 34px;
     font-weight: 600;
     color: #444444; /*e8b21f*/
-    letter-spacing: 1px;
+    letter-spacing: 1.25px;
     padding-bottom: 24px;
 }
 
@@ -146,8 +148,9 @@ text-decoration: underline;
 .tabcontent {
   font-family: 'Buenard','Open Sans','Fenix';
   color: #111111;
-  font-size: 18px;
+  font-size: 18.5px;
   padding-bottom: 30px;
+  letter-spacing: 0.1px;
 }
 
 notesec {
