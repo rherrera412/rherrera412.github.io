@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Overpass');
 
-@import url('https://fonts.googleapis.com/css?family=Buenard|Crimson+Text');
-
-@import url('https://fonts.googleapis.com/css?family=Yantramanav:400,700,900');
-
 html, html a {
     -webkit-font-smoothing: antialiased !important;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
@@ -141,7 +137,7 @@ text-decoration: underline;
 
 /* Style the tab content */
 .tabcontent {
-  font-family: 'Overpass','Open Sans','Fenix';
+  font-family: 'Overpass','Open Sans';
   color: #111111;
   font-size: 18.5px;
   padding-bottom: 30px;
