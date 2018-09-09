@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Overpass');
 
 @import url('https://fonts.googleapis.com/css?family=Buenard|Crimson+Text');
 
@@ -15,7 +16,6 @@ background {
 
 a {
     font-size: 24px;
-<<<<<<< HEAD
     color: #59a3ff;
     
 }
@@ -24,10 +24,7 @@ a:hover {
     font-size: 24px;
     color: #ff4245;
     transition: 0.25s;
-    
-=======
 
->>>>>>> 46ba5b5945269430b85e703e076e1e8d64e6adb5
 }
 
 
@@ -51,7 +48,7 @@ body {
     width: 1050px;
 }
 h2{
-  font-family:'Yantramanav';
+  font-family:'Overpass';
   text-align: left;
   font-style: italic;
   color: #333333;
@@ -62,18 +59,16 @@ h4 {
 }
 
 .maintitle {
-    font-family:'Yantramanav';
+    font-family:'Overpass';
     font-size: 40px;
     color: #333333;
     letter-spacing: 1.5px;
+    text-align: center;
     font-weight: bold;
-    width: 275px;
-    height: 70px;
-
+    width: 100%;
 }
 .mainHead {
-
-    font-family: 'Yantramanav';
+    font-family: 'Overpass';
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
     font-size: 34px;
     font-weight: 600;
@@ -91,7 +86,7 @@ div.tab {
 
     /* Style the buttons inside the tab */
     div.tab button {
-        font-family: 'Yantramanav';
+        font-family: 'Overpass';
         letter-spacing: 1.5px;
         font-weight: 400;
         font-size: 14px;
@@ -121,7 +116,7 @@ div.tabn {
 
     /* Style the buttons inside the tab */
     div.tabn button {
-    font-family: 'Asap',sans-serif;
+    font-family: 'Overpass',sans-serif;
         font-size: 14px;
         font-weight: 400;
         color: #000000;
@@ -146,7 +141,7 @@ text-decoration: underline;
 
 /* Style the tab content */
 .tabcontent {
-  font-family: 'Buenard','Open Sans','Fenix';
+  font-family: 'Overpass','Open Sans','Fenix';
   color: #111111;
   font-size: 18.5px;
   padding-bottom: 30px;
