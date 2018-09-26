@@ -2,188 +2,106 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <title>Ricky Herrera</title>
-  <link rel="stylesheet" href="webgl.css" type="text/css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<link href="v3.css" rel="stylesheet">
-
-
-
-
-  <div id="mainBody">
-      <div id="leftColumn" style="text-align:left; float:left; margin:0;">
-
-          <div class="maintitle">
-            Ricky Herrera
-          </div>
-          <br>
-          <center>
-            <img src="meaf.jpg" width=240 style="border-radius: 150px;">
-          </center>
-                        <br><br>
-          <div style="background-color: #ffc53f; width: 275px;height: 2px">
-          </div>
-        <center>
-                  <div class="tab">
-
-                          <button class="tablinks" onclick="openNavTab(event, 'about')" id="dO">about</button>
-                          <script>
-                              document.getElementById("dO").click();
-                            </script>
-                          <button class="tablinks" onclick="openNavTab(event, 'projects')">projects</button>
-                          <button class="tablinks" onclick="openNavTab(event, 'films')">films</button>
-                          <button class="tablinks" onclick="openNavTab(event, 'notes')">notes</button>
-                          <button class="tablinks" onclick="openNavTab(event, 'blog')">blog</button>
-                  </div>
-        </center>
-
-
-          <div id="col1">
-                    <div id="aboutsection" class="tabcontent" style="width: 275px ;padding-top: 40px;">
-                      <center>
-
-
-                      <a href="mailto:rherrera@berkeley.edu">
-                          <img src="email.png" width="35px" style="padding:5px">
-                      </a>
-                      <a href="https://twitter.com/nutritiousbig">
-                        <img src="twitter.png" width="35px" style="padding:5px">
-                      </a>
-                    </center>
-
-
-                    </div>
-                    <div style="background-color: #ffc53f; width: 275px;height: 2px">
-                    </div>
-          </div>
-
-        </div>
-
-        <div id="rightColumn" style="float:left; padding-left: 60px; width:650px; ">
-
-          <div id="projects" class="tabcontent" style="padding-left:0">
-            <div id="mh" class="mainHead" style="width:650px; text-align:left;">
-              about
-            </div>
-            <div style="background-color: #ff4245; width: 645px;height: 2px"></div><br>
-
-                    Technically, my name is Ricardo, but Ricky is also fine. I am currently an undergraduate student at UC Berkeley studying Computer Science and Film. I have a deep passion for computer graphics and its application in film, VR/AR, and video games.<br><br>
-                    This fall semester I will be a research assistant for Professor Carlo Sequin on the NOME project.
-                    <br><br>Please be sure to have a look at my graphics projects as well as short films I have had the opportunity to work on. And in case you're wondering, lighting and rendering are my favorite parts of the pipeline. Feel free to reach out!<br>
-                    <br>
-
-
-          </div>
-
-
-          <div id="projects" class="tabcontent" style="padding-left:0;padding-top:0;">
-            <div id="mh" class="mainHead" style="width:650px; text-align:left;">
-              projects
-            </div>
-            <div style="background-color: #ff4245; width: 645px;height: 2px"></div><br>
-
-                    <img src="icon_pathtracer.png" style="width:125px;padding-right:7%;" align="left">
-                    <a href="p3website/index.html" style="font-family:'Yantramanav';">PathTracer</a>
-                    <br>C++ implemented path tracing renderer. Uses Monte Carlo sampling, supports bsdf materials and depth of field. Based on Physically Based Rendering (Pharr &
-                    Humphries) <br/><br><br><br>
-
-                    <img src="p1.png" style="width:125px;padding-right:7%;" align="left">
-                    <a href="p1website/index.html" style="font-family:'Yantramanav';">Rasterizer</a> <br> C++ implemented image rasterizer – performs supersampling, hierarchical
-                    transforms, and texture mapping with antialiasing on SVG files and converts to 2D image. <br/><br><br>
-
-                    <img src="icon_meshedit.png" style="width:125px;padding-right:7%;" align="left">
-                    <a href="p2website/index.html" style="font-family:'Yantramanav';">MeshEdit</a> <br> C++ implemented 3D model mesh application; load and edit basic COLLADA
-                    mesh files (used by many major modeling packages and real time graphics engines).<br/><br><br>
-
-                    <img src="eminorweb/images/patologo.png" style="width:125px;padding-right:7%;" align="left">
-                    <a href="eminorweb/index.html" style="font-family:'Yantramanav';">E-Minor Engine </a> <br>OpenGL simulator, supports textures, model loading, gameplay, and lighting. <br/><br>
-                      <br><br>
-                    <center>Coming soon: Rendition and Tenth Life</center>
-
-
-          </div>
-
-
-          <div id="films" class="tabcontent" style="padding-left:0">
-            <div id="mh" class="mainHead" style="width:650px; text-align:left;">
-              short films
-            </div>
-
-                    <div style="background-color: #ff4245; width: 645px;height: 2px"></div>
-                    <h2>Brilliance (2018) <br /></h2>
-                    <iframe width="645" height="363" src="https://www.youtube.com/embed/661UVnnjeHs" frameborder="0" allowfullscreen></iframe>
-                    <h4> The UCBUGG team got together and created this wonderful short film about an italian man with electricity problems. I did most of the lighting for this short, as well as sets and camera. This was one of my favorite projects to light up! </h4>
-                    <h4> Lighting night scenes was a challenge that took many iterations, so I am very pleased with the end result.</h4>
-                    <h4> Render week could not have been any more 'joyably' painful :)</h4>
-
-                    <br ><br><br>
-
-                    <div style="background-color: #ffab3b; width: 645px;height: 2px"></div>
-                    <h2>Only Love (2017) <br /></h2>
-                    <iframe width="645" height="363" src="https://www.youtube.com/embed/0EiJ86TQ2_g" frameborder="0" allowfullscreen></iframe>
-                    <h4> This project was made for UC Berkeley's Advanced Digital Animation course, CNM190 (Fall 2016 - Spring 2017). In essence, its a short about the pangs of alcoholism, but very layered, revealing new meanings with every view.
-                    <h4> I worked on the sound effects, lighting, modeling, and post-production for this short. Specifically, the lighting I am most proud of is during the liquor store scene, as we experiemented with what felt like every possible variation. Since we were going for a Tell-Tale -chiaroscuro- comic book-esque look, directional lights were crucial.
-                    <h4> I am really proud of the music I wrote for this, especially when I found my peers humming the music at random times. <i> Only Love</i> has won an award at the East
-                    LA film festival, and is being considered for other film festivals!
-
-                    <br ><br><br>
-
-                    <div style="background-color: #ffab3b; width: 645px;height: 2px"></div>
-                    <h2>Sweet Victory (2016)</h2>
-                    <iframe width="645" height="363" src="https://www.youtube.com/embed/KFBjPTmTnWQ" frameborder="0" allowfullscreen></iframe>
-                    <h4>
-                    My first 3D animated short! My notable contribution to this masterpiece is Marshmallow (or as like my mom refers to it, "El Bombon"), which I modeled and animated. Learning Maya and other software was so rewarding, and this project helped me explore some of their capabilites.
-                    <h4> Fun fact: the chocolate fountain was for a time a bifrost simulation with very viscous chocolate. However, the renderfarm hates us and it didn't go as planned. This was made during my first semester of UCBUGG, probably the best class I have taken while at Berkeley.
-
-                    <br><br><br>
-
-                    <div style="background-color: #ffab3b; width: 645px;height: 2px"></div>
-                    <h2>Walden (2016) </h2>
-                    <iframe width="645" height="363" src="https://www.youtube.com/embed/VXAhPhIJJVg" frameborder="0" allowfullscreen></iframe>
-                    <h4>
-                    The piece was my group's submission for Cal State Long Beach's 24 Hours Challenge; as the name implies this was made in under
-                    24 hours. The prompt was "make a 1 minute short that contains a physical or metaphorical wall". You learn a lot about your animation partners when trapped in a computer lab for 24 hours. We all left with a new connection with one another; and sleep deprivation.
-
-                    <br><br><br>
-
-                    <div style="background-color: #ffab3b; width: 645px;height: 2px"></div>
-                    <h2>The Loop (2017) <br /></h2>
-                    <iframe width="645" height="363" src="https://www.youtube.com/embed/gXxwrEiDg48" frameborder="0" allowfullscreen></iframe><br>
-                    This short was made for the Campus Movie Festival @ UC Berkeley. I worked on the music, some color grading, and story ideas. (I wrote the music in 30 minutes, while waiting to get medication).<br>
-
-                    <br>
-                    STAY TUNED // MORE TO COME //
-
-          </div>
-          <div id="blog" class="tabcontent" style="padding-left:0">
-            <div id="mh" class="mainHead" style="width:650px; text-align:left;">
-              blog
-            </div>
-            <div style="background-color: #ffab3b; width: 645px;height: 2px"></div><br>
-            no blog at the moment but follow me on twitter for the moment.
-          </div>
-          <div id="notes" class="tabcontent" style="padding-left:0">
-            <div id="mh" class="mainHead" style="width:650px; text-align:left;">
-              notes
-            </div>
-            <div style="background-color: #ffab3b; width: 645px;height: 2px"></div><br>
-            here [i will put] some notes for my first graphics class at Cal.
-          </div>
-          <br><br>
-
-
-        </div>
-
-
-
+<body>
+  <div class="body-left">
+    <h1>Ricky Herrera</h1>
+    <div class="links">
+      <a href="#about">About</a><br>
+      <a href="#projects">Projects</a><br>
+      <a href="#films">Films</a><br>
+      <a href="#notes">Notes</a><br>
+      <a href="#design">Design</a><br>
+    </div>
   </div>
+  <div class="body-mid">
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        Technically my name is Ricardo, but call me Ricky. I am an undergraduate student at UC Berkeley studying Computer Science and Film. I have a deep passion for computer graphics; from the theory to its artistic applications, I am enthusiastic for anything CG. That includes (but is not limited) to film, video games, and AR/VR.
+      </p>
+      <p>
+        I have been fortunate enough to work on a few short 3D animated films. At the moment, I am a research assistant on the NOME project, supervised by Professor Carlo Sequin.
+      </p>
+      <p>
+        My favorite graphics topics are light transport and rendering. 
+      </p>
+    </section>
 
-  <script>
-    document.getElementById("defaultOpen").click();
-  </script>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3> Pathtracer </h3>
+        <center>
+          <img src="p32website/images/p2/neweta.png">
+          <img src="p32website/images/p2/p2_bunny_importance.png">
+          <img src="p32website/images/p4/p4_1_20_r.png">
+        </center>
+        <p>C++ implemented path tracing renderer. Uses Monte Carlo sampling, supports bsdf materials and depth of field. <a href=""><i>Read More -></i></a> </p> 
+      </div>
+      <div class="project">
+        <h3> MeshEdit </h3>
+        <center>
+          <img src="p2website/images/b0.png" style="height:116px;width:auto;">
+          <img src="p2website/images/s0.png" style="height:116px;width:auto;">
+          <img src="p2website/images/y0.png" style="height:116px;width:auto;">
+        </center>
+        <p> C++ implemented 3D model mesh application; load and edit basic COLLADA mesh files. </p>
+      </div>
+      <!--
+      <div class="project">
+        <h3> Anomaly </h3>
+        <p>Walking-simulator game, made in Unity.</p>
+      </div>
+      <div class="project">
+        <h3> E-Minor </h3>
+        <p>OpenGL simulator, supports textures, model loading, gameplay, and lighting. </p>
+      </div>
+      <div class="project">
+        <h3> Rendition </h3>
+        <p>Coming soon</p>
+      </div>
+      -->
 
+    </section>
+
+    <section id="films">
+      <h2>Short Films</h2>
+
+      <h3>Brilliance (2018)</h3>
+            <iframe width="610" height="343.125" src="https://www.youtube.com/embed/661UVnnjeHs" frameborder="0" allowfullscreen></iframe>
+            <p> The UCBUGG team got together and created this wonderful short film about an italian man with electricity problems. I did most of the lighting for this short, as well as sets and camera. This was one of my favorite projects to light up! </p>
+            <p> Lighting night scenes was a challenge that took many iterations, so I am very pleased with the end result.</p>
+
+            <h3>Only Love (2017)</h3>
+            <iframe width="610" height="343.125" src="https://www.youtube.com/embed/0EiJ86TQ2_g" frameborder="0" allowfullscreen></iframe>
+            <p> This project was made for UC Berkeley's Advanced Digital Animation course, CNM190 (Fall 2016 - Spring 2017). In essence, its a short about the pangs of alcoholism, but very layered, revealing new meanings with every view.
+            <p> I worked on the sound effects, lighting, modeling, and post-production for this short. Specifically, the lighting I am most proud of is during the liquor store scene, as we experiemented with what felt like every possible variation. Since we were going for a Tell-Tale -chiaroscuro- comic book-esque look, directional lights were crucial.
+            <p> I am really proud of the music I wrote for this, especially when I found my peers humming the music at random times. <i> Only Love</i> has won an award at the East
+            LA film festival, and is being considered for other film festivals!
+
+            <h3> Other shorts </h3>
+            <iframe width="300" height="171" src="https://www.youtube.com/embed/KFBjPTmTnWQ" frameborder="0" allowfullscreen></iframe>
+            <iframe width="300" height="171" src="https://www.youtube.com/embed/VXAhPhIJJVg" frameborder="0" allowfullscreen style="float:left;"></iframe>
+            <center>
+            <iframe width="300" height="171" src="https://www.youtube.com/embed/gXxwrEiDg48" frameborder="0" allowfullscreen></iframe>
+          </center>
+    </section>
+
+    <section id="notes">
+      <h2>Notes</h2>
+      <p>These notes are based on selected topics covered in CS184</p>
+    </section>
+    <!--
+    <section id="design">
+      <h2>Design</h2>
+      <p></p>
+    </section>
+    -->
+  </div>
+  <div class="body-right">
+    <img src="images/meaf.jpg">
+  </div>
 </body>
-
 </html>
