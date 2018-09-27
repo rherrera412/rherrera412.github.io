@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 body {
-	background-color: #FFFAE5;
+	background-color: #ffefd9;
 	font-family: 'Avenir Next','Avenir','Open Sans', sans-serif;
 }
 p {
@@ -15,11 +15,15 @@ section {
 	border-radius: 20px;
 	padding: 2px 16px 2px;
 	margin-bottom: 32px;
-	border-top: solid #6D88B8 3px;
+	border-left: solid #c17177 10px;
+	border-right: solid #6c6bbe 10px;
+	border-bottom: solid #f8f8f8 10px;
+	border-top: solid #d1ccd2 10px;
 
 }
 h1 {
-	font-weight: 800;
+	font-weight: 600;
+	letter-spacing: .5px;
 	color: #6D88B8;
 	text-align: right;
 }
@@ -27,7 +31,7 @@ h2 {
 	padding-left: 1px;
 	letter-spacing: 1px;
 	margin: 0px;
-	margin-top: 4px;
+	margin-top: 12px;
 }
 .body-left {
 	width: 256px;
@@ -39,21 +43,26 @@ h2 {
 
 }
 .body-mid {
-	width: 640px;
+	width: 660px;
 	padding-top: 82px;
 	float: left;
 	margin-right: 32px;
 	overflow: auto;
 }
 .body-right {
-	width: 256px;
-	padding-top: 82px;
+	background-color: #c17177;
+	width: 246px;
+	margin-top: 82px;
+	padding-top: 28px;
+	padding-bottom: 28px;
 	text-align: center;
 	float: left;
+	border-left: solid #a9898b 10px;
 }
-img {
-	border-radius: 150px;
-	width: 220px;
+.body-right img {
+	border-radius: 100px;
+	width: 180px;
+	border-right: solid #987275 6px;
 }
 .links {
 	text-align: right;
@@ -64,8 +73,8 @@ a {
 	color: #707070;
 }
 .project {
-	padding-left: 2%;
-	padding-right: 2%;
+	padding-left: 1%;
+	padding-right: 1%;
 	margin-top: 20px;
 	margin-bottom: 30px;
 }
@@ -76,5 +85,12 @@ a {
 	width: auto;
 }
 .project a {
+	float: right;
+	text-align: right;
 	color: #2a75fb;
+	transition: 0.1s;
+}
+.project a:hover {
+	text-align: right;
+	color: #f83a48;
 }
