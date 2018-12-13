@@ -3,16 +3,11 @@
 
 <head>
   <link rel="stylesheet" href="style.css">
+  <title>Ricky Herrera</title>
 </head>
 <body>
   <div class="body-left">
-    <div class="links">
-      <a href="#about">About</a><br>
-      <a href="#projects">Projects</a><br>
-      <a href="#films">Films</a><br>
-      <a href="#notes">Notes</a><br>
-      <a href="#design">Design</a><br>
-    </div>
+
   </div>
   <div class="body-mid">
     <div class="header">
@@ -22,43 +17,55 @@
     <section id="about">
       <h2>About</h2>
       <p>
-        Technically my name is Ricardo, but call me Ricky. I am an undergraduate student at UC Berkeley studying Computer Science and Film. I have a deep passion for computer graphics; from the theory to its artistic applications, I am enthusiastic for anything CG. That includes (but is not limited) to film, video games, and AR/VR.
+        Technically, my name is Ricardo, but call me Ricky. I am an undergraduate student at UC Berkeley studying Computer Science and Film. I have a deep passion for computer graphics; from the theory to its artistic applications, I am enthusiastic for anything CG. That includes (but is not limited) to film, video games, and AR/VR.
       </p>
       <p>
-        I have been fortunate enough to work on a few short 3D animated films while being a facilitator for UCBUGG: 3D Modeling & Animation. At the moment, I am a research assistant on the NOME project, supervised by Professor Carlo Sequin.
-      </p>
-      <p>
-        My favorite graphics topics are light transport and rendering. 
+        I have been fortunate enough to work on a few short 3D animated films while being a facilitator for <a href="http://ucbugg.com/static/index.html">UCBUGG: 3D Modeling & Animation</a>. At the moment, I am a research assistant on the NOME project, supervised by Professor Carlo Sequin. My favorite graphics topics are light transport and rendering.
       </p>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
       <div class="project">
-        <h3> Pathtracer </h3>
+        <!--
         <center>
           <img src="p32website/images/p2/neweta.png">
           <img src="p32website/images/p2/p2_bunny_importance.png">
           <img src="p32website/images/p4/p4_1_20_r.png">
-        </center>
-        <p class="sidenote">C++ implemented path tracing renderer. Uses Monte Carlo sampling, supports bsdf materials and depth of field. <a href=""><i>Read More -></i></a> </p> 
+        </center>-->
+        <div class="pleft">
+          <a href="p3website/index.html">
+	           <h3> PathTracer </h3>
+          </a>
+    	</div>
+    	<div class="pright">
+    		<img src="p32website/images/p2/neweta.png">
+    	</div>
+    	 <p class="sidenote">C++ implemented path tracing renderer. Uses Monte Carlo sampling, supports bsdf materials and depth of field.</p>
+      </div>
+
+      <div class="project">
+
+        <div class="pleft">
+          <a href="p2website/index.html">
+	           <h3> MeshEdit </h3>
+          </a>
+    	</div>
+    	<div class="pright">
+
+          <img src="p2website/images/b0.png">
+          <!--<img src="p2website/images/s0.png" style="height:155px;width:auto;">
+          <img src="p2website/images/y0.png" style="height:155px;width:auto;">-->
+    	</div>
+    	<p class="sidenote"> C++ implemented 3D model mesh application; load and edit basic COLLADA mesh files using half-edge data structure. </p>
       </div>
       <div class="project">
-        <h3> MeshEdit </h3>
-        <center>
-          <img src="p2website/images/b0.png" style="height:155px;width:auto;">
-          <img src="p2website/images/s0.png" style="height:155px;width:auto;">
-          <img src="p2website/images/y0.png" style="height:155px;width:auto;">
-        </center>
-        <p class="sidenote"> C++ implemented 3D model mesh application; load and edit basic COLLADA mesh files. </p>
-      </div>
-      <div class="project">
-        <h3> Scherk-Collins Tower Generator in Maya </h3>
-        <center>
-          <img src="" style="height:155px;width:auto;">
-          <img src="" style="height:155px;width:auto;">
-          <img src="" style="height:155px;width:auto;">
-        </center>
+      	<div class="pleft">
+        	<h3> Scherk-Collins Tower Generator in Maya </h3>
+    	</div>
+    	<div class="pright">
+    		Coming soon
+    	</div>
         <p class="sidenote"> WRITE UP COMING SOON. Python script to generatre custom Sherk-Collin models in Autodesk Maya. Inspired by the work of Carlo Sequin. </p>
       </div>
       <!--
@@ -96,22 +103,9 @@
             <h3> Other shorts </h3>
             <iframe width="380" height="225" src="https://www.youtube.com/embed/KFBjPTmTnWQ" frameborder="0" allowfullscreen></iframe>
             <iframe width="380" height="225" src="https://www.youtube.com/embed/VXAhPhIJJVg" frameborder="0" allowfullscreen style="float:left;"></iframe>
-            <center>
-            <iframe width="400" height="225" src="https://www.youtube.com/embed/gXxwrEiDg48" frameborder="0" allowfullscreen></iframe>
-          </center>
     </section>
 
-    <section id="notes">
-      <h2>Notes</h2>
 
-      <div class="entry"> 
-      <!-- 
-        <h2>SE Expressions for RenderMan 21</h3>
-        <img src="icon_pathtracer.png">
-        <p> Prototype quickly with SE Expressions in Renderman for Maya.</p>
-      -->
-      </div>
-    </section>
     <!--
     <section id="design">
       <h2>Design</h2>
@@ -122,9 +116,16 @@
   <div class="body-right">
     <img src="images/meaf.jpg" width="170" height="auto">
     <br><br>
-    <a href="https://www.twitter.com/nutritiousbig">
+    <a href="https://www.twitter.com/nutritiousbig" target="_blank">
       <img src="twitter.png" width="40" height="auto">
     </a>
+     <div class="links">
+      <a href="#about">About</a><br>
+      <a href="#projects">Projects</a><br>
+      <a href="#films">Films</a><br>
+      <a href="#notes">Notes</a><br>
+      <a href="#design">Design</a><br>
+    </div>
   </div>
 </body>
 </html>

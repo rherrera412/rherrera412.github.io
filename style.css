@@ -1,33 +1,34 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 @import url('https://fonts.googleapis.com/css?family=Cardo');
-
+@font-face {
+    font-family: "steelfish";
+    src: url(assets/fonts/steelfish_rg.ttf);
+}
 html, body {
 	width:100%;
 	height:100%;
 }
 body {
+
 	margin: 0 auto;
-	background-color: #ffefd9;
+	background-color: #fbe5bc;
 	font-family: 'Avenir Next','Avenir','Open Sans', sans-serif;
 }
 .header {
-	border-radius: 20px;
-	color: #000000;
+	border-radius: 10px;
 	width: 100%;
-	background-color: #ffbd3c;
-	background-image: linear-gradient(to right, #ff9ebf , #ffbd3c);
+	/*background-image: linear-gradient(to right, #ff9ebf , #F4BA4D);*/
 	transition: 0.2s;
 	margin-bottom: 32px;
 	position: relative;
     text-align: center;
-    color: white;
     padding-top: 4%;
     padding-bottom: 4%;
 }
 
 .header h1 {
+	color: #222222;
 	width: 100%;
-	color: #ffffff;
 	text-align: center;
 	position: absolute;
     top: 35%;
@@ -35,15 +36,17 @@ body {
     transform: translate(-50%, -50%);
 }
 p {
-	font-family: "Cardo";
-	font-size: 18px;
+	font-family: "Avenir";
+	font-size: 19px;
 	margin-top: 8px;
-	color: #32415B;
-	font-weight: 600;
+	color: #222222;
+	font-weight: 400;
+  width: 90%;
 }
 p.sidenote {
+  margin-top: 10px;
 	padding-left: 12px;
-	border-left: 4px solid #f44336;
+  width: 100%;
 }
 section {
 	color: #32415B;
@@ -61,18 +64,23 @@ h1 {
 }
 h2 {
 	font-size: 28px;
-	color: #242f42;
-	font-weight: 600;
+	color: #222222;
+	font-weight: 400;
 	padding-left: 5px;
 	border-radius: 5px;
 	transition: 0.4s;
 }
 h2:hover {
-	background-color: #ffbd3c;
 }
 h3 {
-	font-weight: 600;
-	font-size: 24px;
+	font-family: "steelfish", sans-serif;
+	color: #222222;
+	font-size: 32px;
+	font-weight: 400;
+	letter-spacing: 2px;
+}
+h4 {
+	font-size: 18px;
 }
 .body-left {
 	width: 128px;
@@ -84,7 +92,8 @@ h3 {
 
 }
 .body-mid {
-	width: 800px;
+  margin-left: 10%;
+	width: 1100px;
 	float: left;
 	margin-right: 32px;
 	overflow: auto;
@@ -98,32 +107,60 @@ h3 {
 }
 .body-right img {
 	border-radius: 100px;
+	    filter: grayscale(100%);
+
 }
 .links {
-	text-align: right;
+	text-align: center;
 	line-height: 30px;
 }
-a {
+
+.links a {
 	text-decoration: none;
 	color: #707070;
 	font-size: 20px;
-	font-weight: 600;
+	font-weight: 500;
 	transition: 0.2s;
 }
-a:hover {
-	color: #ffa528;
+.links a:hover {
+	color: #F4BA4D;
 }
 .project {
-	margin-top: 30px;
+	width: 30%;
+	margin-right: 2%;
 	margin-bottom: 60px;
 	transition: 0.5s;
+	float: left;
 }
+.pleft {
+	padding-right: 5%;
+	width: 45%;
+	height: 200px;
+	float: left;
+	margin-bottom: 12px;
+}
+.pleft h3 {
+	text-align: right;
+
+}
+.pright {
+	border-radius: 10px;
+	width: 50%;
+	height: 200px;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	margin-bottom: 12px;
+
+}
+
 .project img {
-	border-radius: 5px;
-	border: solid #757575 1px;
-	height: 190px;
-	width: auto;
+  object-fit: cover;
+  width:auto;
+  height:184px;
+  overflow: hidden;
 }
+
 .project a {
 	float: right;
 	text-align: right;
@@ -144,6 +181,5 @@ a:hover {
 	height: 128px;
 	width: auto;
 }
-.entry p {
-	font-size: 15px;
+.entry d { /*for description, possibly*/
 }
