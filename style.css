@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Karla:300,400,500');
 @font-face {
     font-family: "steelfish";
     src: url(assets/fonts/steelfish_rg.ttf);
@@ -9,17 +9,17 @@ html, body {
 	height:100%;
 }
 body {
-  font-family: "Rubik", sans-serif;
+  font-family: "Karla", sans-serif;
 	margin: 0 auto;
 	background-color:#F3F3F3; /*#0D5C7B;*/
-	font-family: 'Rubik','Open Sans', sans-serif;
+	font-family: 'Karla','Open Sans', sans-serif;
 }
 .header {
 	border-radius: 10px;
 	width: 100%;
 	/*background-image: linear-gradient(to right, #ff9ebf , #F4BA4D);*/
 	transition: 0.2s;
-	margin-bottom: 32px;
+	margin-bottom: 16px;
 	position: relative;
   text-align: center;
   padding-top: 4%;
@@ -36,7 +36,7 @@ body {
     transform: translate(-50%, -50%);
 }
 p {
-	font-family: "Rubik";
+	font-family: "Karla";
 	font-size: 16px;
 	margin-top: 8px;
 	color: #053E60;
@@ -50,12 +50,13 @@ p.sidenote {
   width: 100%;
 }
 section {
+  width: 100%;
+  float: left;
 	color: #32415B;
 	border-radius: 10px;
 	padding: 2px 16px 2px;
-  margin-top: 64px;
+  margin-top: 16px;
 	margin-bottom: 64px;
-
 }
 h1 {
 	font-size: 16px;
@@ -66,7 +67,7 @@ h1 {
 }
 h2 {
   width: 100%;
-  font-family: "Rubik", sans-serif;
+  font-family: "Karla", sans-serif;
 	font-size: 22px;
 	color: #F34776;
 	font-weight: 600;
@@ -80,10 +81,10 @@ h2 {
 h2:hover {
 }
 h3 {
-	font-family: "Rubik", sans-serif;
+	font-family: "Karla", sans-serif;
 	color: #F34776;
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: 0px;
 }
 h4 {
@@ -100,13 +101,14 @@ h4 {
 }
 .body-mid {
   margin-left: 10%;
-	width: 1100px;
+	width: 80%;
+  max-width: 1000px;
 	float: left;
 	margin-right: 32px;
-	overflow: auto;
+	overflow-x: hidden;
 }
 .body-right {
-	width: 170px;
+	width: 10%;
 	padding-bottom: 20px;
 	text-align: center;
 	float: left;
@@ -133,6 +135,7 @@ h4 {
 	color: #F4BA4D;
 }
 .project {
+  min-width: 250px;
 	width: 30%;
 	margin-right: 3%;
 	margin-bottom: 60px;
@@ -159,11 +162,11 @@ h4 {
 
 }
 
-.project img {
+.pleft img {
   border-radius: 100px;
   object-fit: cover;
-  width:auto;
-  height:150px;
+  height:auto;
+  width:100%;
   overflow: hidden;
 }
 
