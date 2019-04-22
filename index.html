@@ -6,83 +6,105 @@
   <title>Ricky Herrera | El Rey Tracer</title>
 </head>
 <body>
-
   <div class="body-mid">
-    <div class="header">
-      <h1>RH</h1>
-      <!--<img src="mob.png" width="auto" height="100">-->
-        <div class="cyob" style="background-color:#F99E36;"></div
-        ><div class="cyob" style="background-color:#F34776;"></div
-        ><div class="cyob" style="background-color:#CB8169;"></div
-        ><div class="cyob" style="background-color:#542A1A;"></div
-        ><div class="cyob" style="background-color:#2D84A1;"></div
-        ><div class="cyob" style="background-color:#23282B;"></div>
-      </div>
+    <div>
+      <h2>RICARDO <b>HERRERA</b></h2>
+      <table>
+        <th>ABOUT </th>
+        <th>PROJECTS </th>
+        <th>FILMS </th>
+        <th>DESIGN </th>
+      </table>
+    </div>
+
     <section id="about">
+      <div class="sec-title">
+        <h2>ABOUT</h2>
+        <div class="bar"></div>
+          <br><br><br>
+        <div class="bar"></div>
+      </div>
+      <div class="sec-content">
+        <p>
+          Technically, my name is Ricardo, but call me Ricky. I am an undergraduate student at UC Berkeley studying Computer Science and Film. I have a deep passion for computer graphics; from the theory to its artistic applications, I am enthusiastic for anything CG, but particularly its role in Animation and other film media.
+        </p>
+        <p>
+          I have been fortunate enough to work on a few short 3D animated films while being a facilitator for <a href="http://ucbugg.com/static/index.html">UCBUGG: 3D Modeling & Animation</a>. At the moment, I am a research assistant on the NOME project, supervised by Professor Carlo Sequin. My favorite graphics topics are light transport and rendering.
+        </p>
+        <br><br>
+        <center>
+        My life: summed up in picture form<br><br>
+        <table id="mypics">
+          <th><img src="a_00.png"/></th>
+          <th><img src="a_01.png"/></th>
+          <th><img src="a_02.jpg"/></th>
+          <th><img src="a_03.jpg"/></th>
+          <th><img src="a_04.jpg"/></th>
+        </table>
+        </center>
 
-      <h2>ABOUT</h2>
-      <p>
-        Technically, my name is Ricardo, but call me Ricky. I am an undergraduate student at UC Berkeley studying Computer Science and Film. I have a deep passion for computer graphics; from the theory to its artistic applications, I am enthusiastic for anything CG, but particularly its role in Animation and other film media.
-      </p>
-      <p>
-        I have been fortunate enough to work on a few short 3D animated films while being a facilitator for <a href="http://ucbugg.com/static/index.html">UCBUGG: 3D Modeling & Animation</a>. At the moment, I am a research assistant on the NOME project, supervised by Professor Carlo Sequin. My favorite graphics topics are light transport and rendering.
-      </p>
-      <br><br>
-      <center>
-      My life: summed up in picture form<br><br>
-      <img src="a_00.png"/>
-      <img src="a_01.png"/>
-      <img src="a_02.jpg"/>
-      <img src="a_03.jpg"/>
-      <img src="a_04.jpg"/>
-      </center>
 
-
-      <br>
+        <br>
+      </div>
     </section>
 
     <section id="projects">
-      <h2>/* PROJECTS */</h2>
-      <div class="project">
-        <h3> PathTracer </h3>
-
-          <!--
-          <center>
-            <img src="p32website/images/p2/neweta.png">
-            <img src="p32website/images/p2/p2_bunny_importance.png">
-            <img src="p32website/images/p4/p4_1_20_r.png">
-          </center>-->
-          <div class="pleft">
-            <img src="p32website/images/p2/neweta.png">
-      	   </div>
-      	<div class="pright">
-          <p class="sidenote">C++ implemented path tracing renderer. Uses Monte Carlo sampling, supports bsdf materials and depth of field.</p>
-      	</div>
+      <div class="sec-title">
+        <h2> <b>PROJECTS</b> </h2>
+        <div class="bar"></div><br>
+        C++, Python <br>
+        <br>
+        <div class="bar"></div>
       </div>
+      <div class="sec-content">
+            <div class="project">
+              <h3> VCM Renderer </h3>
+              <div class="pleft">
+                <img src="p_0_vcm_32.bmp"/>
+                <img src="p_2_vcm_128.bmp"/>
+                <img src="p_1_vcm_12.bmp"/>
+               </div>
+              <div class="pright">
+                <p class="sidenote">C++ implemententation of Light Transport with Vertex Connection and Merging renderer [Georgiev et al] . </p>
+              </div>
+            </div>
+            <div class="project">
+              <h3> PathTracer </h3>
+                <div class="pleft">
+                  <img src="p32website/images/p2/neweta.png"/>
+                  <img src="a_01.png"/>
+                  <img src="p32website/images/p4/p4_1_15_r_2.png"/>
+            	  </div>
+            	<div class="pright">
+                <p class="sidenote">C++ implemented path tracing renderer. Uses Monte Carlo sampling, supports bsdf materials and depth of field.</p>
+              </div>
+            </div>
+            <div class="project">
+              <h3> MeshEdit </h3>
+              <div class="pleft">
+                <img src="p2website/images/b0.png">
+                <img src="p2website/s1.png">
+                <img src="p2website/s2.png">
 
-      <div class="project">
-           <h3> MeshEdit </h3>
-        <div class="pleft">
-          <img src="p2website/images/b0.png">
+          	  </div>
+            	<div class="pright">
+                <p class="sidenote"> C++ implemented 3D model mesh application; load and edit basic COLLADA mesh files using half-edge data structure. </p>
 
-    	</div>
-    	<div class="pright">
-        <p class="sidenote"> C++ implemented 3D model mesh application; load and edit basic COLLADA mesh files using half-edge data structure. </p>
+                  <!--<img src="p2website/images/s0.png" style="height:155px;width:auto;">
+                  <img src="p2website/images/y0.png" style="height:155px;width:auto;">-->
+            	</div>
+            </div>
+            <div class="project">
+              <h3> Scherk-Collins Tower Generator </h3>
+            	<div class="pleft">
 
-          <!--<img src="p2website/images/s0.png" style="height:155px;width:auto;">
-          <img src="p2website/images/y0.png" style="height:155px;width:auto;">-->
-    	</div>
-      </div>
-      <div class="project">
-        <h3> Scherk-Collins Tower Generator </h3>
+                Coming soon
+          	  </div>
+            	<div class="pright">
+                <p class="sidenote"> WRITE UP COMING SOON. Python script to generatre custom Sherk-Collin models in Autodesk Maya. Inspired by the work of Carlo Sequin. </p>
 
-      	<div class="pleft">
-          Coming soon
-    	</div>
-    	<div class="pright">
-        <p class="sidenote"> WRITE UP COMING SOON. Python script to generatre custom Sherk-Collin models in Autodesk Maya. Inspired by the work of Carlo Sequin. </p>
-
-    	</div>
+            	</div>
+            </div>
       </div>
       <!--
       <div class="project">
@@ -137,49 +159,43 @@
     </section>
 
     <section id="films">
-      <h2>SHORT FILMS</h2>
-
-      <h3>Brilliance (2018)</h3>
+      <div class="sec-title">
+        <h2>SHORT FILMS</h2>
+        <div class="bar"></div>
+          <br><br><br>
+        <div class="bar"></div>
+      </div>
+      <div class="sec-content">
+        <h3>Brilliance (2018)</h3>
             <iframe width="800" height="450" src="https://www.youtube.com/embed/661UVnnjeHs" frameborder="0" allowfullscreen></iframe>
             <p> The UCBUGG staff got together and created this wonderful short film about an italian man with electricity problems. I did most of the lighting for this short, as well as sets and camera. This was one of my favorite projects to light up! </p>
             <p> Lighting night scenes was a challenge that took many iterations, so I am very pleased with the end result.</p>
 
             <h3>Only Love (2017)</h3>
             <iframe width="800" height="450" src="https://www.youtube.com/embed/0EiJ86TQ2_g" frameborder="0" allowfullscreen></iframe>
-            <p> This project was made for UC Berkeley's Advanced Digital Animation course, CNM190 (Fall 2016 - Spring 2017). In essence, its a short about the pangs of alcoholism, but very layered, revealing new meanings with every view.
-            <p> I worked on the sound effects, lighting, modeling, and post-production for this short. Specifically, the lighting I am most proud of is during the liquor store scene, as we experiemented with what felt like every possible variation. Since we were going for a Tell-Tale -chiaroscuro- comic book-esque look, directional lights were crucial.
+            <p> This project was made for UC Berkeley's Advanced Digital Animation course, CNM190 (Fall 2016 - Spring 2017). In essence, its a short about the pangs of alcoholism, but very layered, revealing new meanings with every view.</p>
+            <p> I worked on the sound effects, lighting, modeling, and post-production for this short. Specifically, the lighting I am most proud of is during the liquor store scene, as we experiemented with what felt like every possible variation. Since we were going for a Tell-Tale -chiaroscuro- comic book-esque look, directional lights were crucial.</p>
             <p> I am really proud of the music I wrote for this, especially when I found my peers humming the music at random times. <i> Only Love</i> has won an award at the East
-            LA film festival, and is being considered for other film festivals!
+            LA film festival, and is being considered for other film festivals!</p>
 
             <h3> Other shorts </h3>
             <iframe width="380" height="225" src="https://www.youtube.com/embed/KFBjPTmTnWQ" frameborder="0" allowfullscreen></iframe>
-            <iframe width="380" height="225" src="https://www.youtube.com/embed/VXAhPhIJJVg" frameborder="0" allowfullscreen style="float:left;"></iframe>
-<br>
-            
-
+            <iframe width="380" height="225" src="https://www.youtube.com/embed/VXAhPhIJJVg" frameborder="0" allowfullscreen style="float:left;"></iframe><br>
+          </div>
     </section>
-
-
 
     <section id="design">
-      <h2>DESIGN</h2>
-      <p>In addition to computer graphic 3D work, I enjoy graphic deisgn work. I have designed for Geopogo, as well for UCBUGG.</p>
-      <img src="design/ucbugg/spring19_ad.png" width=1000 height=auto />
+      <div class="sec-title">
+        <h2>DESIGN</h2>
+        <div class="bar"></div>
+          <br><br><br>
+        <div class="bar"></div>
+      </div>
+      <div class="sec-content">
+        <p>In addition to computer graphic 3D work, I enjoy graphic deisgn work. I have designed for Geopogo, as well for UCBUGG.</p>
+        <img src="design/ucbugg/spring19_ad.png" width=1000 height=auto />
+      </div>
     </section>
-
-  </div>
-  <div class="body-right">
-    <img src="images/meaf.jpg" width="170" height="auto">
-    <br><br>
-    <a href="https://www.twitter.com/nutritiousbig" target="_blank">
-      <img src="twitter.png" width="40" height="auto">
-    </a>
-     <div class="links">
-      <a href="#about">About</a><br>
-      <a href="#projects">Projects</a><br>
-      <a href="#films">Films</a><br>
-      <a href="#design">Design</a><br>
-    </div>
   </div>
 </body>
 </html>

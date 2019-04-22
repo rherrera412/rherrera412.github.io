@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-@import url('https://fonts.googleapis.com/css?family=Karla:300,400,500');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:200,900');
+@import url('https://fonts.googleapis.com/css?family=Buenard:400,700');
 @font-face {
     font-family: "steelfish";
     src: url(assets/fonts/steelfish_rg.ttf);
@@ -9,10 +9,12 @@ html, body {
 	height:100%;
 }
 body {
-  font-family: "Karla", sans-serif;
+    font-family: "Nunito Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 	margin: 0 auto;
-	background-color:#F3F3F3; /*#0D5C7B;*/
-	font-family: 'Karla','Open Sans', sans-serif;
+	background-color:#FFFAF1;
+
 }
 .header {
 	border-radius: 10px;
@@ -36,56 +38,76 @@ body {
     transform: translate(-50%, -50%);
 }
 p {
-	font-family: "Karla";
-	font-size: 16px;
-	margin-top: 8px;
-	color: #053E60;
+	font-family: "Buenard";
+	font-size: 20px;
+	color: #232323;
 	font-weight: 400;
-  letter-spacing: .2px;
-  width: 90%;
+	letter-spacing: -0.22px;
 }
 p.sidenote {
-  margin-top: 10px;
-	padding-left: 12px;
-  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 0px;
 }
 section {
   width: 100%;
   float: left;
 	color: #32415B;
 	border-radius: 10px;
-	padding: 2px 16px 2px;
   margin-top: 16px;
-	margin-bottom: 64px;
+  margin-bottom: 64px;
+}
+.sec-title {
+	float: left;
+	width: 18%;
+	margin-right: 32px;
+	text-align: right;
+}
+.sec-title h2 {
+	font-weight: 900;
+}
+
+
+.sec-content {
+	float: right;
+	width: 78%;
+	text-align: left;
+}
+@media only screen and (max-width: 900px)  {
+	.sec-title {
+		width: 100%;
+		margin-right: 0px;
+		padding-bottom: 32px;
+	}
+	.sec-content {
+		width: 100%;
+	}
 }
 h1 {
 	font-size: 16px;
 	font-weight: 600;
 	letter-spacing: 1px;
-	color: #F34776;
+	color: #232323;
 	text-align: right;
 }
 h2 {
-  width: 100%;
-  font-family: "Karla", sans-serif;
-	font-size: 22px;
-	color: #F34776;
-	font-weight: 600;
-  letter-spacing: 3.5px;
-	padding-left: 5px;
+    width: 100%;
+    font-family: "Nunito Sans", sans-serif;
+	font-size: 24px;
+	color: #232323;
+	font-weight: 200;
 	border-radius: 5px;
-  text-align: center;
+    text-align: left;
 	transition: 0.4s;
-  margin-bottom: 50px;
+    margin-bottom: 50px;
 }
-h2:hover {
-}
+
 h3 {
-	font-family: "Karla", sans-serif;
-	color: #F34776;
-	font-size: 20px;
-	font-weight: 600;
-	letter-spacing: 0px;
+	font-family: "steelfish", sans-serif;
+	color: #000;
+	font-size: 50px;
+	font-weight: 900;
+	letter-spacing: 1.25px;
 }
 h4 {
 	font-size: 18px;
@@ -102,13 +124,13 @@ h4 {
 .body-mid {
   margin-left: 10%;
 	width: 80%;
-  max-width: 1000px;
+  max-width: 1200px;
 	float: left;
 	margin-right: 32px;
 	overflow-x: hidden;
 }
 .body-right {
-	width: 10%;
+	width: 14%;
 	padding-bottom: 20px;
 	text-align: center;
 	float: left;
@@ -134,39 +156,43 @@ h4 {
 .links a:hover {
 	color: #F4BA4D;
 }
+.proj-wrap {
+	float: right;
+}
 .project {
-  min-width: 250px;
-	width: 30%;
-	margin-right: 3%;
-	margin-bottom: 60px;
+ 	min-width: 250px;
+	width: 48%;
+	margin-right: 2%;
+	margin-bottom: 40px;
 	transition: 0.5s;
 	float: left;
+	cursor: pointer;
 }
+.project h3 {
+	margin-top: 0px;
+}
+
 .pleft {
-	padding-right: 5%;
-	width: 45%;
-	height: 200px;
+	width: 98%;
 	float: left;
-	margin-bottom: 12px;
 }
 .pleft h3 {
 	text-align: right;
 
 }
 .pright {
-	width: 50%;
-	height: 200px;
+	width: 100%;
 	float: left;
 	overflow: hidden;
-	margin-bottom: 12px;
 
 }
 
 .pleft img {
-  border-radius: 100px;
+  border-radius: 4px;
   object-fit: cover;
   height:auto;
-  width:100%;
+  width:30%;
+  padding-right: 0%;
   overflow: hidden;
 }
 
@@ -202,7 +228,7 @@ h4 {
   border-radius: 2px;
 }
 #about img {
-  width: 160px;
+  width: 100%;
   height: auto;
 }
 #projects .cyob {
@@ -216,4 +242,31 @@ h4 {
 }
 #films p {
   width: 800px;
+}
+
+.bar {
+	height: 1px;
+	width: 100%;
+	background-color: #707070;
+}
+table {
+	width: 100%;
+	font-weight: 200;
+	color: #666666;
+	cursor: pointer;
+	margin-bottom: 60px;
+}
+th {
+	width: 25%;
+	border: 0.5px solid #444444;
+	font-weight: 200;
+	transition: 0.2s;
+}
+th:hover {
+	background-color: #F4BA4D;
+	color:#fff;
+}
+#mypics th {
+	width: 20%;
+	border: 0px;
 }
